@@ -141,24 +141,24 @@ def import_data(
     physio_df.columns = physio_df.columns.str.lower()
 
     # Find ECG recording if any
-    ecg_col = [col for col in physio_df.columns if col in ecg_strings]
-    ecg_col = ecg_col[0] if len(ecg_col) > 0 else None
+    ecg_col_list = [col for col in physio_df.columns if col in ecg_strings]
+    ecg_col = ecg_col_list[0] if len(ecg_col_list) > 0 else None
 
     if ecg_col:
         ecg = physio_df[ecg_col].to_numpy()
         ecg_sfreq = sfreq
 
     # Find PPG recording if any
-    ppg_col = [col for col in physio_df.columns if col in ppg_strings]
-    ppg_col = ppg_col[0] if len(ppg_col) > 0 else None
+    ppg_col_list = [col for col in physio_df.columns if col in ppg_strings]
+    ppg_col = ppg_col_list[0] if len(ppg_col_list) > 0 else None
 
     if ppg_col:
         ppg = physio_df[ppg_col].to_numpy()
         ppg_sfreq = sfreq
 
     # Find respiration recording if any
-    rsp_col = [col for col in physio_df.columns if col in resp_strings]
-    rsp_col = rsp_col[0] if len(rsp_col) > 0 else None
+    rsp_col_list = [col for col in physio_df.columns if col in resp_strings]
+    rsp_col = rsp_col_list[0] if len(rsp_col_list) > 0 else None
 
     if rsp_col:
         rsp = physio_df[rsp_col].to_numpy()

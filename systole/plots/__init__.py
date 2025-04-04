@@ -1,4 +1,5 @@
 """Plotting functions."""
+
 from .plot_circular import plot_circular
 from .plot_ectopic import plot_ectopic
 from .plot_events import plot_events

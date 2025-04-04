@@ -14,15 +14,13 @@ from systole.utils import input_conversion
 @overload
 def plot_shortlong(
     rr: None, artefacts: Dict[str, np.ndarray], input_type: str = "rr_ms"
-) -> Union[figure, Axes]:
-    ...
+) -> Union[figure, Axes]: ...
 
 
 @overload
 def plot_shortlong(
     rr: Union[List[float], np.ndarray], artefacts: None, input_type: str = "rr_ms"
-) -> Union[figure, Axes]:
-    ...
+) -> Union[figure, Axes]: ...
 
 
 @overload
@@ -30,8 +28,7 @@ def plot_shortlong(
     rr: Union[List[float], np.ndarray],
     artefacts: Dict[str, np.ndarray],
     input_type: str = "rr_ms",
-) -> Union[figure, Axes]:
-    ...
+) -> Union[figure, Axes]: ...
 
 
 def plot_shortlong(
