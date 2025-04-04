@@ -2,8 +2,6 @@
 
 import os
 import shutil
-import unittest
-from unittest import TestCase
 
 import matplotlib.pyplot as plt
 import pandas as pd

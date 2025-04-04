@@ -60,7 +60,7 @@ def plot_shortlong(
     shorLong_plot.patch([1, 1, 10, 10], [-1, -10, -10, -1], alpha=0.2, color="grey")
 
     # Plot normal intervals
-    shorLong_plot.circle(
+    shorLong_plot.scatter(
         artefacts["subspace1"][~outliers],
         artefacts["subspace3"][~outliers],
         color="gray",
@@ -71,11 +71,12 @@ def plot_shortlong(
 
     # Plot ectopic beats
     if artefacts["ectopic"].any():
-        shorLong_plot.triangle(
+        shorLong_plot.scatter(
             artefacts["subspace1"][artefacts["ectopic"]],
             artefacts["subspace3"][artefacts["ectopic"]],
             size=8,
             alpha=0.8,
+            marker='triangle',
             legend_label="Ectopic beats",
             color="#6c0073",
         )
@@ -93,7 +94,7 @@ def plot_shortlong(
 
     # Plot long beats
     if artefacts["long"].any():
-        shorLong_plot.circle(
+        shorLong_plot.scatter(
             artefacts["subspace1"][artefacts["long"]],
             artefacts["subspace3"][artefacts["long"]],
             size=8,
@@ -115,7 +116,7 @@ def plot_shortlong(
 
     # Plot short beats
     if artefacts["short"].any():
-        shorLong_plot.circle(
+        shorLong_plot.scatter(
             artefacts["subspace1"][artefacts["short"]],
             artefacts["subspace3"][artefacts["short"]],
             size=8,

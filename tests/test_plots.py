@@ -81,7 +81,7 @@ def test_plot_evoked():
         "tmin": -1.0,
         "tmax": 10.0,
         "apply_baseline": (-1, 0),
-        "ci": 68,
+        "errorbar": ('ci', 68),
         "decim": 500,
         "markers": True,
         "dashes": False,
