@@ -11,7 +11,7 @@ def plot_shortlong(
     artefacts=Dict[str, np.ndarray],
     figsize: int = 600,
     ax: Optional[Axes] = None,
-    **kwargs
+    **kwargs,
 ) -> Axes:
     """Plot ectopic subspace.
 

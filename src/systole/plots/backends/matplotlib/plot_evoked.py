@@ -16,7 +16,7 @@ def plot_evoked(
     labels: List[str],
     unit: str,
     ax=None,
-    **kwargs
+    **kwargs,
 ) -> Axes:
     """Plot events occurence across recording.
 

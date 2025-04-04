@@ -24,7 +24,7 @@ def plot_raw(
     slider: bool = True,
     figsize: int = 300,
     events_params: Optional[Dict] = None,
-    **kwargs
+    **kwargs,
 ) -> figure:
     """Visualization of PPG or ECG signal with systolic peaks/R wave detection.
 

@@ -27,7 +27,7 @@ def plot_raw(
     figsize: Optional[Union[int, List[int], Tuple[int, int]]] = None,
     backend: str = "matplotlib",
     events_params: Optional[Dict] = None,
-    **kwargs
+    **kwargs,
 ) -> Union[Axes, figure]:
     """Visualization of PPG or ECG signal with systolic peaks or R wave detection.
 
@@ -209,7 +209,7 @@ def plot_raw(
                     method=detector,
                     find_local=True,
                     sfreq=sfreq,
-                    **kwargs
+                    **kwargs,
                 )
             else:
                 raise ValueError(
@@ -232,7 +232,7 @@ def plot_raw(
                     method=detector,
                     sfreq=sfreq,
                     find_local=True,
-                    **kwargs
+                    **kwargs,
                 )
             else:
                 raise ValueError(

@@ -16,7 +16,7 @@ def plot_evoked(
     labels: List[str],
     unit: str,
     ci: str = "sd",
-    **kwargs
+    **kwargs,
 ) -> figure:
     """Plot continuous or discontinuous RR intervals time series.
 

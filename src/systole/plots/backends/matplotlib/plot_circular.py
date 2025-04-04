@@ -18,7 +18,7 @@ def plot_circular(
     norm: bool = True,
     mean: bool = False,
     offset: float = 0.0,
-    **kwargs
+    **kwargs,
 ) -> Axes:
     """Plot polar histogram.
 

@@ -19,7 +19,7 @@ def plot_frequency(
     figsize: Optional[Union[List[int], Tuple[int, int], int]] = None,
     backend: str = "matplotlib",
     ax: Optional[Axes] = None,
-    **kwargs
+    **kwargs,
 ) -> Union[figure, Axes]:
     """Plot power spectral densty of RR time series.
 
