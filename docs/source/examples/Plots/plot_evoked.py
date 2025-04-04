@@ -36,7 +36,7 @@ triggers_idx = [
 signal, peaks = ecg_peaks(ecg_df.ecg, method='sleepecg', sfreq=1000)
 
 # Convert to instantaneous heart rate
-rr, _ = heart_rate(peaks, kind="cubic", unit="bpm", input_type="peaks")
+rr, _ = heart_rate(peaks, kind="cubic", output_unit="bpm", input_type="peaks")
 
 # Create list epochs arrays for each condition
 hr_epochs, _ = to_epochs(
