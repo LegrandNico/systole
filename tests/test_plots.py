@@ -71,7 +71,7 @@ def test_plot_evoked():
     ]
 
     # Epochs array
-    rr, _ = heart_rate(peaks, kind="cubic", unit="bpm", input_type="peaks")
+    rr, _ = heart_rate(peaks, kind="cubic", output_unit="bpm", input_type="peaks")
     epochs_test, _ = to_epochs(
         signal=rr,
         triggers_idx=triggers_idx,

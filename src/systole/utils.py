@@ -1,7 +1,7 @@
 # Author: Nicolas Legrand <nicolas.legrand@cas.au.dk>
 
 from typing import List, Optional, Tuple, Union
-
+import warnings
 import numpy as np
 from numba import jit
 from scipy.interpolate import interp1d
@@ -94,7 +94,7 @@ def time_shift(
 def heart_rate(
     x: Union[List, np.ndarray],
     sfreq: int = 1000,
-    unit: str = "rr",
+    output_unit: str = "rr",
     kind: str = "cubic",
     input_type: str = "peaks",
 ) -> Tuple[np.ndarray, np.ndarray]:
@@ -106,19 +106,19 @@ def heart_rate(
         Boolean vector of peaks detection or RR intervals.
     sfreq :
         The sampling frequency of the desired output.
-    unit :
-        The heart rate unit in use. Can be `'rr'` (R-R intervals, in ms)
-        or `'bpm'` (beats per minutes). Default is `'rr'`.
+    output_unit :
+        Which unit to use for the output. Can be `'rr'` (R-R intervals, in ms) or
+        `'bpm'` (beats per minutes). Defaults to `'rr'`.
     kind :
-        The method to use (parameter of `scipy.interpolate.interp1d`). The
-        possible relevant methods for instantaneous heart rate are `'cubic'`
-        (defalut), `'linear'`, `'previous'` and `'next'`.
+        The method to use (parameter of `scipy.interpolate.interp1d`). The possible
+        relevant methods for instantaneous heart rate are `'cubic'` (defalut),
+        `'linear'`, `'previous'` and `'next'`.
     input_type :
-        The type of input vector. Default is `"peaks"` (a boolean vector where
-        `1` represents the occurrence of R waves or systolic peaks).
-        Can also be `"rr_s"` or `"rr_ms"` for vectors of RR intervals, or
-        interbeat intervals (IBI), expressed in seconds or milliseconds
-        (respectively).
+        The type of input vector. Default is `"peaks"` (a boolean vector where `1`
+        represents the occurrence of R waves or systolic peaks). `"peaks_idx"` can be
+        used for index integers of systolic peaks (as outputed by np.where). Can also be
+        `"rr_s"` or `"rr_ms"` for vectors of RR intervals, or interbeat intervals (IBI),
+        expressed in seconds or milliseconds (respectively).
 
     Returns
     -------
@@ -159,11 +159,9 @@ def heart_rate(
         if ((x == 1) | (x == 0)).all():
             # Find peak indices
             peaks_idx = np.where(x)[0]
+            heartrate = (np.diff(peaks_idx) / sfreq) * 1000 # rr intervals ms
 
             time = (peaks_idx / sfreq)[1:]  # Create time vector (seconds)
-
-            rr = np.diff(peaks_idx)
-
             # Use the peaks vector as time input
             new_time = np.arange(0, len(x) / sfreq, 1 / sfreq)
 
@@ -173,10 +171,9 @@ def heart_rate(
     # A vector of peaks indexs
     elif input_type == "peaks_idx":
         if (np.diff(x) > 0).all():
+            heartrate = (np.diff(x) / sfreq) * 1000 # rr intervals ms
+
             time = (x / sfreq)[1:]  # Create time vector (seconds)
-
-            rr = np.diff(x)
-
             # Use the peaks vector as time input
             new_time = np.arange(0, time[-1], 1 / sfreq)
 
@@ -186,23 +183,45 @@ def heart_rate(
     # A vector of RR intervals
     elif input_type == "rr_s":
         if (x > 0).all():
+            if sfreq != 1000:
+                raise ValueError(
+            (
+                "You are using a sampling frequency different from 1000 Hz while "
+                "providing RR intervals in seconds. This function will not return " 
+                "anything to avoid unexpected results. Please provide intervals in "
+                "seconds or use one of the other input types (peaks, peaks_idx, " 
+                "rr_ms)."
+                        )
+                )
+            heartrate = x * 1000  # rr intervals ms
+
             time = np.cumsum(x)  # Create time vector (seconds)
-            rr = x * 1000
             new_time = np.arange(0, time[-1], 1 / sfreq)
         else:
             raise ValueError("RR intervals cannot be less than 0")
 
     elif input_type == "rr_ms":
         if (x > 0).all():
+            if sfreq != 1000:
+                raise ValueError(
+            (
+                "You are using a sampling frequency different from 1000 Hz while "
+                "providing RR intervals in milliseconds. This function will not return " 
+                "anything to avoid unexpected results. Please provide intervals in "
+                "milliseconds or use one of the other input types (peaks, peaks_idx, " 
+                "rr_s)."
+                        )
+                )
+
+            heartrate = x
+
             time = np.cumsum(x) / 1000  # Create time vector (seconds)
-            rr = x
-            new_time = np.arange(0, time[-1], 1 / sfreq)
+            new_time = np.arange(0, time[-1], 1 / 1000)
         else:
             raise ValueError("RR intervals cannot be less than 0")
 
     # R-R intervals (in miliseconds)
-    heartrate = (rr / sfreq) * 1000
-    if unit == "bpm":
+    if output_unit == "bpm":
         # Beats per minutes
         heartrate = 60000 / heartrate
 

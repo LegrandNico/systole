@@ -136,7 +136,7 @@ def plot_evoked(
        signal, peaks = ecg_peaks(ecg_df.ecg, method='sleepecg', sfreq=1000)
 
        # Convert to instantaneous heart rate
-       rr, _ = heart_rate(peaks, kind="cubic", unit="bpm", input_type="peaks")
+       rr, _ = heart_rate(peaks, kind="cubic", output_unit="bpm", input_type="peaks")
 
        # Create list epochs arrays for each condition
        hr_epochs, _ = to_epochs(
@@ -227,7 +227,7 @@ def plot_evoked(
             _, peaks = ppg_peaks(signal, sfreq=sfreq)
         elif modality == "ecg":
             _, peaks = ecg_peaks(signal, sfreq=sfreq)
-        rr, _ = heart_rate(peaks, kind=kind, unit=unit, input_type="peaks")
+        rr, _ = heart_rate(peaks, kind=kind, output_unit=unit, input_type="peaks")
 
     # Extract instantaneous heart rate from peaks detection vector
     elif rr is not None:
@@ -236,7 +236,7 @@ def plot_evoked(
             raise ValueError(
                 "The RR intervals (rr) should be a 1d array, list or pandas serie"
             )
-        rr, _ = heart_rate(rr, kind=kind, unit=unit, input_type=input_type, sfreq=sfreq)
+        rr, _ = heart_rate(rr, kind=kind, output_unit=unit, input_type=input_type, sfreq=sfreq)
 
     # Epoching instantaneous heart rate
     if epochs is None:

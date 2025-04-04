@@ -63,7 +63,7 @@ def test_BrainVisionExG():
         server = socket.socket()
         server.bind(("127.0.0.1", 51244))
         server.listen(0)
-        conn, addr = server.accept()
+        conn, _ = server.accept()
         with conn:
             conn.send(data1)
             conn.send(data2)

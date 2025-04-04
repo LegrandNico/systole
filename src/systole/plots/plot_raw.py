@@ -223,7 +223,7 @@ def plot_raw(
                     signal=signal, sfreq=sfreq, method=detector, **kwargs
                 )
             elif modality in resp_strings:
-                signal, (peaks, troughs) = rsp_peaks(
+                signal, (peaks, _) = rsp_peaks(
                     signal=signal, sfreq=sfreq, method=detector, **kwargs
                 )
             elif modality in ecg_strings:
