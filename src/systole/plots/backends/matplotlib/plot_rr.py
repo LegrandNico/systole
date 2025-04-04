@@ -218,7 +218,9 @@ def plot_rr(
     if bad_segments is not None:
         if line is False:
             # Create the time vector
-            hr, time = heart_rate(rr, output_unit=unit, kind=kind, input_type=input_type)
+            hr, time = heart_rate(
+                rr, output_unit=unit, kind=kind, input_type=input_type
+            )
             time = pd.to_datetime(time, unit="s", origin="unix")
 
         for bads in bad_segments:

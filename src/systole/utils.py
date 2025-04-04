@@ -1,7 +1,7 @@
 # Author: Nicolas Legrand <nicolas.legrand@cas.au.dk>
 
 from typing import List, Optional, Tuple, Union
-import warnings
+
 import numpy as np
 from numba import jit
 from scipy.interpolate import interp1d
@@ -159,7 +159,7 @@ def heart_rate(
         if ((x == 1) | (x == 0)).all():
             # Find peak indices
             peaks_idx = np.where(x)[0]
-            heartrate = (np.diff(peaks_idx) / sfreq) * 1000 # rr intervals ms
+            heartrate = (np.diff(peaks_idx) / sfreq) * 1000  # rr intervals ms
 
             time = (peaks_idx / sfreq)[1:]  # Create time vector (seconds)
             # Use the peaks vector as time input
@@ -171,7 +171,7 @@ def heart_rate(
     # A vector of peaks indexs
     elif input_type == "peaks_idx":
         if (np.diff(x) > 0).all():
-            heartrate = (np.diff(x) / sfreq) * 1000 # rr intervals ms
+            heartrate = (np.diff(x) / sfreq) * 1000  # rr intervals ms
 
             time = (x / sfreq)[1:]  # Create time vector (seconds)
             # Use the peaks vector as time input
@@ -185,13 +185,13 @@ def heart_rate(
         if (x > 0).all():
             if sfreq != 1000:
                 raise ValueError(
-            (
-                "You are using a sampling frequency different from 1000 Hz while "
-                "providing RR intervals in seconds. This function will not return " 
-                "anything to avoid unexpected results. Please provide intervals in "
-                "seconds or use one of the other input types (peaks, peaks_idx, " 
-                "rr_ms)."
-                        )
+                    (
+                        "You are using a sampling frequency different from 1000 Hz while "
+                        "providing RR intervals in seconds. This function will not return "
+                        "anything to avoid unexpected results. Please provide intervals in "
+                        "seconds or use one of the other input types (peaks, peaks_idx, "
+                        "rr_ms)."
+                    )
                 )
             heartrate = x * 1000  # rr intervals ms
 
@@ -204,13 +204,13 @@ def heart_rate(
         if (x > 0).all():
             if sfreq != 1000:
                 raise ValueError(
-            (
-                "You are using a sampling frequency different from 1000 Hz while "
-                "providing RR intervals in milliseconds. This function will not return " 
-                "anything to avoid unexpected results. Please provide intervals in "
-                "milliseconds or use one of the other input types (peaks, peaks_idx, " 
-                "rr_s)."
-                        )
+                    (
+                        "You are using a sampling frequency different from 1000 Hz while "
+                        "providing RR intervals in milliseconds. This function will not return "
+                        "anything to avoid unexpected results. Please provide intervals in "
+                        "milliseconds or use one of the other input types (peaks, peaks_idx, "
+                        "rr_s)."
+                    )
                 )
 
             heartrate = x

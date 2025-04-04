@@ -236,7 +236,9 @@ def plot_evoked(
             raise ValueError(
                 "The RR intervals (rr) should be a 1d array, list or pandas serie"
             )
-        rr, _ = heart_rate(rr, kind=kind, output_unit=unit, input_type=input_type, sfreq=sfreq)
+        rr, _ = heart_rate(
+            rr, kind=kind, output_unit=unit, input_type=input_type, sfreq=sfreq
+        )
 
     # Epoching instantaneous heart rate
     if epochs is None:
