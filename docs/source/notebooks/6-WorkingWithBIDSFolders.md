@@ -210,11 +210,11 @@ This windows will automatically apply peaks detection given the `signal_type` pa
 * When using the **Correction** mode:
     * Use the *left* mouse button to select segment where all the peaks should be removed.
     * Use the *right* mouse button to select segment where peak will be added at the local maximum.
-    <p align='center'><img src='https://github.com/LegrandNico/systole/raw/master/docs/source/images/peaks.gif'/></p>
+    <p align='center'><img src='https://github.com/LegrandNico/systole/raw/main/docs/source/images/peaks.gif'/></p>
 
 * When using the **Rejection** mode:
     * Use the *right* mouse button to select a segment that should be marked as bad.
-    <p align='center'><img src='https://github.com/LegrandNico/systole/raw/master/docs/source/images/segments.gif'/></p>
+    <p align='center'><img src='https://github.com/LegrandNico/systole/raw/main/docs/source/images/segments.gif'/></p>
 
 * By deselecting the check box, you can mark the entire signal as **invalid**.
 
@@ -261,7 +261,7 @@ display(view.io_box, view.editor.commands_box, view.output)
 
 This will create an interactive windows where all the preprocessed ECG recordings from the behavioral task `my_task` can be inspected and further edited.
 
-<p align='center'><img src='https://github.com/LegrandNico/systole/raw/master/docs/source/images/editor.gif'/></p>
+<p align='center'><img src='https://github.com/LegrandNico/systole/raw/main/docs/source/images/editor.gif'/></p>
 
 ```{note}
 If the signal was previously edited, the Viewer will automatically load the edited version and display bad segment (if any).

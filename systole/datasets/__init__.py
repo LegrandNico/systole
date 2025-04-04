@@ -62,7 +62,7 @@ def import_ppg() -> pd.DataFrame:
     df : :py:class:`pandas.DataFrame`
         Dataframe containing the PPG signale.
     """
-    path = "https://github.com/LegrandNico/systole/raw/master/systole/datasets/"
+    path = "https://github.com/LegrandNico/systole/raw/main/systole/datasets/"
     response = requests.get(f"{path}/ppg.npy")
     response.raise_for_status()
     ppg = np.load(io.BytesIO(response.content), allow_pickle=True)
@@ -80,7 +80,7 @@ def import_rr() -> pd.DataFrame:
     rr : :py:class:`pandas.DataFrame`
         Dataframe containing the RR time-serie.
     """
-    path = "https://github.com/LegrandNico/systole/raw/master/systole/datasets/"
+    path = "https://github.com/LegrandNico/systole/raw/main/systole/datasets/"
     rr = pd.read_csv(op.join(path, "rr.txt"))
 
     return rr
@@ -119,7 +119,7 @@ def import_dataset1(
         memories. Scientific Reports, 10(1). https://doi.org/10.1038/s41598-020-71858-2
 
     """
-    path = "https://github.com/LegrandNico/systole/raw/master/systole/datasets/Task1_"
+    path = "https://github.com/LegrandNico/systole/raw/main/systole/datasets/Task1_"
     pbar = tqdm(modalities, position=0, leave=True, disable=disable)
     data = {}
     for item in pbar:

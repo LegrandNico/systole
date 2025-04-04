@@ -169,7 +169,7 @@ Contributors
 
 |AU|
 
-.. |AU| image::  https://github.com/LegrandNico/systole/raw/master/docs/source/images/au_clinisk_logo.png
+.. |AU| image::  https://github.com/LegrandNico/systole/raw/main/docs/source/images/au_clinisk_logo.png
    :width: 100%
 
 .. toctree::

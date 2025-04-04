@@ -55,7 +55,7 @@ This tutorial notebook introduces two commonly used methods to record cardiac ac
 
 +++ {"tags": ["hide-input"]}
 
-<p align='center'><img src='https://github.com/LegrandNico/systole/raw/master/docs/source/images/ecg.png'/></p>
+<p align='center'><img src='https://github.com/LegrandNico/systole/raw/main/docs/source/images/ecg.png'/></p>
 
 +++
 
@@ -219,7 +219,7 @@ We can see that the Pan-Tompkins algorithm does a good job at detecting the QRS 
 
 +++ {"tags": ["hide-input"]}
 
-<p align='center'><img src='https://github.com/LegrandNico/systole/raw/master/docs/source/images/pulseOximeter.png'/></p>
+<p align='center'><img src='https://github.com/LegrandNico/systole/raw/main/docs/source/images/pulseOximeter.png'/></p>
 
 +++
 
