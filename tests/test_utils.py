@@ -1,8 +1,8 @@
 # Author: Nicolas Legrand <nicolas.legrand@cas.au.dk>
 
 import numpy as np
-import pytest
 from numba.core.errors import TypingError
+from pytest import raises
 
 from systole import import_dataset1, import_ppg, import_rr
 from systole.detection import ppg_peaks
@@ -44,9 +44,9 @@ def test_norm_triggers():
     peaks = -peaks.astype(int)
     y = norm_triggers(peaks, threshold=-1, direction="lower")
     assert sum(y) == 379
-    with pytest.raises(TypingError):
+    with raises(TypingError):
         norm_triggers(None)
-    with pytest.raises(ValueError):
+    with raises(ValueError):
         norm_triggers(peaks, direction="invalid")
 
 
@@ -54,25 +54,103 @@ def test_heart_rate():
     """Test heart_rate function"""
     ppg = import_ppg().ppg.to_numpy()  # Import PPG recording
     _, peaks = ppg_peaks(ppg, sfreq=75)
+
+    # peaks vector ---------------------------------------------------------------------
     heartrate, time = heart_rate(peaks)
     assert len(heartrate) == len(time)
+    assert np.isclose(time[-1], 331.293)
     np.testing.assert_almost_equal(np.nanmean(heartrate), 884.92526408453)
+
+    # as a list
     heartrate, time = heart_rate(list(peaks))
     assert len(heartrate) == len(time)
+    assert np.isclose(time[-1], 331.293)
     np.testing.assert_almost_equal(np.nanmean(heartrate), 884.92526408453)
-    heartrate, time = heart_rate(peaks, unit="bpm", kind="cubic", sfreq=500)
+
+    # with a different sampling frequency
+    heartrate, time = heart_rate(peaks, kind="cubic", sfreq=500)
     assert len(heartrate) == len(time)
+    assert np.isclose(time[-1], 662.586)
+    np.testing.assert_almost_equal(np.nanmean(heartrate), 1769.85052816906)
+
+    # with a different sampling frequency and a different output unit
+    heartrate, time = heart_rate(peaks, output_unit="bpm", kind="cubic", sfreq=500)
+    assert len(heartrate) == len(time)
+    assert np.isclose(time[-1], 662.586)
     np.testing.assert_almost_equal(np.nanmean(heartrate), 34.34558271737578)
-    with pytest.raises(ValueError):
-        heartrate, time = heart_rate([1, 2, 3])
+
+    # peaks index ----------------------------------------------------------------------
+    peaks_idx = np.where(peaks)[0]
+
+    # standard use
     heartrate, time = heart_rate(
-        np.diff(np.where(peaks)), kind="cubic", input_type="rr_ms"
+        peaks_idx, kind="cubic", sfreq=1000, input_type="peaks_idx"
     )
+    assert len(heartrate) == len(time)
+    assert np.isclose(time[-1], 330.264)
     np.testing.assert_almost_equal(np.nanmean(heartrate), 884.9253824912565)
+
+    # with a different sampling frequency
     heartrate, time = heart_rate(
-        np.diff(np.where(peaks)) / 1000, kind="cubic", input_type="rr_s"
+        peaks_idx, kind="cubic", sfreq=500, input_type="peaks_idx"
     )
+    assert len(heartrate) == len(time)
+    assert np.isclose(time[-1], 660.528)
+    np.testing.assert_almost_equal(np.nanmean(heartrate), 1769.850764982513)
+
+    # with a different sampling frequency and a different output unit
+    heartrate, time = heart_rate(
+        peaks_idx, output_unit="bpm", kind="cubic", sfreq=500, input_type="peaks_idx"
+    )
+    assert len(heartrate) == len(time)
+    assert np.isclose(time[-1], 660.528)
+    np.testing.assert_almost_equal(np.nanmean(heartrate), 34.3455793244105)
+
+    # with a different input type - should raise value error
+    with raises(ValueError):
+        heartrate, time = heart_rate([1, 2, 3])
+
+    # rr_ms ----------------------------------------------------------------------------
+    rr_ms = np.diff(np.where(peaks)[0])
+
+    # standard use
+    heartrate, time = heart_rate(rr_ms, kind="cubic", input_type="rr_ms")
+    assert len(heartrate) == len(time)
+    assert np.isclose(time[-1], 329.575)
+    np.testing.assert_almost_equal(np.nanmean(heartrate), 884.9253824912565)
+
+    # with a different output unit
+    heartrate, time = heart_rate(
+        rr_ms, output_unit="bpm", kind="cubic", input_type="rr_ms"
+    )
+    assert len(heartrate) == len(time)
+    assert np.isclose(time[-1], 329.575)
+    np.testing.assert_almost_equal(np.nanmean(heartrate), 68.69115864882102)
+
+    # with a different sampling frequency - should raise value error
+    with raises(ValueError):
+        heartrate, time = heart_rate(rr_ms, kind="cubic", sfreq=500, input_type="rr_ms")
+
+    # rr_s ----------------------------------------------------------------------------
+    rr_s = rr_ms / 1000
+
+    # standard use
+    heartrate, time = heart_rate(rr_s, kind="cubic", input_type="rr_s")
+    assert len(heartrate) == len(time)
+    assert np.isclose(time[-1], 329.575)
     np.testing.assert_almost_equal(np.nanmean(heartrate), 884.92526408453)
+
+    # with a different output unit
+    heartrate, time = heart_rate(
+        rr_s, output_unit="bpm", kind="cubic", input_type="rr_s"
+    )
+    assert len(heartrate) == len(time)
+    assert np.isclose(time[-1], 329.575)
+    np.testing.assert_almost_equal(np.nanmean(heartrate), 68.69116543475157)
+
+    # with a different sampling frequency - should raise value error
+    with raises(ValueError):
+        heartrate, time = heart_rate(rr_ms, kind="cubic", sfreq=500, input_type="rr_s")
 
 
 def test_time_shift():
