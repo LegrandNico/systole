@@ -1,6 +1,6 @@
 
 .. image:: https://img.shields.io/badge/License-GPL%20v3-blue.svg
-  :target: https://github.com/LegrandNico/systole/blob/master/LICENSE
+  :target: https://github.com/LegrandNico/systole/blob/main/LICENSE
 
 .. image:: https://badge.fury.io/py/systole.svg
     :target: https://badge.fury.io/py/systole
@@ -25,7 +25,7 @@
 
 ================
 
-.. image:: https://github.com/LegrandNico/systole/blob/master/docs/source/images/logo.png
+.. image:: https://github.com/LegrandNico/systole/blob/main/docs/source/images/logo.png
    :align: center
 
 ================
@@ -97,22 +97,22 @@ For an introduction to Systole and cardiac signal analysis, you can refer to the
      - |Colab badge 6|
 
 .. |Colab badge 1| image:: https://colab.research.google.com/assets/colab-badge.svg
-  :target: https://colab.research.google.com/github/LegrandNico/systole/blob/master/docs/source/notebooks/1-PhysiologicalSignals.ipynb
+  :target: https://colab.research.google.com/github/LegrandNico/systole/blob/main/docs/source/notebooks/1-PhysiologicalSignals.ipynb
 
 .. |Colab badge 2| image:: https://colab.research.google.com/assets/colab-badge.svg
-  :target: https://colab.research.google.com/github/LegrandNico/systole/blob/master/docs/source/notebooks/2-DetectingCycles.ipynb
+  :target: https://colab.research.google.com/github/LegrandNico/systole/blob/main/docs/source/notebooks/2-DetectingCycles.ipynb
 
 .. |Colab badge 3| image:: https://colab.research.google.com/assets/colab-badge.svg
-  :target: https://colab.research.google.com/github/LegrandNico/systole/blob/master/docs/source/notebooks/3-DetectingAndCorrectingArtefacts.ipynb
+  :target: https://colab.research.google.com/github/LegrandNico/systole/blob/main/docs/source/notebooks/3-DetectingAndCorrectingArtefacts.ipynb
 
 .. |Colab badge 4| image:: https://colab.research.google.com/assets/colab-badge.svg
-  :target: https://colab.research.google.com/github/LegrandNico/systole/blob/master/docs/source/notebooks/4-HeartRateVariability.ipynb
+  :target: https://colab.research.google.com/github/LegrandNico/systole/blob/main/docs/source/notebooks/4-HeartRateVariability.ipynb
 
 .. |Colab badge 5| image:: https://colab.research.google.com/assets/colab-badge.svg
-  :target: https://colab.research.google.com/github/LegrandNico/systole/blob/master/docs/source/notebooks/5-InstantaneousHeartRate.ipynb
+  :target: https://colab.research.google.com/github/LegrandNico/systole/blob/main/docs/source/notebooks/5-InstantaneousHeartRate.ipynb
 
 .. |Colab badge 6| image:: https://colab.research.google.com/assets/colab-badge.svg
-  :target: https://colab.research.google.com/github/LegrandNico/systole/blob/master/docs/source/notebooks/6-WorkingWithBIDSFolders.ipynb
+  :target: https://colab.research.google.com/github/LegrandNico/systole/blob/main/docs/source/notebooks/6-WorkingWithBIDSFolders.ipynb
 
 
 Getting started
@@ -137,7 +137,7 @@ The package integrates a set of functions for interactive or non interactive dat
   plot_raw(signal[60000 : 120000], modality="ecg", backend="bokeh", 
               show_heart_rate=True, show_artefacts=True, figsize=300)
 
-.. image:: https://github.com/LegrandNico/systole/blob/master/docs/source/images/raw.png
+.. image:: https://github.com/LegrandNico/systole/blob/main/docs/source/images/raw.png
    :align: center
 
 
@@ -155,7 +155,7 @@ Artefacts can be detected and corrected in the RR interval time series or the pe
 
   plot_subspaces(peaks, input_type="peaks", backend="bokeh")
 
-.. image:: https://github.com/LegrandNico/systole/blob/master/docs/source/images/subspaces.png
+.. image:: https://github.com/LegrandNico/systole/blob/main/docs/source/images/subspaces.png
    :align: center
 
 
@@ -173,7 +173,7 @@ Systole implements time-domain, frequency-domain and non-linear HRV indices, as 
       plot_poincare(peaks, input_type="peaks", backend="bokeh", figsize=(200, 200)),
       )
 
-.. image:: https://github.com/LegrandNico/systole/blob/master/docs/source/images/hrv.png
+.. image:: https://github.com/LegrandNico/systole/blob/main/docs/source/images/hrv.png
    :align: center
 
 
@@ -198,19 +198,19 @@ Interactive visualization of BIDS structured datasets
       signal_type="ECG"
   )
 
-.. image:: https://github.com/LegrandNico/systole/blob/master/docs/source/images/editor.gif
+.. image:: https://github.com/LegrandNico/systole/blob/main/docs/source/images/editor.gif
    :align: center
 
 Inserting and removing peaks
 ============================
 
-.. image:: https://github.com/LegrandNico/systole/blob/master/docs/source/images/peaks.gif
+.. image:: https://github.com/LegrandNico/systole/blob/main/docs/source/images/peaks.gif
    :align: center
 
 Annotating bad segments
 =======================
 
-.. image:: https://github.com/LegrandNico/systole/blob/master/docs/source/images/segments.gif
+.. image:: https://github.com/LegrandNico/systole/blob/main/docs/source/images/segments.gif
    :align: center
 
 Development
@@ -243,5 +243,5 @@ Systole was largely inspired by pre-existing toolboxes dedicated to heartrate va
 
 |AU|
 
-.. |AU| image::  https://github.com/LegrandNico/systole/blob/master/docs/source/images/au_clinisk_logo.png
+.. |AU| image::  https://github.com/LegrandNico/systole/blob/main/docs/source/images/au_clinisk_logo.png
    :width: 100%

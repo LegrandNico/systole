@@ -1,6 +1,6 @@
 
 .. image:: https://img.shields.io/badge/License-GPL%20v3-blue.svg
-  :target: https://github.com/LegrandNico/systole/blob/master/LICENSE
+  :target: https://github.com/LegrandNico/systole/blob/main/LICENSE
 
 .. image:: https://badge.fury.io/py/systole.svg
     :target: https://badge.fury.io/py/systole
@@ -25,7 +25,7 @@
 
 ================
 
-.. image:: https://github.com/LegrandNico/systole/blob/master/docs/source/images/logo.png
+.. image:: https://github.com/LegrandNico/systole/blob/main/docs/source/images/logo.png
    :align: center
 
 ================
