@@ -46,7 +46,7 @@ jobs:
       # Step 6: Run Tests and Generate Coverage Report
       - name: Run tests and coverage
         run: |
-          poetry run pytest ./tests/ --cov=./pyhgf/ --cov-report=xml --cov-branch
+          poetry run pytest ./tests/ --cov=./src/systole/ --cov-report=xml --cov-branch
 
       # Step 7: Upload Coverage Report to Codecov
       - name: Upload coverage reports to Codecov
