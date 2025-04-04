@@ -485,7 +485,7 @@ Here, for the sake of example, we are going to create the same plot three time u
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">signal</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">peaks</span></a> <span class="o">=</span> <span class="n">ecg_peaks</span><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="pandas.core.series.Series" class="sphx-glr-backref-module-pandas-core-series sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ecg_df</span><span class="o">.</span><span class="n">ecg</span></a><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;sleepecg&#39;</span><span class="p">,</span> <span class="n">sfreq</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 
 <span class="c1"># Convert to instantaneous heart rate</span>
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rr</span></a><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">heart_rate</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">peaks</span></a><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;cubic&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;bpm&quot;</span><span class="p">,</span> <span class="n">input_type</span><span class="o">=</span><span class="s2">&quot;peaks&quot;</span><span class="p">)</span>
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rr</span></a><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">heart_rate</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">peaks</span></a><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;cubic&quot;</span><span class="p">,</span> <span class="n">output_unit</span><span class="o">=</span><span class="s2">&quot;bpm&quot;</span><span class="p">,</span> <span class="n">input_type</span><span class="o">=</span><span class="s2">&quot;peaks&quot;</span><span class="p">)</span>
 
 <span class="c1"># Create list epochs arrays for each condition</span>
 <span class="n">hr_epochs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">to_epochs</span><span class="p">(</span>
@@ -522,10 +522,10 @@ Here, for the sake of example, we are going to create the same plot three time u
 </div>
 <img src="../../_images/sphx_glr_plot_evoked_001.png" srcset="../../_images/sphx_glr_plot_evoked_001.png" alt="plot evoked" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/2 [00:00&lt;?, ?it/s]
 Downloading ECG channel:   0%|          | 0/2 [00:00&lt;?, ?it/s]
-Downloading ECG channel:  50%|█████     | 1/2 [00:00&lt;00:00,  3.30it/s]
-Downloading Stim channel:  50%|█████     | 1/2 [00:00&lt;00:00,  3.30it/s]
-Downloading Stim channel: 100%|██████████| 2/2 [00:00&lt;00:00,  3.38it/s]
-Downloading Stim channel: 100%|██████████| 2/2 [00:00&lt;00:00,  3.37it/s]
+Downloading ECG channel:  50%|█████     | 1/2 [00:00&lt;00:00,  9.43it/s]
+Downloading Stim channel:  50%|█████     | 1/2 [00:00&lt;00:00,  9.43it/s]
+Downloading Stim channel: 100%|██████████| 2/2 [00:00&lt;00:00,  9.74it/s]
+Downloading Stim channel: 100%|██████████| 2/2 [00:00&lt;00:00,  9.68it/s]
 
 &lt;Axes: xlabel=&#39;Time (s)&#39;, ylabel=&#39;Heart rate change (bpm)&#39;&gt;
 </pre></div>
@@ -570,7 +570,7 @@ Downloading Stim channel: 100%|██████████| 2/2 [00:00&lt;00:
     <span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 12.110 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 11.639 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plots-plot-evoked-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/25653df7936ab9232e49fd151f0d5039/plot_evoked.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_evoked.ipynb</span></code></a></p>

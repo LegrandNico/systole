@@ -667,7 +667,7 @@
                     <span class="n">signal</span><span class="o">=</span><span class="n">signal</span><span class="p">,</span> <span class="n">sfreq</span><span class="o">=</span><span class="n">sfreq</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">detector</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
                 <span class="p">)</span>
             <span class="k">elif</span> <span class="n">modality</span> <span class="ow">in</span> <span class="n">resp_strings</span><span class="p">:</span>
-                <span class="n">signal</span><span class="p">,</span> <span class="p">(</span><span class="n">peaks</span><span class="p">,</span> <span class="n">troughs</span><span class="p">)</span> <span class="o">=</span> <span class="n">rsp_peaks</span><span class="p">(</span>
+                <span class="n">signal</span><span class="p">,</span> <span class="p">(</span><span class="n">peaks</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">rsp_peaks</span><span class="p">(</span>
                     <span class="n">signal</span><span class="o">=</span><span class="n">signal</span><span class="p">,</span> <span class="n">sfreq</span><span class="o">=</span><span class="n">sfreq</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">detector</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
                 <span class="p">)</span>
             <span class="k">elif</span> <span class="n">modality</span> <span class="ow">in</span> <span class="n">ecg_strings</span><span class="p">:</span>

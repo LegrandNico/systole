@@ -71,7 +71,7 @@ Here, for the sake of example, we are going to create the same plot three time u
     signal, peaks = ecg_peaks(ecg_df.ecg, method='sleepecg', sfreq=1000)
 
     # Convert to instantaneous heart rate
-    rr, _ = heart_rate(peaks, kind="cubic", unit="bpm", input_type="peaks")
+    rr, _ = heart_rate(peaks, kind="cubic", output_unit="bpm", input_type="peaks")
 
     # Create list epochs arrays for each condition
     hr_epochs, _ = to_epochs(
@@ -117,7 +117,7 @@ Here, for the sake of example, we are going to create the same plot three time u
 
  .. code-block:: none
 
-      0%|          | 0/2 [00:00<?, ?it/s]    Downloading ECG channel:   0%|          | 0/2 [00:00<?, ?it/s]    Downloading ECG channel:  50%|█████     | 1/2 [00:00<00:00,  3.30it/s]    Downloading Stim channel:  50%|█████     | 1/2 [00:00<00:00,  3.30it/s]    Downloading Stim channel: 100%|██████████| 2/2 [00:00<00:00,  3.38it/s]    Downloading Stim channel: 100%|██████████| 2/2 [00:00<00:00,  3.37it/s]
+      0%|          | 0/2 [00:00<?, ?it/s]    Downloading ECG channel:   0%|          | 0/2 [00:00<?, ?it/s]    Downloading ECG channel:  50%|█████     | 1/2 [00:00<00:00,  9.43it/s]    Downloading Stim channel:  50%|█████     | 1/2 [00:00<00:00,  9.43it/s]    Downloading Stim channel: 100%|██████████| 2/2 [00:00<00:00,  9.74it/s]    Downloading Stim channel: 100%|██████████| 2/2 [00:00<00:00,  9.68it/s]
 
     <Axes: xlabel='Time (s)', ylabel='Heart rate change (bpm)'>
 
@@ -177,7 +177,7 @@ Here, for the sake of example, we are going to create the same plot three times 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 12.110 seconds)
+   **Total running time of the script:** (0 minutes 11.639 seconds)
 
 
 .. _sphx_glr_download_auto_examples_Plots_plot_evoked.py:

@@ -580,7 +580,7 @@
 <span class="sd">       signal, peaks = ecg_peaks(ecg_df.ecg, method=&#39;sleepecg&#39;, sfreq=1000)</span>
 
 <span class="sd">       # Convert to instantaneous heart rate</span>
-<span class="sd">       rr, _ = heart_rate(peaks, kind=&quot;cubic&quot;, unit=&quot;bpm&quot;, input_type=&quot;peaks&quot;)</span>
+<span class="sd">       rr, _ = heart_rate(peaks, kind=&quot;cubic&quot;, output_unit=&quot;bpm&quot;, input_type=&quot;peaks&quot;)</span>
 
 <span class="sd">       # Create list epochs arrays for each condition</span>
 <span class="sd">       hr_epochs, _ = to_epochs(</span>
@@ -671,7 +671,7 @@
             <span class="n">_</span><span class="p">,</span> <span class="n">peaks</span> <span class="o">=</span> <span class="n">ppg_peaks</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">sfreq</span><span class="o">=</span><span class="n">sfreq</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">modality</span> <span class="o">==</span> <span class="s2">&quot;ecg&quot;</span><span class="p">:</span>
             <span class="n">_</span><span class="p">,</span> <span class="n">peaks</span> <span class="o">=</span> <span class="n">ecg_peaks</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">sfreq</span><span class="o">=</span><span class="n">sfreq</span><span class="p">)</span>
-        <span class="n">rr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">heart_rate</span><span class="p">(</span><span class="n">peaks</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">unit</span><span class="p">,</span> <span class="n">input_type</span><span class="o">=</span><span class="s2">&quot;peaks&quot;</span><span class="p">)</span>
+        <span class="n">rr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">heart_rate</span><span class="p">(</span><span class="n">peaks</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">output_unit</span><span class="o">=</span><span class="n">unit</span><span class="p">,</span> <span class="n">input_type</span><span class="o">=</span><span class="s2">&quot;peaks&quot;</span><span class="p">)</span>
 
     <span class="c1"># Extract instantaneous heart rate from peaks detection vector</span>
     <span class="k">elif</span> <span class="n">rr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -680,7 +680,9 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                 <span class="s2">&quot;The RR intervals (rr) should be a 1d array, list or pandas serie&quot;</span>
             <span class="p">)</span>
-        <span class="n">rr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">heart_rate</span><span class="p">(</span><span class="n">rr</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">unit</span><span class="p">,</span> <span class="n">input_type</span><span class="o">=</span><span class="n">input_type</span><span class="p">,</span> <span class="n">sfreq</span><span class="o">=</span><span class="n">sfreq</span><span class="p">)</span>
+        <span class="n">rr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">heart_rate</span><span class="p">(</span>
+            <span class="n">rr</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">output_unit</span><span class="o">=</span><span class="n">unit</span><span class="p">,</span> <span class="n">input_type</span><span class="o">=</span><span class="n">input_type</span><span class="p">,</span> <span class="n">sfreq</span><span class="o">=</span><span class="n">sfreq</span>
+        <span class="p">)</span>
 
     <span class="c1"># Epoching instantaneous heart rate</span>
     <span class="k">if</span> <span class="n">epochs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
