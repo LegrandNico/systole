@@ -13,7 +13,7 @@ from systole.utils import heart_rate, to_epochs
 
 from systole import import_dataset1
 
-# Author: Nicolas Legrand <nicolas.legrand@cfin.au.dk>
+# Author: Nicolas Legrand <nicolas.legrand@cas.au.dk>
 # Licence: GPL v3
 
 #%%

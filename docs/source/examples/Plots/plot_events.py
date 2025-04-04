@@ -12,7 +12,7 @@ from systole.plots import plot_events, plot_rr
 
 from systole import import_dataset1
 
-# Author: Nicolas Legrand <nicolas.legrand@cfin.au.dk>
+# Author: Nicolas Legrand <nicolas.legrand@cas.au.dk>
 # Licence: GPL v3
 
 #%%

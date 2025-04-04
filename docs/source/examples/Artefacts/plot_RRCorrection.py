@@ -16,7 +16,7 @@ variability is measured for a given time interval (usually > 5 minutes).
 
 """
 
-# Author: Nicolas Legrand <nicolas.legrand@cfin.au.dk>
+# Author: Nicolas Legrand <nicolas.legrand@cas.au.dk>
 # Licence: GPL v3
 
 #%%

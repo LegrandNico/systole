@@ -7,7 +7,7 @@ from RR or pulse rate interval time series using the method proposed by
 Lipponen & Tarvainen (2019) [#]_.
 """
 
-# Author: Nicolas Legrand <nicolas.legrand@cfin.au.dk>
+# Author: Nicolas Legrand <nicolas.legrand@cas.au.dk>
 # Licence: GPL v3
 
 #%%

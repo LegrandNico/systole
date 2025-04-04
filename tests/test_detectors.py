@@ -1,4 +1,4 @@
-# Author: Nicolas Legrand <nicolas.legrand@cfin.au.dk>
+# Author: Nicolas Legrand <nicolas.legrand@cas.au.dk>
 
 from systole import import_ppg, import_dataset1
 from systole.detectors import msptd, moving_average, pan_tompkins, hamilton, christov, engelse_zeelenberg
