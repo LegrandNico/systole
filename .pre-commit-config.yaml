@@ -1,0 +1,23 @@
+repos:
+-   repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.10.1
+    hooks:
+    - id: isort
+      files: ^systole/
+-   repo: https://github.com/ambv/black
+    rev: 23.10.1
+    hooks:
+    - id: black
+      language_version: python3
+      files: ^systole/
+-   repo: https://github.com/pycqa/flake8
+    rev: 6.1.0
+    hooks:
+    - id: flake8
+      files: ^systole/
+-   repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 'v1.6.1'
+    hooks:
+    - id: mypy 
+      files: ^systole/
+      args: [--ignore-missing-imports]

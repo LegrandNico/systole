@@ -1,0 +1,183 @@
+
+.. image:: https://img.shields.io/badge/License-GPL%20v3-blue.svg
+  :target: https://github.com/LegrandNico/systole/blob/master/LICENSE
+
+.. image:: https://badge.fury.io/py/systole.svg
+    :target: https://badge.fury.io/py/systole
+
+.. image:: https://joss.theoj.org/papers/10.21105/joss.03832/status.svg
+   :target: https://doi.org/10.21105/joss.03832
+
+.. image:: https://codecov.io/gh/LegrandNico/systole/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/LegrandNico/systole
+
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+  :target: https://github.com/psf/black
+
+.. image:: https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336
+  :target: https://pycqa.github.io/isort/
+
+.. image:: http://www.mypy-lang.org/static/mypy_badge.svg
+  :target: http://mypy-lang.org/
+
+.. image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
+  :target: https://github.com/pre-commit/pre-commit
+
+================
+
+.. image:: https://github.com/LegrandNico/systole/blob/master/docs/source/images/logo.png
+   :align: center
+
+================
+
+**Systole** is an open-source Python package implementing simple tools for working with cardiac signals for psychophysiology research. In particular, the package provides tools to pre-process, visualize, and analyze cardiac data. 
+This includes tools for data epoching, artefact detection, artefact correction, evoked heart rate analyses, heart rate 
+variability analyses, circular statistical approaches to analysing cardiac cycles, and synchronising stimulus 
+presentation with different cardiac phases via Psychopy.
+
+If you have questions, you can ask them in the discussion section of this repository.
+
+How to cite?
+============
+
+If you are using **Systole** in a publication we ask you to cite the following paper:
+
+* Legrand et al., (2022). Systole: A python package for cardiac signal synchrony and analysis. Journal of Open Source Software, 7(69), 3832, https://doi.org/10.21105/joss.03832
+
+.. code-block:: text
+
+   @article{Legrand2022,
+   doi = {10.21105/joss.03832},
+   url = {https://doi.org/10.21105/joss.03832},
+   year = {2022},
+   publisher = {The Open Journal},
+   volume = {7},
+   number = {69},
+   pages = {3832},
+   author = {Nicolas Legrand and Micah Allen},
+   title = {Systole: A python package for cardiac signal synchrony and analysis},
+   journal = {Journal of Open Source Software}
+   } 
+
+
+Systole documentation
+=====================
+
+.. grid:: 2
+
+   .. grid-item-card:: Getting started
+
+      .. image:: images/forward-fast-solid.png
+         :width: 200
+         :align: center
+
+      New to *Systole*? Check out the getting started guides. They contain an
+      introduction to *Systole'* main concepts and links to additional tutorials.
+      +++
+
+      .. button-ref:: getting_started
+         :expand:
+
+         Getting started
+
+   .. grid-item-card:: Example gallery
+
+      .. image:: images/table-cells-large-solid.png
+         :width: 200
+         :align: center
+
+      See this section for examples of using Systole in different ways.
+      +++
+      .. button-ref::  auto_examples/index
+         :expand:
+
+         Learning with examples
+
+.. grid:: 2
+
+   .. grid-item-card:: Tutorials
+
+      .. image:: images/tutorials.png
+         :width: 200
+         :align: center
+
+      New to cardiac signal analysis? Want to see how you can use *Systole* when dealing
+      with real-world problems? Check out the tutorial notebooks for an introduction to
+      theoretical and practical aspects of physiological signal analysis for cognitive
+      neuroscience.
+      +++
+      .. button-ref:: tutorials
+         :expand:
+
+         Interactive tutorial on physiological signal analysis
+
+
+   .. grid-item-card:: API reference
+
+      .. image:: images/code-solid.png
+         :width: 200
+         :align: center
+
+      The reference guide contains a detailed description of the Systole API. The
+      reference describes how the methods work and which parameters can be used.
+
+      +++
+
+      .. button-ref:: api
+         :expand:
+
+         API references
+
+
+Acknowledgements
+================
+
+This software and the ECG are supported by a Lundbeckfonden Fellowship (R272-2017-4345), and the AIAS-COFUND II fellowship programme that is supported by the Marie Skłodowska-Curie actions under the European Union’s Horizon 2020 (Grant agreement no 754513), and the Aarhus University Research Foundation.
+
+Systole was largely inspired by pre-existing toolboxes dedicated to heartrate variability and signal analysis.
+
+* HeartPy: https://python-heart-rate-analysis-toolkit.readthedocs.io/en/latest/
+
+* hrv: https://github.com/rhenanbartels/hrv
+
+* pyHRV: https://pyhrv.readthedocs.io/en/latest/index.html
+
+* ECG-detector: https://github.com/berndporr/py-ecg-detectors
+
+* Pingouin: https://pingouin-stats.org/
+
+* NeuroKit2: https://github.com/neuropsychology/NeuroKit
+
+
+Development
+===========
+
+This repository is a fork of the `original Systole repository <https://github.com/embodied-computation-group/systole>` and is maintained by Nicolas Legrand. If you want to contribute, feel free to contact one of the developers, open an issue or submit a pull request.
+
+This program is provided with NO WARRANTY OF ANY KIND.
+
+Contributors
+============
+
+- Jan C. Brammer (jan.c.brammer@gmail.com)
+- Gidon Levakov (gidonlevakov@gmail.com)
+- Peter Doggart (peter.doggart@pulseai.io)
+- Dominique Makowski (https://github.com/DominiqueMakowski)
+- Bertrand Hermann (bertrand.hermann@ghu-paris.fr)
+
+================
+
+|AU|
+
+.. |AU| image::  https://github.com/LegrandNico/systole/raw/master/docs/source/images/au_clinisk_logo.png
+   :width: 100%
+
+.. toctree::
+   :maxdepth: 3
+   :hidden:
+
+   Getting started <getting_started>
+   Gallery <auto_examples/index.rst>
+   Tutorials <tutorials.rst>
+   API <api.rst>
+   References <references.md>
