@@ -76,7 +76,7 @@ def plot_shortlong(
             artefacts["subspace3"][artefacts["ectopic"]],
             size=8,
             alpha=0.8,
-            marker='triangle',
+            marker="triangle",
             legend_label="Ectopic beats",
             color="#6c0073",
         )

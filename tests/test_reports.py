@@ -11,10 +11,10 @@ from systole import import_dataset1, import_rr
 from systole.hrv import frequency_domain, nonlinear_domain, time_domain
 from systole.reports import frequency_table, nonlinear_table, time_table
 from systole.reports.group_level import (
-artefacts_group_level,
-frequency_domain_group_level,
-nonlinear_domain_group_level,
-time_domain_group_level,
+    artefacts_group_level,
+    frequency_domain_group_level,
+    nonlinear_domain_group_level,
+    time_domain_group_level,
 )
 from systole.reports.subject_level import subject_level_report
 
@@ -39,6 +39,7 @@ def test_subject_level():
 
     shutil.rmtree("./participant_test")
 
+
 def test_group_level():
     """Test the group-level reports"""
 
@@ -51,6 +52,7 @@ def test_group_level():
     frequency_domain_group_level(summary_df)
     nonlinear_domain_group_level(summary_df)
     artefacts_group_level(summary_df)
+
 
 def test_time_table():
     """Test the time_table function"""
@@ -76,6 +78,7 @@ def test_time_table():
 
     plt.close("all")
 
+
 def test_frequency_table():
     """Test frequency_table function"""
     rr = import_rr().rr
@@ -99,6 +102,7 @@ def test_frequency_table():
     assert table_rr == table_df
 
     plt.close("all")
+
 
 def test_nonlinear_table():
     """Test nonlinear_table function"""

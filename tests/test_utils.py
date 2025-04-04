@@ -7,18 +7,18 @@ from numba.core.errors import TypingError
 from systole import import_dataset1, import_ppg, import_rr
 from systole.detection import ppg_peaks
 from systole.utils import (
-find_clipping,
-get_valid_segments,
-heart_rate,
-input_conversion,
-nan_cleaning,
-norm_bad_segments,
-norm_triggers,
-simulate_rr,
-time_shift,
-to_angles,
-to_epochs,
-to_neighbour,
+    find_clipping,
+    get_valid_segments,
+    heart_rate,
+    input_conversion,
+    nan_cleaning,
+    norm_bad_segments,
+    norm_triggers,
+    simulate_rr,
+    time_shift,
+    to_angles,
+    to_epochs,
+    to_neighbour,
 )
 
 
@@ -31,6 +31,7 @@ def test_to_neighbour():
     assert np.where(new_peaks)[0] == 51
     new_peaks = to_neighbour(signal=ppg, peaks=peaks, kind="min")
     assert np.where(new_peaks)[0] == 1
+
 
 def test_norm_triggers():
     ppg = import_ppg().ppg.to_numpy()  # Import PPG recording
@@ -47,6 +48,7 @@ def test_norm_triggers():
         norm_triggers(None)
     with pytest.raises(ValueError):
         norm_triggers(peaks, direction="invalid")
+
 
 def test_heart_rate():
     """Test heart_rate function"""
@@ -72,10 +74,12 @@ def test_heart_rate():
     )
     np.testing.assert_almost_equal(np.nanmean(heartrate), 884.92526408453)
 
+
 def test_time_shift():
     """Test time_shift function"""
     lag = time_shift([40, 50, 60], [45, 52])
     assert np.all(lag == [5, 2])
+
 
 def test_to_angle():
     """Test to_angles function"""
@@ -88,6 +92,7 @@ def test_to_angle():
     ppg = import_ppg().ppg.to_numpy()  # Import PPG recording
     signal, peaks = ppg_peaks(ppg, sfreq=75)
     ang = to_angles(peaks, peaks)
+
 
 def test_to_epochs():
     """Test ppg_peaks function"""
@@ -130,11 +135,13 @@ def test_to_epochs():
     assert len(epoch[0]) == 0
     assert rejected[0].mean() == 1
 
+
 def test_simulate_rr():
     """Test ppg_peaks function"""
     rr = simulate_rr(artefacts=True)
     assert isinstance(rr, np.ndarray)
     assert len(rr) == 350
+
 
 def test_input_conversion():
     """Test the input_conversion function"""
@@ -173,10 +180,12 @@ def test_input_conversion():
     assert np.diff(np.where(pks)[0]).mean() == rr_ms.mean()
     assert rr_ms.mean() == np.diff(peaks_idx).mean()
 
+
 def test_nan_cleaning():
     ppg = import_ppg().ppg.to_list()
     ppg[30] = np.nan
     nan_cleaning(signal=np.array(ppg), verbose=True)
+
 
 def test_find_clipping():
     ppg = import_ppg().ppg.to_numpy()
@@ -194,6 +203,7 @@ def test_find_clipping():
     lower, upper = find_clipping(signal=ppg[:100])
     assert (lower, upper) == (None, None)
 
+
 def test_norm_bad_segments():
     # Overlapping intervals
     bad_segments = [(100, 200), (150, 250)]
@@ -206,6 +216,7 @@ def test_norm_bad_segments():
     bool_bad_segments[50:60] = True
     new_segments = norm_bad_segments(bool_bad_segments)
     assert new_segments == [(10, 20), (50, 60)]
+
 
 def test_get_valid_segments():
     signal = np.random.normal(size=1000)

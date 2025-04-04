@@ -2,6 +2,7 @@
 
 import numpy as np
 from pytest import raises
+
 from systole import import_rr
 from systole.correction import (
     correct_extra_rr,
@@ -71,6 +72,7 @@ def test_correct_extra_rr():
     assert clean_artefacts.shape[1] == artefacts.shape[1] - 2
     assert len(clean_rr) == clean_artefacts.shape[1]
 
+
 def test_correct_missed_rr():
     """Test correct_missed_rr function"""
 
@@ -121,6 +123,7 @@ def test_correct_missed_rr():
     assert clean_artefacts.shape[1] == artefacts.shape[1] + 1
     assert len(clean_rr) == clean_artefacts.shape[1]
 
+
 def test_interpolate_rr():
     """Test interpolate_rr function"""
 
@@ -145,6 +148,7 @@ def test_interpolate_rr():
     assert clean_rr[20] != rr[20]
     assert np.sum(~(clean_rr == rr)) == 2
 
+
 def test_correct_rr():
     """Test correct_rr function"""
 
@@ -158,6 +162,7 @@ def test_correct_rr():
     assert nShort == 1
     assert nLong == 1
 
+
 def test_correct_peaks():
     """Test correct_peaks function"""
     peaks = simulate_rr(as_peaks=True)
@@ -166,6 +171,7 @@ def test_correct_peaks():
     assert len(peaks_correction["clean_peaks"]) == 280154
     assert peaks_correction["missed"] == 1
     assert peaks_correction["extra"] == 1
+
 
 def test_correct_missed_peaks():
     """Test correct_missed_peaks function"""

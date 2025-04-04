@@ -5,19 +5,20 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 from pytest import raises
+
 from systole import import_dataset1, import_ppg, import_rr
 from systole.detection import ecg_peaks, rr_artefacts
 from systole.plots import (
-plot_circular,
-plot_ectopic,
-plot_events,
-plot_evoked,
-plot_frequency,
-plot_poincare,
-plot_raw,
-plot_rr,
-plot_shortlong,
-plot_subspaces,
+    plot_circular,
+    plot_ectopic,
+    plot_events,
+    plot_evoked,
+    plot_frequency,
+    plot_poincare,
+    plot_raw,
+    plot_rr,
+    plot_shortlong,
+    plot_subspaces,
 )
 from systole.utils import heart_rate, to_epochs
 
@@ -44,6 +45,7 @@ def test_plot_circular():
 
     plt.close("all")
 
+
 def test_plot_ectopic():
     """Test plot_ectopic function"""
     rr = import_rr().rr
@@ -51,6 +53,7 @@ def test_plot_ectopic():
         plot_ectopic(rr, backend=backend)
 
     plt.close("all")
+
 
 def test_plot_evoked():
     """Test plot_evoked function"""
@@ -81,7 +84,7 @@ def test_plot_evoked():
         "tmin": -1.0,
         "tmax": 10.0,
         "apply_baseline": (-1, 0),
-        "errorbar": ('ci', 68),
+        "errorbar": ("ci", 68),
         "decim": 500,
         "markers": True,
         "dashes": False,
@@ -97,7 +100,7 @@ def test_plot_evoked():
             backend=backend,
             labels=["Neutral", "Emotion"],
             palette=[sns.xkcd_rgb["denim blue"], sns.xkcd_rgb["pale red"]],
-            **plots_params
+            **plots_params,
         )
 
         # Using instantaneous heart rate as input
@@ -108,7 +111,7 @@ def test_plot_evoked():
             backend=backend,
             labels=["Neutral", "Emotion"],
             palette=[sns.xkcd_rgb["denim blue"], sns.xkcd_rgb["pale red"]],
-            **plots_params
+            **plots_params,
         )
 
         # Using evoked array as input
@@ -117,10 +120,11 @@ def test_plot_evoked():
             backend=backend,
             labels=["Neutral", "Emotion"],
             palette=[sns.xkcd_rgb["denim blue"], sns.xkcd_rgb["pale red"]],
-            **plots_params
+            **plots_params,
         )
 
     plt.close("all")
+
 
 def test_plot_events():
     """Test plot_events function"""
@@ -143,6 +147,7 @@ def test_plot_events():
 
     plt.close("all")
 
+
 def test_plot_frequency():
     """Test plot_frequency function"""
     rr = import_rr().rr
@@ -151,6 +156,7 @@ def test_plot_frequency():
 
     plt.close("all")
 
+
 def test_plot_poincare():
     """Test plot_poincare function"""
     rr = import_rr().rr
@@ -158,6 +164,7 @@ def test_plot_poincare():
         plot_poincare(rr, backend=backend, input_type="rr_ms")
 
     plt.close("all")
+
 
 def test_plot_raw():
     """Test plot_raw function"""
@@ -219,6 +226,7 @@ def test_plot_raw():
 
     plt.close("all")
 
+
 def test_plot_rr():
     """Test plot_rr function"""
 
@@ -276,6 +284,7 @@ def test_plot_rr():
 
     plt.close("all")
 
+
 def test_plot_shortlong():
     """Test plot_shortlong function"""
     rr = import_rr().rr
@@ -283,6 +292,7 @@ def test_plot_shortlong():
         plot_shortlong(rr, backend=backend, input_type="rr_ms")
 
     plt.close("all")
+
 
 def test_plot_subspaces():
     """Test plot_subspaces function"""

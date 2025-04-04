@@ -3,10 +3,12 @@
 import os
 import socket
 import threading
+
 import numpy as np
+from pytest import raises
+
 from systole import serialSim
 from systole.recording import BrainVisionExG, Oximeter
-from pytest import raises
 
 
 def test_oximeter():
@@ -48,6 +50,7 @@ def test_oximeter():
     oxi.instant_rr = []
     oxi.times = []
     oxi.threshold = []
+
 
 def test_BrainVisionExG():
     data1 = b"\x8eEXC\x96\xc9\x86L\xafJ\x98\xbb\xf6\xc9\x14P\x8d\x00\x00\x00\x01\x00\x00\x00"
@@ -91,5 +94,5 @@ def test_BrainVisionExG():
         ConnectionRefusedError
     ):  # Add exception for GitHub actions that sometimes fail
         pass
-    
+
     server_thread.join()

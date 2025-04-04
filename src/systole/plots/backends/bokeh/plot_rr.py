@@ -5,7 +5,7 @@ from typing import Dict, List, Optional, Tuple
 import numpy as np
 import pandas as pd
 from bokeh.layouts import column
-from bokeh.models import BoxAnnotation, CDSView, Scatter, IndexFilter, Line, Range1d
+from bokeh.models import BoxAnnotation, CDSView, IndexFilter, Line, Range1d, Scatter
 from bokeh.models.tools import HoverTool, RangeTool
 from bokeh.plotting import ColumnDataSource, figure
 
@@ -250,7 +250,7 @@ def plot_rr(
                     line_color="black",
                     source=points_source,
                     view=ectopic_view,
-                    marker='triangle',
+                    marker="triangle",
                 )
 
         # Add hover tool

@@ -6,16 +6,16 @@ import pytest
 
 from systole import import_rr
 from systole.hrv import (
-all_domain,
-frequency_domain,
-nnX,
-nonlinear_domain,
-pnnX,
-poincare,
-psd,
-recurrence,
-rmssd,
-time_domain,
+    all_domain,
+    frequency_domain,
+    nnX,
+    nonlinear_domain,
+    pnnX,
+    poincare,
+    psd,
+    recurrence,
+    rmssd,
+    time_domain,
 )
 
 rr = import_rr().rr.values
@@ -30,6 +30,7 @@ def test_nnX():
     with pytest.raises(ValueError):
         nnX(np.array([[1, 1], [1, 1]]))
 
+
 def test_pnnX():
     """Test pnnX function"""
     pnn = pnnX(list(rr), input_type="rr_ms")
@@ -39,6 +40,7 @@ def test_pnnX():
     with pytest.raises(ValueError):
         pnnX(np.array([[1, 1], [1, 1]]))
 
+
 def test_rmssd():
     """Test rmssd function"""
     rms = rmssd(list(rr))
@@ -47,6 +49,7 @@ def test_rmssd():
     assert round(rms, 2) == 45.55
     with pytest.raises(ValueError):
         rmssd(np.array([[1, 1], [1, 1]]))
+
 
 def test_time_domain():
     """Test time_domain function"""
@@ -76,12 +79,14 @@ def test_time_domain():
         time_domain(np.array([[1, 1], [1, 1]]))
     stats = time_domain(rr / 1000, input_type="rr_s")
 
+
 def test_psd():
     """Test frequency_domain function"""
     freq, pwr = psd(rr=list(rr))
     freq2, pwr2 = psd(rr=rr / 1000, input_type="rr_s")
     assert (freq - freq2).sum() == 0.0
     assert (pwr - pwr2).sum() < 1e-10
+
 
 def test_frequency_domain():
     """Test frequency_domain function"""
@@ -130,12 +135,14 @@ def test_frequency_domain():
     assert stats.size == 26
     stats = frequency_domain(rr=rr / 1000, input_type="rr_s")
 
+
 def test_nonlinear_domain():
     """Test nonlinear_domain function"""
     stats = nonlinear_domain(list(rr))
     assert isinstance(stats, pd.DataFrame)
     assert stats.size == 14
     stats = nonlinear_domain(rr / 1000, input_type="rr_s")
+
 
 def test_poincare():
     """Test poincare function"""
@@ -146,6 +153,7 @@ def test_poincare():
 
     # Kubios 2.2: 115.38
     assert np.isclose(sd2, 115.10533841926389)
+
 
 def test_recurrence():
     """Test recurrence function"""
@@ -165,6 +173,7 @@ def test_recurrence():
 
     # Kubios 2.2: 3.2120
     assert np.isclose(shan_entr, 3.1961134772254334)
+
 
 def test_all_domain():
     """Test all_domain function"""
