@@ -1,37 +1,55 @@
-name: Tests and coverage
+name: Test
 
 on:
   push:
     branches:
       - master
   pull_request:
+    # This will run the action for pull requests from any branch
     branches:
-      - "*"
+      - '*'
+
 jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.10"]
+        python-version: ['3.13']  # Add more Python versions if needed, like '3.8', '3.9', '3.10', etc.
+
     steps:
-    - uses: actions/checkout@master
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
-        cache: 'pip'
-    - name: Install dependencies
-      run: |
-        pip install -r requirements-tests.txt
-        pip install coverage pytest pytest-cov
-        pip install .
-    - name: Run tests and coverage
-      run: |
-        pytest ./tests/ --cov=./systole/ --cov-report=xml
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
-      with:
-        files: coverage.xml
-        verbose: true
-        token: ${{ secrets.CODECOV_TOKEN }}
-        fail_ci_if_error: true
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python environment
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # Step 3: Install Poetry
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          poetry self add "poetry-dynamic-versioning[plugin]"
+
+      # Step 4: Install Python Dependencies using Poetry
+      - name: Install dependencies
+        run: |
+          poetry install --with dev
+      
+      # Step 5: Install the Rust package
+      - name: Build and Install the Package
+        run: poetry build
+
+      # Step 6: Run Tests and Generate Coverage Report
+      - name: Run tests and coverage
+        run: |
+          poetry run pytest ./tests/ --cov=./pyhgf/ --cov-report=xml --cov-branch
+
+      # Step 7: Upload Coverage Report to Codecov
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
