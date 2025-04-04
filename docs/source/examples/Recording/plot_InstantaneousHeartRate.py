@@ -9,7 +9,7 @@ Peaks are automatically labelled online and the instantaneous heart rate is
 plotted.
 """
 
-# Author: Nicolas Legrand <nicolas.legrand@cfin.au.dk>
+# Author: Nicolas Legrand <nicolas.legrand@cas.au.dk>
 # Licence: GPL v3
 
 import matplotlib.pyplot as plt

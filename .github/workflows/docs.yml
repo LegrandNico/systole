@@ -1,12 +1,11 @@
 name: Build and Deploy
 
 on:
-  push:
-    branches:
-      - master
+  release:
+    types: [published]
   pull_request:
-    branches:
-      - "*"
+    types: [opened, synchronize, reopened]
+
 permissions:
   contents: write
 
@@ -14,22 +13,41 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      # 1. Checkout the repository
       - name: Checkout 🛎️
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v1
+      # 2. Set up Python 3.12
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: '3.12'
 
-      - name: Build
+      - name: Install Poetry
         run: |
-          pip install .
-          pip install -r requirements-docs.txt
-          sphinx-build -j 2 -T -b html docs/source docs/build/html
+          curl -sSL https://install.python-poetry.org | python3 -
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          poetry self add "poetry-dynamic-versioning[plugin]"
 
-      - name: Deploy 🚀
+      # 3. Install dependencies and build the documentation
+      - name: Install dependencies and build docs
+        run: |
+          poetry install --with dev
+          poetry run sphinx-build -j 1 -T -b html docs/source docs/build/html
+
+      # 4. Deploy the documentation for the 'release' event
+      - name: Deploy Stable 🚀
+        if: github.event_name == 'release'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: docs/build/html
-          BRANCH: gh-pages
+          branch: gh-pages
+
+      # 5. Deploy the documentation for pull requests (Dev version)
+      - name: Deploy Dev 🚀
+        if: github.event_name == 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: docs/build/html
+          branch: gh-pages
+          target-folder: dev

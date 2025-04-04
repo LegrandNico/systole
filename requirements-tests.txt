@@ -1,5 +1,0 @@
--e ./
-papermill>=2.2.2
-pytest
-ipywidgets
-ipympl

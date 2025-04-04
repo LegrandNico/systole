@@ -11,7 +11,7 @@ The artefact detection is based on the method described in [1]_.
 
 """
 
-# Author: Nicolas Legrand <nicolas.legrand@cfin.au.dk>
+# Author: Nicolas Legrand <nicolas.legrand@cas.au.dk>
 # Licence: GPL v3
 
 #%%
