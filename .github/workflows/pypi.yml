@@ -20,7 +20,9 @@ jobs:
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
           echo "$HOME/.local/bin" >> $GITHUB_PATH
+      - name: Install dynamic versioning plugin
+        run: poetry self add poetry-dynamic-versioning[plugin]
       - name: Build Python package
         run: poetry build -f sdist -o dist/
       - name: Publish package distributions to PyPI
-        run: poetry publish
+        run: poetry publish --build

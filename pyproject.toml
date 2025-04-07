@@ -62,6 +62,7 @@ poetry-dynamic-versioning = { version = ">=1.0.0,<2.0.0", extras = ["plugin"] }
 # Enable dynamic versioning
 enable = true
 style = "pep440"
+tag-pattern = "v(?P<base>.*)"
 
 [tool.poetry-dynamic-versioning.substitution]
 files = [".src/systole/__init__.py"]
