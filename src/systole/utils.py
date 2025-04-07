@@ -330,7 +330,6 @@ def to_epochs(
 
     Examples
     --------
-
     # Load dataset
 
     >>> ecg_df = import_dataset1(modalities=['ECG', 'Stim'])
@@ -617,7 +616,6 @@ def input_conversion(
         The time series converted to the desired format.
 
     """
-
     if output_type not in ["peaks", "peaks_idx", "rr_ms", "rr_s"]:
         raise ValueError("Invalid output type.")
 
@@ -700,7 +698,6 @@ def nan_cleaning(signal: np.ndarray, verbose: bool = True) -> np.ndarray:
         The physiological signal without NaNs values.
 
     """
-
     arg_nans = np.where(np.isnan(signal))[0]
     if len(arg_nans) > 0:
         if verbose:
@@ -769,8 +766,7 @@ def get_valid_segments(
     signal: np.ndarray,
     bad_segments: Optional[Union[np.ndarray, List[Tuple[int, int]]]] = None,
 ) -> List[np.ndarray]:
-    """Return the longest signal or intervals time series after dropping segments marked
-    as bads.
+    """Return the longest intervals after dropping bad segments.
 
     Parameters
     ----------
@@ -802,7 +798,6 @@ def get_valid_segments(
     `[500, 200, 150]`
 
     """
-
     # Return a list of tuple and merge overlapping intervals
     bad_segments = norm_bad_segments(bad_segments)
 
@@ -845,7 +840,6 @@ def norm_bad_segments(bad_segments) -> List[Tuple[int, int]]:
 
     Examples
     --------
-
     Get a list of tuples such as `[(start_idx, end_idx)]` from a boolean vector that
     is of the same length that the associated signal and where `True` is a bad
     segment/sample.

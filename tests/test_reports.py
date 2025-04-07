@@ -20,8 +20,7 @@ from systole.reports.subject_level import subject_level_report
 
 
 def test_subject_level():
-    """Test the subject-level reports"""
-
+    """Test the subject-level reports."""
     #######
     # ECG #
     #######
@@ -41,8 +40,7 @@ def test_subject_level():
 
 
 def test_group_level():
-    """Test the group-level reports"""
-
+    """Test the group-level reports."""
     summary_df = pd.read_csv(
         os.path.dirname(__file__) + "/group_level_ses-session1_task-hrd.tsv",
         sep="\t",
@@ -55,7 +53,7 @@ def test_group_level():
 
 
 def test_time_table():
-    """Test the time_table function"""
+    """Test the time_table function."""
     rr = import_rr().rr
     time_df = time_domain(rr, input_type="rr_ms")
 
@@ -80,7 +78,7 @@ def test_time_table():
 
 
 def test_frequency_table():
-    """Test frequency_table function"""
+    """Test frequency_table function."""
     rr = import_rr().rr
     frequency_df = frequency_domain(rr, input_type="rr_ms")
 
@@ -105,7 +103,7 @@ def test_frequency_table():
 
 
 def test_nonlinear_table():
-    """Test nonlinear_table function"""
+    """Test nonlinear_table function."""
     rr = import_rr().rr
     nonlinear_df = nonlinear_domain(rr, input_type="rr_ms")
 

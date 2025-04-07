@@ -54,14 +54,13 @@ def plot_frequency(
     plot :
         The matplotlib axes, or the boken figure containing the plot.
 
-    See also
+    See Also
     --------
     plot_events, plot_ectopic, plot_shortlong, plot_subspaces, plot_frequency,
     plot_timedomain, plot_nonlinear
 
     Examples
     --------
-
     Visualizing HRV frequency domain from RR time series using Matplotlib as plotting
     backend.
 

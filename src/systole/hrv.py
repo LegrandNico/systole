@@ -13,7 +13,7 @@ from systole.utils import input_conversion
 
 
 def nnX(rr: Union[List, np.ndarray], t: int = 50, input_type: str = "rr_ms") -> int:
-    """Number of difference in successive R-R interval > t ms.
+    """Compute the number of difference in successive R-R interval > t ms.
 
     Parameters
     ----------
@@ -33,7 +33,6 @@ def nnX(rr: Union[List, np.ndarray], t: int = 50, input_type: str = "rr_ms") -> 
         The number of successive differences larger than a value.
 
     """
-
     rr = np.asarray(rr)
 
     if input_type != "rr_ms":
@@ -49,7 +48,7 @@ def nnX(rr: Union[List, np.ndarray], t: int = 50, input_type: str = "rr_ms") -> 
 
 
 def pnnX(rr: Union[List, np.ndarray], t: int = 50, input_type: str = "rr_ms") -> float:
-    """Number of successive differences larger than a value (def = 50ms).
+    """Compute the number of successive differences larger than a value (def = 50ms).
 
     Parameters
     ----------
@@ -69,7 +68,6 @@ def pnnX(rr: Union[List, np.ndarray], t: int = 50, input_type: str = "rr_ms") ->
         The proportion of successive differences larger than a value (%).
 
     """
-
     rr = np.asarray(rr)
 
     if input_type != "rr_ms":
@@ -112,7 +110,6 @@ def rmssd(rr: Union[List, np.ndarray], input_type: str = "rr_ms") -> float:
     63.77042156569664
 
     """
-
     rr = np.asarray(rr)
 
     if input_type != "rr_ms":
@@ -157,7 +154,7 @@ def time_domain(rr: Union[List, np.ndarray], input_type: str = "rr_ms") -> pd.Da
         * 'nn50' : number of successive differences larger than 50ms (count).
         * 'pnn50' : Proportion of successive difference larger than 50ms (%).
 
-    See also
+    See Also
     --------
     frequency_domain, nonlinear_domain
 
@@ -174,7 +171,6 @@ def time_domain(rr: Union[List, np.ndarray], input_type: str = "rr_ms") -> pd.Da
     (<https://www.kubios.com>).
 
     """
-
     rr = np.asarray(rr)
 
     if input_type != "rr_ms":
@@ -286,11 +282,10 @@ def psd(
     freq, power :
         The frequency and power spectral density of the given signal.
 
-    See also
+    See Also
     --------
     frequency_domain
     """
-
     rr = np.asarray(rr)
 
     if input_type != "rr_ms":
@@ -365,7 +360,7 @@ def frequency_domain(
         * 'total_power' : Total frequency power (ms²).
         * 'lf_hf_ratio' : Low / high frequency ratio (normalized units).
 
-    See also
+    See Also
     --------
     time_domain, nonlinear
 
@@ -385,7 +380,6 @@ def frequency_domain(
         against another software.
 
     """
-
     rr = np.asarray(rr)
 
     if input_type != "rr_ms":
@@ -499,7 +493,7 @@ def nonlinear_domain(
         * 'determinism_rate' : The determinism rate in the recurrence plot (%).
         * 'shannon_entropy' : The Shannon entropy.
 
-    See also
+    See Also
     --------
     time_domain, frequency_domain, poincare, rec
 
@@ -526,7 +520,6 @@ def nonlinear_domain(
        normotensive rats. amj, 44:H1290–H1297, 1998.
 
     """
-
     rr = np.asarray(rr)
 
     if input_type != "rr_ms":
@@ -559,7 +552,7 @@ def nonlinear_domain(
 def poincare(
     rr: Union[List, np.ndarray], input_type: str = "rr_ms"
 ) -> Tuple[float, float]:
-    """Compute SD1 and SD2 from the Poincaré nonlinear method for heart rate variability.
+    r"""Compute SD1 and SD2 from the Poincaré nonlinear method.
 
     Parameters
     ----------
@@ -581,7 +574,7 @@ def poincare(
         The standard deviation of the points along the identity line. This metric is
         thought to reflect the long-term heart rate variability.
 
-    See also
+    See Also
     --------
     nonlinear_domain, recurrence
 
@@ -621,7 +614,6 @@ def poincare(
 @jit(nopython=True)
 def _poincare(rr: np.ndarray) -> Tuple[float, float]:
     """Compute SD1 and SD2 from the Poincaré nonlinear method for heart rate variability."""
-
     diff_rr = np.diff(rr)
     sd1 = np.sqrt(np.std(diff_rr) ** 2 * 0.5)
     sd2 = np.sqrt(2 * np.std(rr) ** 2 - 0.5 * np.std(diff_rr) ** 2)
@@ -661,7 +653,7 @@ def recurrence(
     .. warning:: The recurrence plots results does not reproduce what is obtained using
        Kubios (3.5.0) and should be used with caution for now.
 
-    See also
+    See Also
     --------
     nonlinear_domain, poincare
 
@@ -693,8 +685,7 @@ def recurrence(
 def _recurrence(
     rr: np.ndarray, m: int = 10, l_min: int = 2
 ) -> Tuple[float, int, float, float, float]:
-    """Compute recurrence scores"""
-
+    """Compute recurrence scores."""
     # Recurrence matrix
     rc = recurrence_matrix(rr)
 
@@ -798,8 +789,7 @@ def recurrence_matrix(rr: np.ndarray, m: int = 10, tau: int = 1) -> np.ndarray:
 
 
 def all_domain(rr: Union[List, np.ndarray], input_type: str = "rr_ms") -> pd.DataFrame:
-    """Extract all the HRV indices implemented for the time domain, frequency domain
-    and linear domain.
+    """Extract time domain, frequency domain and linear HRV metrics.
 
     Parameters
     ----------
@@ -849,7 +839,7 @@ def all_domain(rr: Union[List, np.ndarray], input_type: str = "rr_ms") -> pd.Dat
         * 'determinism_rate' : The determinism rate in the recurrence plot (%).
         * 'shannon_entropy' : The Shannon entropy.
 
-    See also
+    See Also
     --------
     time_domain, frequency_domain, nonlinear_domain
 
@@ -863,7 +853,6 @@ def all_domain(rr: Union[List, np.ndarray], input_type: str = "rr_ms") -> pd.Dat
     >>> pd.pivot_table(stats, values='Values', columns='Metric')
 
     """
-
     rr = np.asarray(rr)
 
     if input_type != "rr_ms":

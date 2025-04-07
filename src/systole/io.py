@@ -18,7 +18,7 @@ def import_manual_correction(
     cardiac_name: str,
     sfreq: int,
 ) -> pd.DataFrame:
-    """Correct extra and missed peaks identified via manual correction (i.e., using saved .json file via the systole viewer)
+    """Correct extra and missed peaks identified via manual correction.
 
     Parameters
     ----------
@@ -47,7 +47,6 @@ def import_manual_correction(
         peaks and corrected peaks.
 
     """
-
     # load preprocessed signal (if exists)
     preproc_file = Path(
         f"{bids_path}/derivatives/systole/{participant_id}/{session}/{modality}/{participant_id}_{session}_{pattern}_physio.tsv.gz"

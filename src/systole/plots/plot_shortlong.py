@@ -72,7 +72,7 @@ def plot_shortlong(
     plot :
         The matplotlib axes, or the boken figure containing the plot.
 
-    See also
+    See Also
     --------
     plot_ectopic, plot_subspaces
 
@@ -90,7 +90,6 @@ def plot_shortlong(
 
     Examples
     --------
-
     Visualizing short/long and missed/extra intervals from a RR time series.
 
     .. jupyter-execute::

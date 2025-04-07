@@ -99,13 +99,12 @@ def plot_evoked(
     plot :
         The matplotlib axes, or the boken figure containing the plot.
 
-    See also
+    See Also
     --------
     plot_events
 
     Examples
     --------
-
     Plot evoked heart rate across two conditions using the Matplotlib backend. Here,
     for the sake of example, we are going to create the same plot three time using
     three kind of input data:
@@ -210,7 +209,6 @@ def plot_evoked(
        show(row(raw_plot, peaks_plot, epochs_plots))
 
     """
-
     # Define figure size
     if figsize is None:
         if backend == "matplotlib":

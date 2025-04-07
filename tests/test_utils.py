@@ -23,6 +23,7 @@ from systole.utils import (
 
 
 def test_to_neighbour():
+    """Test to_neighbour function."""
     ppg = import_ppg().ppg.to_numpy()[:200]  # Import PPG recording
     peaks = np.zeros(len(ppg), dtype=bool)
     peaks[50] = True
@@ -34,6 +35,7 @@ def test_to_neighbour():
 
 
 def test_norm_triggers():
+    """Test norm_triggers function."""
     ppg = import_ppg().ppg.to_numpy()  # Import PPG recording
     _, peaks = ppg_peaks(ppg, sfreq=75)
     peaks[np.where(peaks)[0] + 1] = 1
@@ -51,7 +53,7 @@ def test_norm_triggers():
 
 
 def test_heart_rate():
-    """Test heart_rate function"""
+    """Test heart_rate function."""
     ppg = import_ppg().ppg.to_numpy()  # Import PPG recording
     _, peaks = ppg_peaks(ppg, sfreq=75)
 
@@ -154,13 +156,13 @@ def test_heart_rate():
 
 
 def test_time_shift():
-    """Test time_shift function"""
+    """Test time_shift function."""
     lag = time_shift([40, 50, 60], [45, 52])
     assert np.all(lag == [5, 2])
 
 
 def test_to_angle():
-    """Test to_angles function"""
+    """Test to_angles function."""
     rr = import_rr().rr.values
     # Create event vector
     events = rr + np.random.normal(500, 100, len(rr))
@@ -173,7 +175,7 @@ def test_to_angle():
 
 
 def test_to_epochs():
-    """Test ppg_peaks function"""
+    """Test ppg_peaks function."""
     # Load dataset
     ecg_df = import_dataset1(modalities=["ECG", "Stim"])
 
@@ -215,14 +217,14 @@ def test_to_epochs():
 
 
 def test_simulate_rr():
-    """Test ppg_peaks function"""
+    """Test ppg_peaks function."""
     rr = simulate_rr(artefacts=True)
     assert isinstance(rr, np.ndarray)
     assert len(rr) == 350
 
 
 def test_input_conversion():
-    """Test the input_conversion function"""
+    """Test the input_conversion function."""
     # Load example PPG signal
     ppg = import_ppg().ppg.to_numpy()
     _, peaks = ppg_peaks(ppg, sfreq=75)
@@ -260,12 +262,14 @@ def test_input_conversion():
 
 
 def test_nan_cleaning():
+    """Test the nan_cleaning function."""
     ppg = import_ppg().ppg.to_list()
     ppg[30] = np.nan
     nan_cleaning(signal=np.array(ppg), verbose=True)
 
 
 def test_find_clipping():
+    """Test the find_clipping function."""
     ppg = import_ppg().ppg.to_numpy()
 
     lower, upper = find_clipping(signal=ppg)
@@ -283,6 +287,7 @@ def test_find_clipping():
 
 
 def test_norm_bad_segments():
+    """Test the norm_bad_segments function."""
     # Overlapping intervals
     bad_segments = [(100, 200), (150, 250)]
     new_segments = norm_bad_segments(bad_segments)
@@ -297,6 +302,7 @@ def test_norm_bad_segments():
 
 
 def test_get_valid_segments():
+    """Test the get_valid_segments function."""
     signal = np.random.normal(size=1000)
 
     bad_segments = [(500, 550), (700, 800)]

@@ -34,7 +34,6 @@ def moving_average(signal: np.ndarray, sfreq: int) -> np.ndarray:
         Effects on QRS Detection. The 3rd International Conference on Bio-inspired
         Systems and Signal Processing (BIOSIGNALS2010). 428-431.
     """
-
     f1 = 8 / sfreq
     f2 = 20 / sfreq
 
@@ -57,6 +56,7 @@ def moving_average(signal: np.ndarray, sfreq: int) -> np.ndarray:
 def numba_one(
     signal: np.ndarray, mwa_qrs, mwa_beat, sfreq: int, filtered_ecg: np.ndarray
 ) -> np.ndarray:
+    """Detect the R peaks using the moving average (jitted function)."""
     blocks = np.zeros(len(signal))
     block_height = np.max(filtered_ecg)
 

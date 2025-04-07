@@ -34,7 +34,6 @@ def engelse_zeelenberg(signal: np.ndarray, sfreq: int) -> np.ndarray:
         “Real Time Electrocardiogram Segmentation for Finger Based ECG Biometrics”,
         BIOSIGNALS 2012, pp. 49-54, 2012.
     """
-
     f1 = 48 / sfreq
     f2 = 52 / sfreq
     b, a = butter(4, [f1 * 2, f2 * 2], btype="bandstop")
@@ -52,6 +51,7 @@ def engelse_zeelenberg(signal: np.ndarray, sfreq: int) -> np.ndarray:
 
 @jit(nopython=True)
 def numba_one(filtered_ecg: np.ndarray) -> np.ndarray:
+    """Get the differences (jitted function)."""
     diff = np.zeros(len(filtered_ecg))
     for i in range(4, len(diff)):
         diff[i] = filtered_ecg[i] - filtered_ecg[i - 4]
@@ -60,6 +60,7 @@ def numba_one(filtered_ecg: np.ndarray) -> np.ndarray:
 
 @jit(nopython=True)
 def numba_two(sfreq: int, low_pass, signal: np.ndarray) -> np.ndarray:
+    """Get the R peaks (jitted function)."""
     low_pass[: int(0.2 * sfreq)] = 0
 
     ms200 = int(0.2 * sfreq)

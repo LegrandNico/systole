@@ -34,8 +34,8 @@ def plot_frequency(
     ax :
         Where to draw the plot. Default is `None` (create a new figure).
 
-     Returns
-     -------
+    Returns
+    -------
      ax  :
         The matplotlib axes containing the plot.
 

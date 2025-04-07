@@ -15,7 +15,7 @@ def rolling_average_ppg(
     peak_enhancement: bool = True,
     distance: float = 0.3,
 ) -> Tuple[np.ndarray, np.ndarray]:
-    """A simple systolic peak finder for PPG signals.
+    """Detect systolic peaks in PPG signals.
 
     This method uses a rolling average + standard deviation approach to update a
     detection threshold. All the peaks found above this threshold are potential

@@ -13,8 +13,7 @@ def msptd(
     win_len: int = 6,
     overlap: float = 0.2,
 ) -> Union[np.ndarray, Tuple[np.ndarray, np.ndarray]]:
-    """The Multi-scale peak and trough detection algorithm (MSPTD) to detects
-    heartbeats in a photoplethysmogram (PPG) signal.
+    """Detect systolic peaks using Multi-scale peak and trough detection (MSPTD).
 
     Parameters
     ----------
@@ -159,9 +158,7 @@ def msptd(
 
 @jit(nopython=True)
 def lms(window_length: int, signal_length: int) -> Tuple:
-    """ "Internal jitted function. Returns the indexes of the lms matrices that will be
-    tested."""
-
+    """Return the indexes of the lms matrices that will be tested."""
     valid_idx = np.array(
         [
             (k, i)
@@ -177,8 +174,7 @@ def lms(window_length: int, signal_length: int) -> Tuple:
 
 
 def msptd_peaks_and_onsets(signal: np.ndarray, kind: str = "both"):
-    """Internal function. The MSTPD algorithm applied to a windowed sample of the
-    recording.
+    """Locate peaks and/or onsets in a PPG signal using the multi-scale peak and trough.
 
     Parameters
     ----------
@@ -196,7 +192,6 @@ def msptd_peaks_and_onsets(signal: np.ndarray, kind: str = "both"):
         Trough indexes.
 
     """
-
     signal_length = len(signal)  # Length of the input signal
     window_length = int(np.ceil(signal_length / 2) - 1)  # max window length
 

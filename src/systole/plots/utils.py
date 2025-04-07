@@ -10,7 +10,6 @@ def get_plotting_function(plot_name, plot_module, backend="matplotlib"):
 
     Inspired by Arviz'backend management.
     """
-
     _backend = {
         "mpl": "matplotlib",
         "bokeh": "bokeh",

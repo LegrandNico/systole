@@ -81,7 +81,9 @@ pytest-cov = "^6.1.0"
 systole = "systole.reports.command_line:main"
 
 [tool.ruff]
+select = ["D"]
 extend-include = ["*.ipynb"]
+ignore = ["D100", "D104"]
 
 [tool.ruff.pydocstyle]
 convention = "numpy"

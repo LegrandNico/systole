@@ -14,7 +14,7 @@ from systole.detection import (
 
 
 def test_ppg_peaks():
-    """Test ppg_peaks function"""
+    """Test ppg_peaks function."""
     ppg = import_ppg().ppg.to_numpy()  # Import PPG recording
     rolling_average_signal, rolling_average_peaks = ppg_peaks(
         ppg, sfreq=75, method="rolling_average"
@@ -40,6 +40,7 @@ def test_ppg_peaks():
 
 
 def test_ecg_peaks():
+    """Test ecg_peaks function."""
     signal_df = import_dataset1(modalities=["ECG"])[: 20 * 2000]
     for method in [
         "sleepecg",
@@ -59,7 +60,7 @@ def test_ecg_peaks():
 
 
 def test_resp_peaks():
-    """Test resp_peaks function"""
+    """Test resp_peaks function."""
     # Import respiration recording
     resp = import_dataset1(modalities=["Respiration"])[
         : 200 * 2000
@@ -80,6 +81,7 @@ def test_resp_peaks():
 
 
 def test_rr_artefacts():
+    """Test rr_artefacts function."""
     ppg = import_ppg().ppg.to_numpy()
     _, peaks = ppg_peaks(ppg, sfreq=75)
     rr_ms = np.diff(np.where(peaks)[0])
@@ -92,6 +94,7 @@ def test_rr_artefacts():
 
 
 def test_interpolate_clipping():
+    """Test interpolate_clipping function."""
     df = import_ppg()
     clean_signal = interpolate_clipping(df.ppg.to_numpy())
     assert clean_signal.mean().round() == 100

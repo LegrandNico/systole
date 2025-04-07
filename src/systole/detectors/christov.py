@@ -51,6 +51,7 @@ def christov(signal: np.ndarray, sfreq: int) -> np.ndarray:
 
 @jit(nopython=True)
 def numba_one(sfreq: int) -> Tuple:
+    """Get the total taps and alpha (jitted function)."""
     total_taps = 0
 
     b = np.ones(int(0.02 * sfreq))
@@ -62,6 +63,7 @@ def numba_one(sfreq: int) -> Tuple:
 
 @jit(nopython=True)
 def numba_two(sfreq: int, total_taps) -> Tuple:
+    """Get the total taps and beta (jitted function)."""
     b = np.ones(int(0.028 * sfreq))
     b = b / int(0.028 * sfreq)
     total_taps += len(b)
@@ -71,6 +73,7 @@ def numba_two(sfreq: int, total_taps) -> Tuple:
 
 @jit(nopython=True)
 def numba_three(sfreq: int, total_taps, MA2) -> Tuple:
+    """Get the total taps and Y (jitted function)."""
     Y = []
     for i in range(1, len(MA2) - 1):
         diff = abs(MA2[i + 1] - MA2[i - 1])
@@ -85,6 +88,7 @@ def numba_three(sfreq: int, total_taps, MA2) -> Tuple:
 
 @jit(nopython=True)
 def numba_four(MA3, sfreq: int, total_taps) -> np.ndarray:
+    """Detect R peaks (jitted function)."""
     MA3[0:total_taps] = 0
 
     ms50 = int(0.05 * sfreq)

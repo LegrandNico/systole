@@ -48,6 +48,7 @@ def hamilton(signal: np.ndarray, sfreq: int) -> np.ndarray:
 
 @jit(nopython=True)
 def numba_first(signal: np.ndarray, sfreq: int) -> List:
+    """Get the frequencies for the bandpass filter (jitted function)."""
     signal = np.asarray(signal)
     f1 = 8 / sfreq
     f2 = 16 / sfreq
@@ -56,6 +57,7 @@ def numba_first(signal: np.ndarray, sfreq: int) -> List:
 
 @jit(nopython=True)
 def numba_second(filtered_ecg: np.ndarray, sfreq: int):
+    """Get the differences (jitted function)."""
     diff = np.abs(np.diff(filtered_ecg))
     b = np.ones(int(0.08 * sfreq))
     b = b / int(0.08 * sfreq)
@@ -65,6 +67,7 @@ def numba_second(filtered_ecg: np.ndarray, sfreq: int):
 
 @jit(nopython=True)
 def numba_third(ma, b, sfreq):
+    """Detect the R peaks (jitted function)."""
     ma[0 : len(b) * 2] = 0
 
     n_pks = []

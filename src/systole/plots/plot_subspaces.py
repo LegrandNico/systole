@@ -54,7 +54,7 @@ def plot_subspaces(
     plot :
         The matplotlib axes, or the boken figure containing the plot.
 
-    See also
+    See Also
     --------
     plot_events, plot_ectopic, plot_shortlong, plot_subspaces, plot_frequency,
     plot_timedomain, plot_nonlinear
@@ -68,7 +68,6 @@ def plot_subspaces(
 
     Examples
     --------
-
     Visualizing artefacts from RR time series.
 
     .. jupyter-execute::

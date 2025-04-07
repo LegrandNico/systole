@@ -47,8 +47,7 @@ def subject_level_report(
     file_name: Optional[Union[str, PathLike]] = None,
     template_file=pkg_resources.resource_filename(__name__, "subject_level.html"),
 ):
-    """Analyse physiological signals for one participant / pattern, create HTML report
-    and save a summary dataframe.
+    """Analyse physiological signals, create HTML report and save a summary dataframe.
 
     Parameters
     ----------
@@ -112,7 +111,6 @@ def subject_level_report(
         `None` (respectively).
 
     """
-
     print(
         (
             f"Creating report for participant {participant_id} - session: {session}"

@@ -14,7 +14,7 @@ def plot_poincare(
     figsize: Optional[Union[List[int], Tuple[int, int], int]] = None,
     ax=None,
 ) -> figure:
-    """poincare plot.
+    """Poincare plot.
 
     Parameters
     ----------

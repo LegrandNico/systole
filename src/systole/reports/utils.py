@@ -24,8 +24,7 @@ def import_data(
     Tuple[Optional[np.ndarray], Optional[int], Optional[np.ndarray]],
     Optional[str],
 ]:
-    """Load ECG, PPG and respiration dataframes from BIDS folder given participant_id,
-    session and pattern names.
+    """Load ECG, PPG and respiration dataframes from BIDS folder.
 
     Parameters
     ----------
@@ -71,7 +70,6 @@ def import_data(
         folder.
 
     """
-
     # Initialize default results
     (
         (ecg, ecg_sfreq, ecg_events_idx),
@@ -202,8 +200,7 @@ def create_reports(
     session: str = "ses-session1",
     html_report: bool = False,
 ):
-    """Create individual HTML and summary results from one participant in the BIDS
-    folder.
+    """Create individual HTML and summary results from one participant.
 
     Parameters
     ----------
@@ -233,7 +230,6 @@ def create_reports(
         generate HTML reports for review or problematic recordings only.
 
     """
-
     # Import ECG, PPG and RESPIRATION recording from the BIDS folder
     (
         (ecg, ecg_sfreq, ecg_events_idx),

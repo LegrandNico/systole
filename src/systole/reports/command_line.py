@@ -34,8 +34,7 @@ def wrapper(
     n_jobs: int = 1,
     html_report: bool = False,
 ):
-    """Preprocesses subject level data and create reports (both  subject-level and
-    group-level).
+    """Preprocesses subject level data, create individual and group reports.
 
     Parameters
     ----------
@@ -74,7 +73,6 @@ def wrapper(
         If invalid session, pattern or participant parameters are provided.
 
     """
-
     if isinstance(sessions, str):
         sessions = [sessions]
     elif isinstance(sessions, list):
@@ -232,6 +230,7 @@ def wrapper(
 
 
 def main():
+    """Entry point to the command line interface."""
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "-i", "--bids_folder", action="store", help="Provides entry BIDS folder."

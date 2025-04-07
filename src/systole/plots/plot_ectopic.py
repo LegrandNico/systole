@@ -75,7 +75,7 @@ def plot_ectopic(
     plot :
         The matplotlib axes, or the boken figure containing the plot.
 
-    See also
+    See Also
     --------
     plot_shortlong, plot_subspaces
 
@@ -93,7 +93,6 @@ def plot_ectopic(
 
     Examples
     --------
-
     Visualizing ectopic subspace from RR time series.
 
     .. jupyter-execute::
@@ -134,7 +133,6 @@ def plot_ectopic(
         )
 
     """
-
     if figsize is None:
         if backend == "matplotlib":
             figsize = (6, 6)

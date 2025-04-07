@@ -67,7 +67,7 @@ def plot_events(
     plot :
         The matplotlib axes, or the boken figure containing the plot.
 
-    See also
+    See Also
     --------
     plot_rr, plot_raw
 
@@ -81,7 +81,6 @@ def plot_events(
 
     Examples
     --------
-
     Plot events distributions using Matplotlib as plotting backend.
 
     .. jupyter-execute::

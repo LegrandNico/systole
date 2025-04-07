@@ -76,7 +76,6 @@ def plot_rr(
         The bokeh figure containing the plot.
 
     """
-
     ylabel = "R-R interval (ms)" if unit == "rr" else "Beats per minute (bpm)"
 
     p1 = figure(

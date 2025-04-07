@@ -18,9 +18,7 @@ __all__ = ["import_ppg", "import_rr", "serialSim", "import_dataset1"]
 # Simulate serial inputs from ppg recording
 # =========================================
 class serialSim:
-    """Simulate online data acquisition using pre recorded signal and realistic
-    sampling rate (75 Hz).
-    """
+    """Simulate online data acquisition using pre recorded signal."""
 
     def __init__(self):
         self.sfreq = 75
@@ -28,6 +26,7 @@ class serialSim:
         self.start = time.time()
 
     def inWaiting(self):
+        """Return the length of bytes in the input buffer."""
         if time.time() - self.start > 1 / self.sfreq:
             self.start = time.time()
             lenInWating = 5
@@ -37,6 +36,7 @@ class serialSim:
         return lenInWating
 
     def read(self, lenght):
+        """Read the bytes from the input buffer."""
         if len(self.ppg) == 0:
             self.ppg = import_ppg().ppg.to_numpy()
 
@@ -51,6 +51,7 @@ class serialSim:
         return paquet[0], paquet[1], paquet[2], paquet[3], paquet[4]
 
     def reset_input_buffer(self):
+        """Reset the input buffer."""
         print("Reset input buffer")
 
 

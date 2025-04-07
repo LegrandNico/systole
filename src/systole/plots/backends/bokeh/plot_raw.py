@@ -74,7 +74,6 @@ def plot_raw(
         The bokeh figure containing the plot.
 
     """
-
     source = ColumnDataSource(
         data={"time": time[::decim], "signal": signal[::decim], "peaks": peaks[::decim]}
     )
