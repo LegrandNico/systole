@@ -1,6 +1,0 @@
-﻿systole.hrv.poincare
-====================
-
-.. currentmodule:: systole.hrv
-
-.. autofunction:: poincare

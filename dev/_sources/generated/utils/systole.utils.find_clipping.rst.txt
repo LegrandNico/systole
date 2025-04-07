@@ -1,6 +1,0 @@
-﻿systole.utils.find\_clipping
-============================
-
-.. currentmodule:: systole.utils
-
-.. autofunction:: find_clipping
