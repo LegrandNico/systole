@@ -1219,6 +1219,162 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Close TCPIP connections.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
+
+
+<div class="viewcode-block" id="Nonin3231USB">
+<a class="viewcode-back" href="../../generated/recording/systole.recording.Nonin3231USB.html#systole.recording.Nonin3231USB">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Nonin3231USB</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Recording Nonin 3231 USB HR signal through USB connection.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    serial : pySerial object</span>
+<span class="sd">        The `serial` instance interfacing with the USB port.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    First, you will need to define a :py:func:`serial` instance, indexing the</span>
+<span class="sd">    USB port where the Nonin 3231 Pulse Oximeter is plugged.</span>
+<span class="sd">    &gt;&gt;&gt; import serial</span>
+<span class="sd">    &gt;&gt;&gt; ser = serial.Serial(&#39;COM4&#39;)</span>
+<span class="sd">    This instance is then used to create an :py:func:`Nonin3231USB` instance</span>
+<span class="sd">    that will be used for the recording from a Nonin 3231 USB device.</span>
+<span class="sd">    &gt;&gt;&gt; from ecg.recording import Nonin3231USB</span>
+<span class="sd">    &gt;&gt;&gt; exg = Nonin3231USB(serial).read(30)</span>
+<span class="sd">    Use the :py:func:`read` method to record some signal and save it in the</span>
+<span class="sd">    `exg` dictionary.</span>
+<span class="sd">    .. warning:: The signals received fom the host are appened to a list. This</span>
+<span class="sd">       process can require more time at each iteration as the signal length</span>
+<span class="sd">       increase in memory. You should alway make sure that this will not</span>
+<span class="sd">       interfer with other task and regularly save intermediate recording to</span>
+<span class="sd">       save resources.</span>
+
+<span class="sd">    Acknowledgements</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    This class was kindly contributed by [James McIntyre](https://github.com/James-Mc1ntyre)</span>
+<span class="sd">    in [this PR](https://github.com/embodied-computation-group/systole/pull/71).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Nonin3231USB.__init__">
+<a class="viewcode-back" href="../../generated/recording/systole.recording.Nonin3231USB.html#systole.recording.Nonin3231USB.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">serial</span><span class="p">,</span>
+        <span class="n">add_channels</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">serial</span><span class="p">,</span> <span class="n">add_channels</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">serial</span><span class="p">,</span>
+        <span class="n">add_channels</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize/restart the recording instance.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        serial : pySerial object</span>
+<span class="sd">            The `serial` instance interfacing with the USB port.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Nonin3231USB instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span> <span class="o">=</span> <span class="n">serial</span>
+
+        <span class="c1"># Initialize recording with empty lists</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">recording</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bpm</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SpO2</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_channels</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">add_channels</span>
+        <span class="k">if</span> <span class="n">add_channels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">add_channels</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Channel_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">channels</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># print(&#39;channels: &#39;+str(self.channels))</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset the recording instance.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span>
+            <span class="n">serial</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read PPG signal for some amount of time.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        duration : int or float</span>
+<span class="sd">            Length of the desired recording time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># init start ime</span>
+        <span class="n">tstart</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="c1"># read for length of duration</span>
+        <span class="k">while</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tstart</span> <span class="o">&lt;</span> <span class="n">duration</span><span class="p">:</span>
+            <span class="c1"># assert one full line of data is there</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">inWaiting</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
+                <span class="c1"># Store line of data</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+                <span class="c1"># assert full data line</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="c1"># get bpm reading</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">bpm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span>
+                <span class="c1"># give bpm to recording as well</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">recording</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span>
+                <span class="c1"># get SpO2 reading (we don&#39;t use it)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">SpO2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+                <span class="c1"># get &#39;time&#39; reading (seconds)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+                <span class="c1"># Add 0 to the additional channels</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">readInWaiting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read in waiting Nonin data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        stop : bool</span>
+<span class="sd">            Stop the recording when an error is detected. Default is `False`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#  nonin device reads out 12 bits per message</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">inWaiting</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
+            <span class="c1"># Store full message line</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+            <span class="c1"># assert that there is a full line of data</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c1"># get bpm reading</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bpm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span>
+            <span class="c1"># give bpm to recording as well</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">recording</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span>
+            <span class="c1"># get SpO2 reading (we don&#39;t use it)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SpO2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+            <span class="c1"># get &#39;time&#39; reading (seconds)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+            <span class="c1"># Add 0 to the additional channels for triggers</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Close serial connections.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serial</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
 </pre></div>
 
                 </article>

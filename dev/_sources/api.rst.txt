@@ -97,6 +97,7 @@ Recording
 
     Oximeter
     BrainVisionExG
+    Nonin3231USB
 
 Reports
 -------
