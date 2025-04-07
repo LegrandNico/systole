@@ -187,6 +187,7 @@ The package natively supports recording of physiological signals from the follow
 
 - `Nonin 3012LP Xpod USB pulse oximeter <https://www.nonin.com/products/xpod/>`_ together with the `Nonin 8000SM 'soft-clip' fingertip sensors <https://www.nonin.com/products/8000s/>`_ (USB).
 - Remote Data Access (RDA) via BrainVision Recorder together with `Brain product ExG amplifier <https://www.brainproducts.com/>`_ (Ethernet).
+- As of version `0.3.1`, the package also includes a class to support `the Nonin 3231 USB <https://www.nonin.com/products/3231/?srsltid=AfmBOop4qd48Tjqt96dMUa0g9dD664n24po2ZUmcTn7ZZsv_2YeIHPft>`_
 
 Interactive visualization of BIDS structured datasets
 =====================================================
