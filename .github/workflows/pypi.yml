@@ -25,4 +25,4 @@ jobs:
       - name: Build Python package
         run: poetry build -f sdist -o dist/
       - name: Publish package distributions to PyPI
-        run: poetry publish --build
+        run: poetry publish
