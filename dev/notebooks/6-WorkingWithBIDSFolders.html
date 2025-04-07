@@ -1,0 +1,909 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Working with BIDS folders &#8212; systole 0.0.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=7026087e"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/6-WorkingWithBIDSFolders';</script>
+    <link rel="icon" href="../_static/logo_small.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Functions" href="../api.html" />
+    <link rel="prev" title="Instantaneous and evoked heart rate" href="5-InstantaneousHeartRate.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo_small.svg" class="logo__image only-light" alt=""/>
+    <img src="../_static/logo_small.svg" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Systole</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/LegrandNico/systole" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://mastodon.social/@nicolegrand" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Mastodon</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://bsky.app/profile/nicolaslegrand.bsky.social" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-bluesky fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Mastodon</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/systole/" title="Pypi" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Pypi</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Getting started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+    Gallery
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/LegrandNico/systole" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://mastodon.social/@nicolegrand" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Mastodon</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://bsky.app/profile/nicolaslegrand.bsky.social" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-bluesky fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Mastodon</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/systole/" title="Pypi" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Pypi</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../tutorials.html" class="nav-link">Tutorials</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Working with BIDS folders</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="working-with-bids-folders">
+<span id="bids-folders"></span><h1>Working with BIDS folders<a class="headerlink" href="#working-with-bids-folders" title="Link to this heading">#</a></h1>
+<p>Author: Nicolas Legrand <a class="reference external" href="mailto:nicolas&#46;legrand&#37;&#52;&#48;cfin&#46;au&#46;dk">nicolas<span>&#46;</span>legrand<span>&#64;</span>cfin<span>&#46;</span>au<span>&#46;</span>dk</a></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="k">if</span> <span class="s2">&quot;google.colab&quot;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+    <span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">systole</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>Starting in version <code class="docutils literal notranslate"><span class="pre">0.2.3</span></code>, Systole provides tools to interact with large datasets of physiological recordings. The functionalities interface with folders that are structured following the <a class="reference external" href="https://bids-specification.readthedocs.io/en/stable/">BIDS standards</a> and this is the format we recommend using if you are following this tutorial.</p>
+<p>Following the BIDS specifications, physiological recordings, sometimes associated with behavioural tasks or neural recordings, are stored with a filename ending with <code class="docutils literal notranslate"><span class="pre">*_physio.tsv.gz</span></code> and are always accompanied with sidecar a <code class="docutils literal notranslate"><span class="pre">*_physio.json</span></code> file containing metadata like the recording modality or the sampling frequency. Accessing both the times series and its accompanying metadata will help Systole automate the preprocessing by finding the correct parameters for peaks detection and reports.</p>
+<p>A valid BIDS folder should be structured like the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└─ BIDS/
+   ├─ sub-0001/
+   │  └─ ses-session1/
+   │     └─ beh/
+   │        ├─ sub-0001_ses_session1_task-mytask_physio.tsv.gz
+   │        └─ sub-0001_ses_session1_task-mytask_physio.json
+   │
+   ├─ sub-0002/
+   ├─ sub-0003/
+   └─ ... 
+</pre></div>
+</div>
+<p>Here, we have physiological recordings associated with a behavioural task for <code class="docutils literal notranslate"><span class="pre">n</span></code> participants in the folder.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We recommend using tools like <a class="reference external" href="https://bids-standard.github.io/bids-validator/">BIDS validator</a> to ensure that your folder complies with BIDS specification before trying to preprocess your data, or to use the editor.</p>
+</div>
+<section id="preprocessing">
+<span id="id1"></span><h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h2>
+<p>The first step will be to preprocess the raw data and store the signal and peaks detection in a new derivative folder. During this step, we can also decide to create HTML reports for each participants, so we can visualize the signal quality and peaks detection.</p>
+<section id="preprocessing-the-physiological-data-from-one-participant">
+<h3>Preprocessing the physiological data from one participant<a class="headerlink" href="#preprocessing-the-physiological-data-from-one-participant" title="Link to this heading">#</a></h3>
+<p>The :py:func:<code class="docutils literal notranslate"><span class="pre">systole.reports</span></code> sub-module contains tools to directly interact with BIDS formatted folders, preprocess and save individual reports in a BIDS consistent way. Those functionalities are built on the top of the:py:func:<code class="docutils literal notranslate"><span class="pre">systole.reports.subject_level_report</span></code> function. This function will simply take a signal as input and will save as output the preprocessed signal with peaks detection (<code class="docutils literal notranslate"><span class="pre">_physio.tsv.gz</span></code> with the <code class="docutils literal notranslate"><span class="pre">_physio.json</span></code>), an <code class="docutils literal notranslate"><span class="pre">.html</span></code> reports adapted to the kind of signal that was provided, and a <code class="docutils literal notranslate"><span class="pre">features.tsv</span></code> file containing heart rate or respiratory rate variability features.</p>
+<p>For example, running the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">systole</span><span class="w"> </span><span class="kn">import</span> <span class="n">import_dataset1</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">systole.reports</span><span class="w"> </span><span class="kn">import</span> <span class="n">subject_level_report</span>
+
+<span class="n">ecg</span> <span class="o">=</span> <span class="n">import_dataset1</span><span class="p">(</span><span class="n">modalities</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ECG&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">ecg</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="n">subject_level_report</span><span class="p">(</span>
+    <span class="n">participant_id</span><span class="o">=</span><span class="s2">&quot;participant_test&quot;</span><span class="p">,</span>
+    <span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;task_test&quot;</span><span class="p">,</span>
+    <span class="n">result_folder</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
+    <span class="n">session</span><span class="o">=</span><span class="s2">&quot;session_test&quot;</span><span class="p">,</span>
+    <span class="n">ecg</span><span class="o">=</span><span class="n">ecg</span><span class="p">,</span>
+    <span class="n">ecg_sfreq</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>will save these four new files in the file folder.</p>
+<ol class="arabic simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">.html</span></code> file is a standalone document that can be visualized in the browser.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">features.tsv</span></code> contains heart rate and/or respiration rate variability metrics.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">_physio.tsv.gz</span></code> and the <code class="docutils literal notranslate"><span class="pre">_physio.json</span></code> files contain the preprocessed signal with new columns <code class="docutils literal notranslate"><span class="pre">peaks</span></code> for peaks detection.</p></li>
+</ol>
+</section>
+<section id="preprocessing-the-entire-bids-folder">
+<h3>Preprocessing the entire BIDS folder<a class="headerlink" href="#preprocessing-the-entire-bids-folder" title="Link to this heading">#</a></h3>
+<p>The previous function call can be automated for each participant and each file of a given BIDS folder and to extract the physiological features using the information provided in the <code class="docutils literal notranslate"><span class="pre">json</span></code> metadata automatically. This can be done using the:py:func:<code class="docutils literal notranslate"><span class="pre">systole.reports.wrapper</span></code> function, or directly from the command line. For example, the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systole<span class="w"> </span>--bids_folder<span class="o">=</span><span class="s2">&quot;/path/to/BIDS/folder/&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--patterns<span class="o">=</span><span class="s2">&quot;task-mytask&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--modality<span class="o">=</span><span class="s2">&quot;beh&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--n_jobs<span class="o">=</span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--overwrite<span class="o">=</span>True<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--html_reports<span class="o">==</span>False
+</pre></div>
+</div>
+<p>will preprocess the data for all participants with a physiological recording in the session <code class="docutils literal notranslate"><span class="pre">ses-session1</span></code> (default), for the behavioural modality (<code class="docutils literal notranslate"><span class="pre">beh</span></code>) and the task <code class="docutils literal notranslate"><span class="pre">mytask</span></code>. We set <code class="docutils literal notranslate"><span class="pre">n_jobs=10</span></code>, meaning that we will run 40 processes in parallel, and <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code> to overwrite previous data with the same ID in the derivative folder. Note that we also set <code class="docutils literal notranslate"><span class="pre">html_reports</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code> as these files can be quite large, it is often preferable to only create it for the participant we want to review, or to use the <a class="reference internal" href="#viewer"><span class="std std-ref">Manual edition of peaks vector and bad segments labelling</span></a>. The possible arguments are:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="label-to-reference">
+<caption><span class="caption-text">Command line arguments</span><a class="headerlink" href="#label-to-reference" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Argument</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>–bids_folder (-i)</p></td>
+<td><p>Path to the BIDS folder containing the physiological recordings.</p></td>
+</tr>
+<tr class="row-odd"><td><p>–participant_id (-p)</p></td>
+<td><p>The id of the participant that should be preprocessed. If this argument is not provided, all the participants will be preprocessed.</p></td>
+</tr>
+<tr class="row-even"><td><p>–patern (-t)</p></td>
+<td><p>Only the files that contains the pattern string will be preprocessed. If the number of files matching is not exactly 1, the files are not processed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>–html_reports (-r)</p></td>
+<td><p>Create subject-level HTML reports if <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>–result_folder (-o)</p></td>
+<td><p>Path to the result folder. If not provided, the default will be ./derivatives/systole/.</p></td>
+</tr>
+<tr class="row-odd"><td><p>–n_jobs (-n)</p></td>
+<td><p>The number of jobs to run concurrently.</p></td>
+</tr>
+<tr class="row-even"><td><p>–modality (-d)</p></td>
+<td><p>The modality of the recording (i.e. <code class="docutils literal notranslate"><span class="pre">&quot;beh&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;func&quot;</span></code>…).</p></td>
+</tr>
+<tr class="row-odd"><td><p>–overwrite (-w)</p></td>
+<td><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, overwrite preexisting files in the result folder (DOES NOT include the corrected files).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When setting <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code>, only the preprocessed derivatives will be overwritten, but not the edited files located in <code class="docutils literal notranslate"><span class="pre">BIDS/systole/derivatives/corrected/*</span></code>. This means that it is possible to re-run the preprocessing event after working on the manual artefacts edition (see below).</p>
+</div>
+<p>Once the preprocessing is completed, and if you did not asked for an external result folder, the structure of the BIDS repository should now include a new <code class="docutils literal notranslate"><span class="pre">systole</span></code> folder in the derivatives:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└─ BIDS/
+   ├─ derivatives/
+   │  └─ systole/
+   │     └─ sub-0001/
+   │         └─ ses-session1/
+   │            └─ beh/
+   │               ├─ sub-0001_ses_session1_task-mytask_features.tsv
+   │               ├─ sub-0001_ses_session1_task-mytask_report.html
+   │               ├─ sub-0001_ses_session1_task-mytask_physio.tsv.gz
+   │               └─ sub-0001_ses_session1_task-mytask_physio.json
+   ├─ sub-0001/
+   │  └─ ses-session1/
+   │     └─ beh/
+   │        ├─ sub-0001_ses_session1_task-mytask_physio.tsv.gz
+   │        └─ sub-0001_ses_session1_task-mytask_physio.json
+   │
+   ├─ sub-0002/
+   ├─ sub-0003/
+   └─ ... 
+</pre></div>
+</div>
+</section>
+</section>
+<section id="manual-edition-of-peaks-vector-and-bad-segments-labelling">
+<span id="viewer"></span><h2>Manual edition of peaks vector and bad segments labelling<a class="headerlink" href="#manual-edition-of-peaks-vector-and-bad-segments-labelling" title="Link to this heading">#</a></h2>
+<p>While we hope that the peaks detection function used by <a class="reference external" href="https://LegrandNico.github.io/systole/#">Systole</a> is sufficiently robust to extract peak vectors without errors for most of the uses cases, you might still encounter noisy or invalid recording that you will want to manually inspect and sometimes edit.</p>
+<p>The :py:mod:<code class="docutils literal notranslate"><span class="pre">systole.interact</span></code> sub-module provides two classes (:py:class:<code class="docutils literal notranslate"><span class="pre">systole.interact.Editor</span></code> and :py:class:<code class="docutils literal notranslate"><span class="pre">systole.interact.Viewer</span></code>) built on the top of Matplotlib widgets that can help for manual edition, and interactive visualization of BIDS fodlers directly in the notebook.</p>
+<section id="using-the-editor-to-inspect-raw-signal">
+<h3>Using the Editor to inspect raw signal<a class="headerlink" href="#using-the-editor-to-inspect-raw-signal" title="Link to this heading">#</a></h3>
+<p>The :py:mod:<code class="docutils literal notranslate"><span class="pre">systole.interact.Editor</span></code> can be use alone (apart from a BISD structured folder) to edit peaks detection from a raw ECG, PPG or respiratory signal.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">systole</span><span class="w"> </span><span class="kn">import</span> <span class="n">import_dataset1</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">systole.interact</span><span class="w"> </span><span class="kn">import</span> <span class="n">Viewer</span><span class="p">,</span> <span class="n">Editor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">ipympl</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a ray ECG time series</span>
+<span class="n">ecg</span> <span class="o">=</span> <span class="n">import_dataset1</span><span class="p">(</span><span class="n">modalities</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ECG&#39;</span><span class="p">],</span> <span class="n">disable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">ecg</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">editor</span> <span class="o">=</span> <span class="n">Editor</span><span class="p">(</span>
+    <span class="n">signal</span><span class="o">=</span><span class="n">ecg</span><span class="p">,</span>
+    <span class="n">sfreq</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">corrected_json</span><span class="o">=</span><span class="s2">&quot;./corrected.json&quot;</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+    <span class="n">signal_type</span><span class="o">=</span><span class="s2">&quot;ECG&quot;</span>
+<span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">editor</span><span class="o">.</span><span class="n">commands_box</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that we are using the package <a class="reference external" href="https://matplotlib.org/ipympl/">ipympl</a>, and activating it using the magic cell <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">ipympl</span></code> so we can render Matplotlib interactive widgets in the Notebook. If you are working in another IDE, you can also render the same windows using a different backend like PyQt.</p>
+</div>
+<p>This windows will automatically apply peaks detection given the <code class="docutils literal notranslate"><span class="pre">signal_type</span></code> parameter, and plot the raw signal with the instantaneous heart / respiration rate to check for artefacts. The class embed a <code class="docutils literal notranslate"><span class="pre">command_box</span></code> that can be used for edition.</p>
+<ul>
+<li><p>When using the <strong>Correction</strong> mode:</p>
+<ul class="simple">
+<li><p>Use the <em>left</em> mouse button to select segment where all the peaks should be removed.</p></li>
+<li><p>Use the <em>right</em> mouse button to select segment where peak will be added at the local maximum.</p></li>
+</ul>
+  <p align='center'><img src='https://github.com/LegrandNico/systole/raw/main/docs/source/images/peaks.gif'/></p>
+</li>
+<li><p>When using the <strong>Rejection</strong> mode:</p>
+<ul class="simple">
+<li><p>Use the <em>right</em> mouse button to select a segment that should be marked as bad.</p></li>
+</ul>
+  <p align='center'><img src='https://github.com/LegrandNico/systole/raw/main/docs/source/images/segments.gif'/></p>
+</li>
+<li><p>By deselecting the check box, you can mark the entire signal as <strong>invalid</strong>.</p></li>
+<li><p>Once that the signal has been edited, you can <strong>save</strong> the modification using the <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">modification</span></code> button, or directly use the method from the class.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">editor</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This function will create a JSON file (using the path specified in the <code class="docutils literal notranslate"><span class="pre">corrected_json</span></code> parameter) with all the information about bad segments labelling, peaks deletion and peaks insertion. The JSON file contains the following entries for each modality (ECG, PPG and respiration)</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">valid</span></code> : is the recording valid or should it be discared (<code class="docutils literal notranslate"><span class="pre">True</span></code> unless otherwise stated).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">corrected_peaks</span></code> : the peaks indexes after correction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bad_segments</span></code> : a list of <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> indexed of bad segments.</p></li>
+</ul>
+</section>
+<section id="using-the-viewer-to-navigate-preprocessed-folder">
+<h3>Using the Viewer to navigate preprocessed folder<a class="headerlink" href="#using-the-viewer-to-navigate-preprocessed-folder" title="Link to this heading">#</a></h3>
+<p>The :py:mod:<code class="docutils literal notranslate"><span class="pre">systole.interact.Viewer</span></code> class wrap the Editor and allows to easily navigate and edit folder that contains large number of recoring. You can for example simply read the results generated by the command line (see <a class="reference internal" href="#preprocessing"><span class="std std-ref">Preprocessing</span></a>). Considering that the files were create in the folder <code class="docutils literal notranslate"><span class="pre">&quot;/path/to/BIDS/folder/derivatives/systole/&quot;</span></code> (which is the default behavior if <code class="docutils literal notranslate"><span class="pre">--result</span> <span class="pre">_folder</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">provided</span></code>), the Viewer can be called using:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">systole.interact</span><span class="w"> </span><span class="kn">import</span> <span class="n">Viewer</span>
+
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">ipympl</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">view</span> <span class="o">=</span> <span class="n">Viewer</span><span class="p">(</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+    <span class="n">preprocessed_folder</span><span class="o">=</span><span class="s2">&quot;/path/to/BIDS/folder/derivatives/systole/&quot;</span><span class="p">,</span>
+    <span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;task-my_task&quot;</span><span class="p">,</span> <span class="c1"># A string long enough to disambiguate in case of mmultiple recordings</span>
+    <span class="n">modality</span><span class="o">=</span><span class="s2">&quot;beh&quot;</span><span class="p">,</span>
+    <span class="n">signal_type</span><span class="o">=</span><span class="s2">&quot;ECG&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">io_box</span><span class="p">,</span> <span class="n">view</span><span class="o">.</span><span class="n">editor</span><span class="o">.</span><span class="n">commands_box</span><span class="p">,</span> <span class="n">view</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will create an interactive windows where all the preprocessed ECG recordings from the behavioral task <code class="docutils literal notranslate"><span class="pre">my_task</span></code> can be inspected and further edited.</p>
+<p align='center'><img src='https://github.com/LegrandNico/systole/raw/main/docs/source/images/editor.gif'/></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the signal was previously edited, the Viewer will automatically load the edited version and display bad segment (if any).</p>
+</div>
+</section>
+<section id="using-the-viewer-to-navigate-bids-folder">
+<h3>Using the Viewer to navigate BIDS folder<a class="headerlink" href="#using-the-viewer-to-navigate-bids-folder" title="Link to this heading">#</a></h3>
+<p>Using the same logic, the :py:mod:<code class="docutils literal notranslate"><span class="pre">systole.interact.Viewer</span></code> can also work with the raw BIDS folder, instead of the derivatives, and preprocess data on the fly. This mode is more appropriate if you want to quickly inspect the data and do not want to generate subject or group level reports. The only different is that the input path should be parameter using the <code class="docutils literal notranslate"><span class="pre">bids_folder</span></code> argument, instead of <code class="docutils literal notranslate"><span class="pre">preprocessed_folder</span></code>. This will make the viewer aware that the signal are located in this folder, but that previously edited signal might also be located in <code class="docutils literal notranslate"><span class="pre">./derivatives/systole/corrected/</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">view</span> <span class="o">=</span> <span class="n">Viewer</span><span class="p">(</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+    <span class="n">bids_folder</span><span class="o">=</span><span class="s2">&quot;/path/to/BIDS/folder/&quot;</span><span class="p">,</span>
+    <span class="n">pattern</span><span class="o">=</span><span class="s2">&quot;task-my_task&quot;</span><span class="p">,</span> <span class="c1"># A string long enough to disambiguate in case of mmultiple recordings</span>
+    <span class="n">modality</span><span class="o">=</span><span class="s2">&quot;beh&quot;</span><span class="p">,</span>
+    <span class="n">signal_type</span><span class="o">=</span><span class="s2">&quot;ECG&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="importing-signals-after-manual-edition">
+<h3>Importing signals after manual edition<a class="headerlink" href="#importing-signals-after-manual-edition" title="Link to this heading">#</a></h3>
+<p>After manual peaks correction and segments labelling, a new <code class="docutils literal notranslate"><span class="pre">corrected</span></code> subfolder will be appended to the systole derivatives:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└─ BIDS/
+   ├─ derivatives/
+   │  └─ systole/
+   │     ├─ corrected/
+   │        └─ sub-0001/
+   │           └─ ses-session1/
+   │              └─ beh/
+   │                 └─ sub-0001_ses_session1_task-mytask_physio.json
+   │     └─ sub-0001/
+   │         └─ ses-session1/
+   │            └─ beh/
+   │               ├─ sub-0001_ses_session1_task-mytask_features.tsv
+   │               ├─ sub-0001_ses_session1_task-mytask_report.html
+   │               ├─ sub-0001_ses_session1_task-mytask_physio.tsv.gz
+   │               └─ sub-0001_ses_session1_task-mytask_physio.json
+   ├─ sub-0001/
+   │  └─ ses-session1/
+   │     └─ beh/
+   │        ├─ sub-0001_ses_session1_task-mytask_physio.tsv.gz
+   │        └─ sub-0001_ses_session1_task-mytask_physio.json
+   │
+   ├─ sub-0002/
+   ├─ sub-0003/
+   └─ ... 
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="system-configuration">
+<h1>System configuration<a class="headerlink" href="#system-configuration" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span> -n -u -v -iv -w -p systole,numba
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Last updated: Mon Apr 07 2025
+
+Python implementation: CPython
+Python version       : 3.12.9
+IPython version      : 9.0.2
+
+systole: 0.0.0.post1.dev0+d1b4798
+numba  : 0.61.0
+
+sys: 3.12.9 (main, Feb  5 2025, 03:22:31) [GCC 13.3.0]
+
+Watermark: 2.5.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="5-InstantaneousHeartRate.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Instantaneous and evoked heart rate</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../api.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Functions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Working with BIDS folders</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-the-physiological-data-from-one-participant">Preprocessing the physiological data from one participant</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-the-entire-bids-folder">Preprocessing the entire BIDS folder</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-edition-of-peaks-vector-and-bad-segments-labelling">Manual edition of peaks vector and bad segments labelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-editor-to-inspect-raw-signal">Using the Editor to inspect raw signal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-viewer-to-navigate-preprocessed-folder">Using the Viewer to navigate preprocessed folder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-viewer-to-navigate-bids-folder">Using the Viewer to navigate BIDS folder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-signals-after-manual-edition">Importing signals after manual edition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#system-configuration">System configuration</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/notebooks/6-WorkingWithBIDSFolders.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2020-2025, Nicolas Legrand.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
