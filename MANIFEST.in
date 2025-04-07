@@ -1,7 +1,0 @@
-# Add README, LICENSE and requirements
-include README.rst
-include LICENSE
-include requirements.txt
-include systole/reports/subject_level.html
-include systole/reports/group_level.html
-include systole/reports/images/logo.svg
