@@ -60,7 +60,7 @@ Visualizing artefacts from RR time series
     rr = import_rr().rr.to_numpy()
 
     _, axs = plt.subplots(ncols=2, figsize=(12, 6))
-    plot_subspaces(rr, ax=axs);
+    plot_subspaces(rr, ax=axs)
 
 
 
@@ -119,20 +119,18 @@ Visualizing artefacts from the `artefact` dictionary
 Using Bokeh as plotting backend
 -------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 43-52
+.. GENERATED FROM PYTHON SOURCE LINES 43-50
 
 .. code-block:: Python
 
     from bokeh.io import output_notebook
     from bokeh.plotting import show
     from systole.detection import rr_artefacts
+
     output_notebook()
 
-    show(
-        plot_subspaces(
-        artefacts=artefacts, backend="bokeh", figsize=400
-        )
-    )
+    show(plot_subspaces(artefacts=artefacts, backend="bokeh", figsize=400))
+
 
 
 
@@ -142,7 +140,7 @@ Using Bokeh as plotting backend
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.597 seconds)
+   **Total running time of the script:** (0 minutes 0.590 seconds)
 
 
 .. _sphx_glr_download_auto_examples_Plots_plot_subspace.py:

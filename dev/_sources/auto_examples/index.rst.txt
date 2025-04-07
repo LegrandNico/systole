@@ -133,23 +133,6 @@ Plotting
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="The circular mean was adapted from Pingouin&#x27;s implementation [#]_.">
-
-.. only:: html
-
-  .. image:: /auto_examples/Plots/images/thumb/sphx_glr_plot_circular_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_auto_examples_Plots_plot_circular.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Plot circular</div>
-    </div>
-
-
-.. raw:: html
-
     <div class="sphx-glr-thumbcontainer" tooltip="Plot instantaneous heart rate">
 
 .. only:: html
@@ -162,6 +145,23 @@ Plotting
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Plot instantaneous heart rate</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The circular mean was adapted from Pingouin&#x27;s implementation [#]_.">
+
+.. only:: html
+
+  .. image:: /auto_examples/Plots/images/thumb/sphx_glr_plot_circular_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_Plots_plot_circular.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plot circular</div>
     </div>
 
 
@@ -302,7 +302,7 @@ Recording
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="The pysystole.recording.Oximeter class can be used to read incoming PPG signal  from Nonin 3012LP Xpod USB pulse oximeter together with the Nonin 8000SM &#x27;soft-clip&#x27;  fingertip sensors. This function can easily  be integrated with other stimulus presentation software like PsychoPy to record cardiac activity during psychological  experiments, or to synchronize stimulus delivery around cardiac phases (e.g. systole or diastole).">
+    <div class="sphx-glr-thumbcontainer" tooltip="The pysystole.recording.Oximeter class can be used to read incoming PPG signal from Nonin 3012LP Xpod USB pulse oximeter together with the Nonin 8000SM &#x27;soft-clip&#x27; fingertip sensors. This function can easily be integrated with other stimulus presentation software like PsychoPy to record cardiac activity during psychological experiments, or to synchronize stimulus delivery around cardiac phases (e.g. systole or diastole).">
 
 .. only:: html
 

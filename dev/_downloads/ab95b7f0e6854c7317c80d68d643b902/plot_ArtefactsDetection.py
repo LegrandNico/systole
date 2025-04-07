@@ -10,12 +10,12 @@ Lipponen & Tarvainen (2019) [#]_.
 # Author: Nicolas Legrand <nicolas.legrand@cas.au.dk>
 # Licence: GPL v3
 
-#%%
+# %%
 from systole.detection import rr_artefacts
 from systole.plots import plot_subspaces
 from systole.utils import simulate_rr
 
-#%%
+# %%
 # RR artefacts
 # ------------
 # The proposed method will detect 4 kinds of artefacts in an RR time series:
@@ -30,7 +30,7 @@ from systole.utils import simulate_rr
 # * The category in which the artefact belongs will have an influence on the
 # correction procedure (see Artefact correction).
 
-#%%
+# %%
 # Simulate RR time series
 # -----------------------
 # This function will simulate RR time series containing ectopic, extra, missed,
@@ -38,13 +38,13 @@ from systole.utils import simulate_rr
 
 rr = simulate_rr()
 
-#%%
+# %%
 # Artefact detection
 # ------------------
 
 outliers = rr_artefacts(rr)
 
-#%%
+# %%
 # Subspaces visualization
 # -----------------------
 # You can visualize the two main subspaces and spot outliers. The left pamel
@@ -54,7 +54,7 @@ outliers = rr_artefacts(rr)
 
 plot_subspaces(rr, figsize=(12, 6))
 
-#%%
+# %%
 # References
 # ----------
 # .. [#] Lipponen, J. A., & Tarvainen, M. P. (2019). A robust algorithm for

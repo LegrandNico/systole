@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>systole.correction &#8212; systole 0.3.0 documentation</title>
+    <title>systole.correction &#8212; systole 0.0.0 documentation</title>
   
   
   
@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=e259d695"></script>
+    <script src="../../_static/documentation_options.js?v=7026087e"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
@@ -239,6 +239,18 @@
           
           
           
+          <a href="https://bsky.app/profile/nicolaslegrand.bsky.social" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-bluesky fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Mastodon</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
           <a href="https://pypi.org/project/systole/" title="Pypi" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Pypi</span></a>
         </li>
@@ -375,6 +387,18 @@
           
           
           
+          <a href="https://bsky.app/profile/nicolaslegrand.bsky.social" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-bluesky fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Mastodon</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
           <a href="https://pypi.org/project/systole/" title="Pypi" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Pypi</span></a>
         </li>
@@ -460,8 +484,9 @@
     <span class="n">extra_idx</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">artefacts</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[],</span> <span class="p">[]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">),</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Correct extra heartbeat(s) by removing the RR interval(s). Will also update the</span>
-<span class="sd">    artefacts array accordingly if this one is provided.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Correct extra heartbeat(s) by removing the RR interval(s).</span>
+
+<span class="sd">    Will also update the artefacts array accordingly if this one is provided.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -483,7 +508,6 @@
 <span class="sd">        py:`func:systole.detection.rr_artefacts()`.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="c1"># Set defaults values for the outputs</span>
     <span class="n">clean_rr</span><span class="p">,</span> <span class="n">new_artefacts</span> <span class="o">=</span> <span class="n">rr</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">artefacts</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
@@ -523,8 +547,9 @@
     <span class="n">missed_idx</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">artefacts</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[],</span> <span class="p">[]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">),</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Correct missed heartbeat(s) by adding new RR intervals. Will also update the</span>
-<span class="sd">    artefacts array accordingly if this one is provided.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Correct missed heartbeat(s) by adding new RR intervals.</span>
+
+<span class="sd">    Will also update the artefacts array accordingly if this one is provided.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -546,7 +571,6 @@
 <span class="sd">        this dictionary with the new artifacts idexes.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="c1"># Set defaults values for the outputs</span>
     <span class="n">clean_rr</span><span class="p">,</span> <span class="n">new_artefacts</span> <span class="o">=</span> <span class="n">rr</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">artefacts</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
@@ -602,7 +626,6 @@
 <span class="sd">        The corrected RR intervals.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="c1"># Create time vector</span>
     <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">rr</span><span class="p">))</span>
 
@@ -626,8 +649,7 @@
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span>
     <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span>
 <span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internal jited function to correct RR artefacts from artefacts dictionary.&quot;&quot;&quot;</span>
-
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Correct RR artefacts (jitted function).&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cleaning the RR interval time series.&quot;</span><span class="p">)</span>
 
@@ -790,7 +812,7 @@
 <span class="sd">    When adding or removing an RR interval (missed and extra artefacts), the `artefacts`</span>
 <span class="sd">    arrays are updated accordingly.</span>
 
-<span class="sd">    See also</span>
+<span class="sd">    See Also</span>
 <span class="sd">    --------</span>
 <span class="sd">    correct_peaks</span>
 
@@ -876,7 +898,7 @@
 <span class="sd">        - extra: The number of extra beats corrected.</span>
 <span class="sd">        - missed: The number of missed beats corrected.</span>
 
-<span class="sd">    See also</span>
+<span class="sd">    See Also</span>
 <span class="sd">    --------</span>
 <span class="sd">    correct_rr</span>
 
@@ -886,7 +908,6 @@
 <span class="sd">    signal constant after peaks correction.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="n">peaks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">peaks</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">input_type</span> <span class="o">!=</span> <span class="s2">&quot;peaks&quot;</span><span class="p">:</span>
@@ -900,7 +921,7 @@
 
     <span class="k">for</span> <span class="n">n_it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iterations</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; - Iteration </span><span class="si">{</span><span class="n">n_it</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> - &quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; - Iteration </span><span class="si">{</span><span class="n">n_it</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> - &quot;</span><span class="p">)</span>
 
         <span class="c1"># Correct extra peaks</span>
         <span class="k">if</span> <span class="n">extra_correction</span><span class="p">:</span>
@@ -1034,7 +1055,6 @@
 <span class="sd">        If the artefact index is outside the range of the peaks vector.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="n">peaks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">peaks</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
     <span class="n">clean_peaks</span> <span class="o">=</span> <span class="n">peaks</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 

@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>systole.utils &#8212; systole 0.3.0 documentation</title>
+    <title>systole.utils &#8212; systole 0.0.0 documentation</title>
   
   
   
@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=e259d695"></script>
+    <script src="../../_static/documentation_options.js?v=7026087e"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
@@ -239,6 +239,18 @@
           
           
           
+          <a href="https://bsky.app/profile/nicolaslegrand.bsky.social" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-bluesky fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Mastodon</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
           <a href="https://pypi.org/project/systole/" title="Pypi" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Pypi</span></a>
         </li>
@@ -364,6 +376,18 @@
           
           
           <a href="https://mastodon.social/@nicolegrand" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Mastodon</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://bsky.app/profile/nicolaslegrand.bsky.social" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-bluesky fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Mastodon</span></a>
         </li>
         <li class="nav-item">
@@ -786,7 +810,6 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-
 <span class="sd">    # Load dataset</span>
 
 <span class="sd">    &gt;&gt;&gt; ecg_df = import_dataset1(modalities=[&#39;ECG&#39;, &#39;Stim&#39;])</span>
@@ -1032,7 +1055,7 @@
         <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span>
             <span class="n">x</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[</span><span class="n">pk</span> <span class="o">-</span> <span class="n">size</span> <span class="p">:</span> <span class="n">pk</span> <span class="o">+</span> <span class="n">size</span><span class="p">]</span><span class="o">.</span><span class="n">argmin</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid argument, kind should be &quot;</span> <span class="s2">&quot;max&quot;</span> <span class="s2">&quot; or &quot;</span> <span class="s2">&quot;min&quot;</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid argument, kind should be max or min&quot;</span><span class="p">)</span>
 
         <span class="n">new_peaks</span><span class="p">[</span><span class="n">pk</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">new_peaks</span><span class="p">[</span><span class="n">pk</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">size</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span>
@@ -1082,7 +1105,6 @@
 <span class="sd">        The time series converted to the desired format.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="k">if</span> <span class="n">output_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;peaks&quot;</span><span class="p">,</span> <span class="s2">&quot;peaks_idx&quot;</span><span class="p">,</span> <span class="s2">&quot;rr_ms&quot;</span><span class="p">,</span> <span class="s2">&quot;rr_s&quot;</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid output type.&quot;</span><span class="p">)</span>
 
@@ -1168,12 +1190,11 @@
 <span class="sd">        The physiological signal without NaNs values.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="n">arg_nans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">signal</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">arg_nans</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;... NaNs cleaning : interpolating </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">arg_nans</span><span class="p">)</span><span class="si">}</span><span class="s2"> NaN values found in the signal </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">arg_nans</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">))</span><span class="si">}</span><span class="s2"> %.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;... NaNs cleaning : interpolating </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">arg_nans</span><span class="p">)</span><span class="si">}</span><span class="s2"> NaN values found in the signal </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">arg_nans</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">))</span><span class="si">}</span><span class="s2"> %.&quot;</span>
             <span class="p">)</span>
         <span class="n">arg_float</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">signal</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">))[</span><span class="n">arg_float</span><span class="p">]</span>
@@ -1243,8 +1264,7 @@
     <span class="n">signal</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">bad_segments</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the longest signal or intervals time series after dropping segments marked</span>
-<span class="sd">    as bads.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the longest intervals after dropping bad segments.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1276,7 +1296,6 @@
 <span class="sd">    `[500, 200, 150]`</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="c1"># Return a list of tuple and merge overlapping intervals</span>
     <span class="n">bad_segments</span> <span class="o">=</span> <span class="n">norm_bad_segments</span><span class="p">(</span><span class="n">bad_segments</span><span class="p">)</span>
 
@@ -1322,7 +1341,6 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-
 <span class="sd">    Get a list of tuples such as `[(start_idx, end_idx)]` from a boolean vector that</span>
 <span class="sd">    is of the same length that the associated signal and where `True` is a bad</span>
 <span class="sd">    segment/sample.</span>

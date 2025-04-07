@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Plot raw physiological signal &#8212; systole 0.3.0 documentation</title>
+    <title>Plot raw physiological signal &#8212; systole 0.0.0 documentation</title>
   
   
   
@@ -47,7 +47,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../_static/documentation_options.js?v=e259d695"></script>
+    <script src="../../_static/documentation_options.js?v=7026087e"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/thebelab-helper.js"></script>
@@ -242,6 +242,18 @@
           
           
           
+          <a href="https://bsky.app/profile/nicolaslegrand.bsky.social" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-bluesky fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Mastodon</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
           <a href="https://pypi.org/project/systole/" title="Pypi" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Pypi</span></a>
         </li>
@@ -380,6 +392,18 @@
           
           
           
+          <a href="https://bsky.app/profile/nicolaslegrand.bsky.social" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-bluesky fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Mastodon</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
           <a href="https://pypi.org/project/systole/" title="Pypi" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Pypi</span></a>
         </li>
@@ -457,7 +481,6 @@ to download the full example code.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Author: Nicolas Legrand &lt;nicolas.legrand@cas.au.dk&gt;</span>
 <span class="c1"># Licence: GPL v3</span>
 
-
 <span class="kn">from</span><span class="w"> </span><span class="nn">bokeh.io</span><span class="w"> </span><span class="kn">import</span> <a href="https://docs.bokeh.org/en/latest/docs/reference/io.html#bokeh.io.output_notebook" title="bokeh.io.output_notebook" class="sphx-glr-backref-module-bokeh-io sphx-glr-backref-type-py-function"><span class="n">output_notebook</span></a>
 <span class="kn">from</span><span class="w"> </span><span class="nn">bokeh.plotting</span><span class="w"> </span><span class="kn">import</span> <span class="n">show</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">systole.plots</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_raw</span>
@@ -468,19 +491,18 @@ to download the full example code.</p>
 <section id="plot-raw-ecg-signal">
 <h2>Plot raw ECG signal<a class="headerlink" href="#plot-raw-ecg-signal" title="Link to this heading">#</a></h2>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import PPG recording as pandas data frame</span>
-<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">physio_df</span></a> <span class="o">=</span> <span class="n">import_dataset1</span><span class="p">(</span><span class="n">modalities</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ECG&#39;</span><span class="p">,</span> <span class="s1">&#39;Respiration&#39;</span><span class="p">])</span>
+<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">physio_df</span></a> <span class="o">=</span> <span class="n">import_dataset1</span><span class="p">(</span><span class="n">modalities</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ECG&quot;</span><span class="p">,</span> <span class="s2">&quot;Respiration&quot;</span><span class="p">])</span>
 
 <span class="c1"># Only use the first 60 seconds for demonstration</span>
 <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="pandas.core.series.Series" class="sphx-glr-backref-module-pandas-core-series sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ecg</span></a> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">physio_df</span></a><span class="p">[</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.between.html#pandas.Series.between" title="pandas.Series.between" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-method"><span class="n">physio_df</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">between</span></a><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">90</span><span class="p">)]</span><span class="o">.</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="pandas.core.series.Series" class="sphx-glr-backref-module-pandas-core-series sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ecg</span></a>
-<span class="n">plot_raw</span><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="pandas.core.series.Series" class="sphx-glr-backref-module-pandas-core-series sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ecg</span></a><span class="p">,</span> <span class="n">modality</span><span class="o">=</span><span class="s1">&#39;ecg&#39;</span><span class="p">,</span> <span class="n">sfreq</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">detector</span><span class="o">=</span><span class="s1">&#39;sleepecg&#39;</span><span class="p">)</span>
+<span class="n">plot_raw</span><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="pandas.core.series.Series" class="sphx-glr-backref-module-pandas-core-series sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ecg</span></a><span class="p">,</span> <span class="n">modality</span><span class="o">=</span><span class="s2">&quot;ecg&quot;</span><span class="p">,</span> <span class="n">sfreq</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">detector</span><span class="o">=</span><span class="s2">&quot;sleepecg&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <img src="../../_images/sphx_glr_plot_raw_001.png" srcset="../../_images/sphx_glr_plot_raw_001.png" alt="ECG recording" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/2 [00:00&lt;?, ?it/s]
 Downloading ECG channel:   0%|          | 0/2 [00:00&lt;?, ?it/s]
-Downloading ECG channel:  50%|█████     | 1/2 [00:00&lt;00:00,  9.73it/s]
-Downloading Respiration channel:  50%|█████     | 1/2 [00:00&lt;00:00,  9.73it/s]
-Downloading Respiration channel: 100%|██████████| 2/2 [00:00&lt;00:00,  6.78it/s]
-Downloading Respiration channel: 100%|██████████| 2/2 [00:00&lt;00:00,  7.09it/s]
+Downloading Respiration channel:   0%|          | 0/2 [00:00&lt;?, ?it/s]
+Downloading Respiration channel: 100%|██████████| 2/2 [00:00&lt;00:00,  4.88it/s]
+Downloading Respiration channel: 100%|██████████| 2/2 [00:00&lt;00:00,  4.88it/s]
 
 &lt;Axes: title={&#39;center&#39;: &#39;ECG recording&#39;}, ylabel=&#39;ECG (mV)&#39;&gt;
 </pre></div>
@@ -489,7 +511,7 @@ Downloading Respiration channel: 100%|██████████| 2/2 [00:00
 <section id="plot-raw-ppg-signal">
 <h2>Plot raw PPG signal<a class="headerlink" href="#plot-raw-ppg-signal" title="Link to this heading">#</a></h2>
 <p>Import Respiration recording as pandas data frame</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="pandas.core.series.Series" class="sphx-glr-backref-module-pandas-core-series sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rsp</span></a> <span class="o">=</span> <span class="n">import_dataset1</span><span class="p">(</span><span class="n">modalities</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Respiration&#39;</span><span class="p">])</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="pandas.core.series.Series" class="sphx-glr-backref-module-pandas-core-series sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rsp</span></a> <span class="o">=</span> <span class="n">import_dataset1</span><span class="p">(</span><span class="n">modalities</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Respiration&quot;</span><span class="p">])</span>
 
 <span class="c1"># Only use the first 90 seconds for demonstration</span>
 <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="pandas.core.series.Series" class="sphx-glr-backref-module-pandas-core-series sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rsp</span></a> <span class="o">=</span> <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">physio_df</span></a><span class="p">[</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.between.html#pandas.Series.between" title="pandas.Series.between" class="sphx-glr-backref-module-pandas sphx-glr-backref-type-py-method"><span class="n">physio_df</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">between</span></a><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">600</span><span class="p">)]</span><span class="o">.</span><span class="n">respiration</span>
@@ -498,8 +520,7 @@ Downloading Respiration channel: 100%|██████████| 2/2 [00:00
 </div>
 <img src="../../_images/sphx_glr_plot_raw_002.png" srcset="../../_images/sphx_glr_plot_raw_002.png" alt="Respiration" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/1 [00:00&lt;?, ?it/s]
 Downloading Respiration channel:   0%|          | 0/1 [00:00&lt;?, ?it/s]
-Downloading Respiration channel: 100%|██████████| 1/1 [00:00&lt;00:00,  8.58it/s]
-Downloading Respiration channel: 100%|██████████| 1/1 [00:00&lt;00:00,  8.56it/s]
+Downloading Respiration channel: 100%|██████████| 1/1 [00:00&lt;00:00, 14.13it/s]
 
 &lt;Axes: title={&#39;center&#39;: &#39;Respiration&#39;}, ylabel=&#39;Respiratory signal&#39;&gt;
 </pre></div>
@@ -511,7 +532,7 @@ Downloading Respiration channel: 100%|██████████| 1/1 [00:00
 <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ppg</span></a> <span class="o">=</span> <span class="n">import_ppg</span><span class="p">()</span>
 
 <span class="c1"># Only use the first 60 seconds for demonstration</span>
-<span class="n">plot_raw</span><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ppg</span></a><span class="p">[</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="pandas.core.series.Series" class="sphx-glr-backref-module-pandas-core-series sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ppg</span><span class="o">.</span><span class="n">time</span></a><span class="o">&lt;</span><span class="mi">60</span><span class="p">],</span> <span class="n">sfreq</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
+<span class="n">plot_raw</span><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ppg</span></a><span class="p">[</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="pandas.core.series.Series" class="sphx-glr-backref-module-pandas-core-series sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ppg</span><span class="o">.</span><span class="n">time</span></a> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">],</span> <span class="n">sfreq</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
 </pre></div>
 </div>
 <img src="../../_images/sphx_glr_plot_raw_003.png" srcset="../../_images/sphx_glr_plot_raw_003.png" alt="PPG recording" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;PPG recording&#39;}, ylabel=&#39;PPG level (a.u.)&#39;&gt;
@@ -522,15 +543,13 @@ Downloading Respiration channel: 100%|██████████| 1/1 [00:00
 <h2>Using Bokeh as plotting backend<a class="headerlink" href="#using-bokeh-as-plotting-backend" title="Link to this heading">#</a></h2>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><a href="https://docs.bokeh.org/en/latest/docs/reference/io.html#bokeh.io.output_notebook" title="bokeh.io.output_notebook" class="sphx-glr-backref-module-bokeh-io sphx-glr-backref-type-py-function"><span class="n">output_notebook</span></a><span class="p">()</span>
 
-<span class="n">show</span><span class="p">(</span>
-    <span class="n">plot_raw</span><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ppg</span></a><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;bokeh&quot;</span><span class="p">,</span> <span class="n">show_heart_rate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_artefacts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
- <span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">plot_raw</span><span class="p">(</span><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="pandas.core.frame.DataFrame" class="sphx-glr-backref-module-pandas-core-frame sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ppg</span></a><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;bokeh&quot;</span><span class="p">,</span> <span class="n">show_heart_rate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_artefacts</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>BokehDeprecationWarning: &#39;square() method&#39; was deprecated in Bokeh 3.4.0 and will be removed, use &quot;scatter(marker=&#39;square&#39;, ...) instead&quot; instead.
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.269 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.479 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plots-plot-raw-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/0671fb83e13faf570765c637c488b5b6/plot_raw.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_raw.ipynb</span></code></a></p>

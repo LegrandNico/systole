@@ -13,26 +13,23 @@ from systole.plots import plot_rr
 
 from systole import import_rr
 
-#%%
+# %%
 # Plot instantaneous heart rate from a RR interval time series (in milliseconds).
 # -------------------------------------------------------------------------------
 
 # Import R-R intervals time series
 rr = import_rr().rr.values
 
-plot_rr(rr=rr, input_type="rr_ms");
-#%%
+plot_rr(rr=rr, input_type="rr_ms")
+# %%
 # Only show the interpolated instantaneous heart rate, add a bad segment and change the default unit to beats per minute (BPM).
 # -----------------------------------------------------------------------------------------------------------------------------
-plot_rr(rr=rr, input_type="rr_ms", unit="bpm", points=False);
-#%%
+plot_rr(rr=rr, input_type="rr_ms", unit="bpm", points=False)
+# %%
 # Use Bokeh as a plotting backend, only show the scatterplot and highlight artefacts in the RR intervals
 # ------------------------------------------------------------------------------------------------------
 output_notebook()
 
 show(
-    plot_rr(
-    rr=rr, input_type="rr_ms", backend="bokeh", 
-    line=False, show_artefacts=True
-    )
+    plot_rr(rr=rr, input_type="rr_ms", backend="bokeh", line=False, show_artefacts=True)
 )

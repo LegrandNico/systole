@@ -21,10 +21,9 @@
 Plot frequency
 ==============
 
-.. GENERATED FROM PYTHON SOURCE LINES 6-12
+.. GENERATED FROM PYTHON SOURCE LINES 6-11
 
 .. code-block:: Python
-
 
 
 
@@ -38,12 +37,12 @@ Plot frequency
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 13-15
+.. GENERATED FROM PYTHON SOURCE LINES 12-14
 
 Visualizing HRV frequency domain from RR time series using Matplotlib as plotting backend
 -----------------------------------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 15-22
+.. GENERATED FROM PYTHON SOURCE LINES 14-21
 
 .. code-block:: Python
 
@@ -72,12 +71,12 @@ Visualizing HRV frequency domain from RR time series using Matplotlib as plottin
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 23-25
+.. GENERATED FROM PYTHON SOURCE LINES 22-24
 
 Visualizing HRV frequency domain from RR time series using Bokeh as plotting backend
 ------------------------------------------------------------------------------------
 
-.. GENERATED FROM PYTHON SOURCE LINES 25-33
+.. GENERATED FROM PYTHON SOURCE LINES 24-32
 
 .. code-block:: Python
 
@@ -85,11 +84,11 @@ Visualizing HRV frequency domain from RR time series using Bokeh as plotting bac
     from systole.plots import plot_frequency
     from bokeh.io import output_notebook
     from bokeh.plotting import show
+
     output_notebook()
 
-    show(
-        plot_frequency(rr, input_type="rr_ms", backend="bokeh")
-    )
+    show(plot_frequency(rr, input_type="rr_ms", backend="bokeh"))
+
 
 
 
@@ -99,7 +98,7 @@ Visualizing HRV frequency domain from RR time series using Bokeh as plotting bac
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.183 seconds)
+   **Total running time of the script:** (0 minutes 0.171 seconds)
 
 
 .. _sphx_glr_download_auto_examples_Plots_plot_frequency.py:

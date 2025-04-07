@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>systole.interact.interact &#8212; systole 0.3.0 documentation</title>
+    <title>systole.interact.interact &#8212; systole 0.0.0 documentation</title>
   
   
   
@@ -46,7 +46,7 @@
   <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../../../_static/documentation_options.js?v=e259d695"></script>
+    <script src="../../../_static/documentation_options.js?v=7026087e"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
@@ -239,6 +239,18 @@
           
           
           
+          <a href="https://bsky.app/profile/nicolaslegrand.bsky.social" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-bluesky fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Mastodon</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
           <a href="https://pypi.org/project/systole/" title="Pypi" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Pypi</span></a>
         </li>
@@ -375,6 +387,18 @@
           
           
           
+          <a href="https://bsky.app/profile/nicolaslegrand.bsky.social" title="Mastodon" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-bluesky fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Mastodon</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
           <a href="https://pypi.org/project/systole/" title="Pypi" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
             <span class="sr-only">Pypi</span></a>
         </li>
@@ -463,8 +487,9 @@
 <div class="viewcode-block" id="Viewer">
 <a class="viewcode-back" href="../../../generated/interact/systole.interact.Viewer.html#systole.interact.Viewer">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Viewer</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This class handles the interaction with BIDS structured folders. It calls</span>
-<span class="sd">    the` Editor` class internally to generate the interactive plots.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handles the interaction with BIDS structured folders.</span>
+
+<span class="sd">    It calls the` Editor` class internally to generate interactive plots.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -507,7 +532,7 @@
 <span class="sd">        The size of the interactive Matplotlib figure for peaks edition. Defaults to</span>
 <span class="sd">        `(15, 7)`.</span>
 
-<span class="sd">    See also</span>
+<span class="sd">    See Also</span>
 <span class="sd">    --------</span>
 <span class="sd">    Editor</span>
 
@@ -676,9 +701,7 @@
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">update_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">change</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updating the list of participants available in the folder when the text</span>
-<span class="sd">        boxes are used.&quot;&quot;&quot;</span>
-
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the list of participants when the text boxes are used.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">participants_list</span> <span class="o">=</span> <span class="p">[</span>
             <span class="n">f</span><span class="o">.</span><span class="n">stem</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bids_path</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;sub-*/&quot;</span><span class="p">))</span>
         <span class="p">]</span>
@@ -698,6 +721,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">participants_</span><span class="o">.</span><span class="n">option</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">participants_list</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">plot_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">change</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot physiological signal and peaks.&quot;&quot;&quot;</span>
         <span class="c1"># Load the physio files and store parameters in the Viewer class</span>
         <span class="c1"># then load the signal from the physio file and perform peaks detection</span>
         <span class="bp">self</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_file</span><span class="p">()</span><span class="o">.</span><span class="n">load_signal</span><span class="p">()</span>
@@ -719,7 +743,6 @@
 
     <span class="k">def</span><span class="w"> </span><span class="nf">load_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Load the signal from the input folder (BIDS or local).&quot;&quot;&quot;</span>
-
         <span class="c1"># In case no file was match the requirements</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">physio_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span>
@@ -817,9 +840,7 @@
         <span class="k">return</span> <span class="bp">self</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">load_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load the files containing the physiological recordings and the metadat JSON</span>
-<span class="sd">        files for one participant.&quot;&quot;&quot;</span>
-
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load physiological recordings and JSON metadata.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">recording_start_time</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">recording_end_time</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sfreq</span> <span class="o">=</span> <span class="kc">None</span>
@@ -898,8 +919,7 @@
 <div class="viewcode-block" id="Editor">
 <a class="viewcode-back" href="../../../generated/interact/systole.interact.Editor.html#systole.interact.Editor">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Editor</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This class handle the visualization and manual edition of peaks vectors</span>
-<span class="sd">    associated with physiological signals.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Visualization and manual edition of peaks vectors.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -948,7 +968,7 @@
 <span class="sd">    edition_, rejection_, command_box_, save_button_ :</span>
 <span class="sd">        Widgets controlling the type of modification to perform.</span>
 
-<span class="sd">    See also</span>
+<span class="sd">    See Also</span>
 <span class="sd">    --------</span>
 <span class="sd">    Viewer</span>
 
@@ -1064,9 +1084,7 @@
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">on_remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Removes specified peaks by either rejection / deletion, or mark bad</span>
-<span class="sd">        segments.&quot;&quot;&quot;</span>
-
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove peaks by either rejection / deletion, or mark bad segments.&quot;&quot;&quot;</span>
         <span class="c1"># Get the interval in sample idexes</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">edition_</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;Correction&quot;</span><span class="p">:</span>
             <span class="n">tmin</span><span class="p">,</span> <span class="n">tmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_vec</span><span class="p">,</span> <span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">))</span>
@@ -1098,7 +1116,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">plot_signals</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">on_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Undoes last span select or quits peak editor&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Undo last span select or quits peak editor.&quot;&quot;&quot;</span>
         <span class="c1"># accept both control or Mac command key as selector</span>
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;ctrl+q&quot;</span><span class="p">,</span> <span class="s2">&quot;super+d&quot;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
@@ -1114,8 +1132,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">plot_signals</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clears axes and plots data / peaks / troughs.&quot;&quot;&quot;</span>
-
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clear axes and plots data / peaks / troughs.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># Clear axes and redraw, retaining x-/y-axis zooms</span>
             <span class="n">xlim</span><span class="p">,</span> <span class="n">ylim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
@@ -1189,13 +1206,15 @@
             <span class="k">return</span> <span class="bp">self</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">quit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Quits editor&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Quits editor.&quot;&quot;&quot;</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save the JSON file containing the corrected peaks, bad segments and signal</span>
-<span class="sd">        quality. The path is specified by `corrected_json`.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save the JSON file.</span>
 
+<span class="sd">        This file contains the corrected peaks, bad segments and signal quality. The</span>
+<span class="sd">        path is specified by `corrected_json`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">corrected_json</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
             <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">corrected_json</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -1226,7 +1245,6 @@
 
     <span class="k">def</span><span class="w"> </span><span class="nf">find_peaks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Find peaks depending on the signal type.&quot;&quot;&quot;</span>
-
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">peaks</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_type</span> <span class="o">==</span> <span class="s2">&quot;ECG&quot;</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">signal</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">peaks</span> <span class="o">=</span> <span class="n">ecg_peaks</span><span class="p">(</span>

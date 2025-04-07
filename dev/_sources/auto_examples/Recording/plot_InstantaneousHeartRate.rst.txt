@@ -103,7 +103,7 @@ oximeter is plugged in.
 
     Reset input buffer
 
-    <systole.recording.Oximeter object at 0x7fcfdb192c90>
+    <systole.recording.Oximeter object at 0x7f34d6889ac0>
 
 
 
@@ -112,7 +112,7 @@ oximeter is plugged in.
 Plotting
 --------
 
-.. GENERATED FROM PYTHON SOURCE LINES 49-62
+.. GENERATED FROM PYTHON SOURCE LINES 49-63
 
 .. code-block:: Python
 
@@ -132,6 +132,7 @@ Plotting
     plt.tight_layout()
 
 
+
 .. image-sg:: /auto_examples/Recording/images/sphx_glr_plot_InstantaneousHeartRate_001.png
    :alt: PPG recording, Peaks vector, Instantaneous heart rate
    :srcset: /auto_examples/Recording/images/sphx_glr_plot_InstantaneousHeartRate_001.png
@@ -144,7 +145,7 @@ Plotting
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 21.400 seconds)
+   **Total running time of the script:** (0 minutes 21.382 seconds)
 
 
 .. _sphx_glr_download_auto_examples_Recording_plot_InstantaneousHeartRate.py:
