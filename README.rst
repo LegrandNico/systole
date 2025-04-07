@@ -187,7 +187,7 @@ The package natively supports recording of physiological signals from the follow
 
 - `Nonin 3012LP Xpod USB pulse oximeter <https://www.nonin.com/products/xpod/>`_ together with the `Nonin 8000SM 'soft-clip' fingertip sensors <https://www.nonin.com/products/8000s/>`_ (USB).
 - Remote Data Access (RDA) via BrainVision Recorder together with `Brain product ExG amplifier <https://www.brainproducts.com/>`_ (Ethernet).
-- As of version `0.3.1`, the package also includes a class to support `the Nonin 3231 USB <https://www.nonin.com/products/3231/?srsltid=AfmBOop4qd48Tjqt96dMUa0g9dD664n24po2ZUmcTn7ZZsv_2YeIHPft>`_
+- As of version `0.3.1`, the package also includes a class to support `the Nonin 3231 USB <https://www.nonin.com/products/3231/?srsltid=AfmBOop4qd48Tjqt96dMUa0g9dD664n24po2ZUmcTn7ZZsv_2YeIHPft>`_.
 
 Interactive visualization of BIDS structured datasets
 =====================================================
@@ -221,7 +221,7 @@ Annotating bad segments
 Development
 +++++++++++
 
-This repository is a fork of the `original Systole repository <https://github.com/embodied-computation-group/systole>`_ and is maintained by Nicolas Legrand. If you want to contribute, feel free to contact one of the developers, open an issue or submit a pull request.
+This repository is a fork of the `original Systole repository <https://github.com/embodied-computation-group/systole>`_ and is maintained by `Nicolas Legrand <https://github.com/LegrandNico>`_. If you want to contribute, feel free to contact one of the developers, open an issue or submit a pull request.
 
 This program is provided with NO WARRANTY OF ANY KIND.
 
