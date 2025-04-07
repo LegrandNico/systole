@@ -1,6 +1,0 @@
-﻿systole.hrv.recurrence\_matrix
-==============================
-
-.. currentmodule:: systole.hrv
-
-.. autofunction:: recurrence_matrix
