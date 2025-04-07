@@ -23,6 +23,9 @@
 .. image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
   :target: https://github.com/pre-commit/pre-commit
 
+**📌Note:**  
+    Starting from `v0.3.1` the development and maintenance of the package has been moved to `this repository <https://github.com/LegrandNico/systole>`_. The package is available on PyPI and can be installed using pip the same way.
+
 ================
 
 .. image:: https://github.com/LegrandNico/systole/blob/main/docs/source/images/logo.png
@@ -181,8 +184,10 @@ Online systolic peak detection, cardiac-stimulus synchrony, and cardiac circular
 =========================================================================================
 
 The package natively supports recording of physiological signals from the following setups:
+
 - `Nonin 3012LP Xpod USB pulse oximeter <https://www.nonin.com/products/xpod/>`_ together with the `Nonin 8000SM 'soft-clip' fingertip sensors <https://www.nonin.com/products/8000s/>`_ (USB).
 - Remote Data Access (RDA) via BrainVision Recorder together with `Brain product ExG amplifier <https://www.brainproducts.com/>`_ (Ethernet).
+- As of version `0.3.1`, the package also includes a class to support `the Nonin 3231 USB <https://www.nonin.com/products/3231/?srsltid=AfmBOop4qd48Tjqt96dMUa0g9dD664n24po2ZUmcTn7ZZsv_2YeIHPft>`_.
 
 Interactive visualization of BIDS structured datasets
 =====================================================
@@ -216,7 +221,7 @@ Annotating bad segments
 Development
 +++++++++++
 
-This repository is a fork of the `original Systole repository <https://github.com/embodied-computation-group/systole>` and is maintained by Nicolas Legrand. If you want to contribute, feel free to contact one of the developers, open an issue or submit a pull request.
+This repository is a fork of the `original Systole repository <https://github.com/embodied-computation-group/systole>`_ and is maintained by `Nicolas Legrand <https://github.com/LegrandNico>`_. If you want to contribute, feel free to contact one of the developers, open an issue or submit a pull request.
 
 This program is provided with NO WARRANTY OF ANY KIND.
 
@@ -243,5 +248,5 @@ Systole was largely inspired by pre-existing toolboxes dedicated to heartrate va
 
 |AU|
 
-.. |AU| image::  https://github.com/LegrandNico/systole/blob/main/docs/source/images/au_clinisk_logo.png
-   :width: 100%
+.. |AU| image::  https://upload.wikimedia.org/wikipedia/commons/5/52/Aarhus_University_logo.svg
+   :width: 25%
