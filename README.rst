@@ -247,4 +247,4 @@ Systole was largely inspired by pre-existing toolboxes dedicated to heartrate va
 |AU|
 
 .. |AU| image::  https://upload.wikimedia.org/wikipedia/commons/5/52/Aarhus_University_logo.svg
-   :width: 100%
+   :width: 25%
