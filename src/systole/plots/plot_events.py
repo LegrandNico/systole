@@ -178,7 +178,7 @@ def plot_events(
     if labels is None:
         labels = {}
         for i in range(len(triggers_idx)):
-            labels[f"{i+1}"] = f"Event - {i+1}"
+            labels[f"{i + 1}"] = f"Event - {i + 1}"
     elif isinstance(labels, str):
         event_str = labels
         labels = {}
@@ -187,7 +187,7 @@ def plot_events(
         event_list = labels
         labels = {}
         for i, lab in enumerate(event_list):
-            labels[f"{i+1}"] = lab
+            labels[f"{i + 1}"] = lab
     else:
         raise ValueError("Invalid event label provided.")
 

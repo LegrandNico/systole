@@ -261,7 +261,7 @@ def plot_evoked(
     if labels is None:
         labels = []
         for i in range(len(epochs)):
-            labels.append(f"Condition {i+1}")
+            labels.append(f"Condition {i + 1}")
     elif isinstance(labels, str):
         labels = [labels]
 

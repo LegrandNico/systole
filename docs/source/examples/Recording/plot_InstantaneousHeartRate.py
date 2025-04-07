@@ -20,7 +20,7 @@ from systole.detection import ppg_peaks
 from systole.plots import plot_raw, plot_rr
 from systole.recording import Oximeter
 
-#%%
+# %%
 # Recording
 # ---------
 # For the demonstration purpose, here we simulate data acquisition through
@@ -28,7 +28,7 @@ from systole.recording import Oximeter
 
 ser = serialSim()
 
-#%%
+# %%
 # If you want to enable online data acquisition, you should uncomment the
 # following lines and provide the reference of the COM port where the pulse
 # oximeter is plugged in.
@@ -43,7 +43,7 @@ ser = serialSim()
 oxi = Oximeter(serial=ser, sfreq=75).setup()
 oxi.read(20)
 
-#%%
+# %%
 # Plotting
 # --------
 

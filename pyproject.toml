@@ -79,3 +79,9 @@ pytest-cov = "^6.1.0"
 
 [tool.poetry.scripts]
 systole = "systole.reports.command_line:main"
+
+[tool.ruff]
+extend-include = ["*.ipynb"]
+
+[tool.ruff.pydocstyle]
+convention = "numpy"

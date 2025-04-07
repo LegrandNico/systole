@@ -570,7 +570,7 @@ def to_neighbour(
         elif kind == "min":
             x = signal[pk - size : pk + size].argmin()
         else:
-            raise ValueError("Invalid argument, kind should be " "max" " or " "min" "")
+            raise ValueError("Invalid argument, kind should be max or min")
 
         new_peaks[pk] = False
         new_peaks[pk + (x - size)] = True
@@ -705,7 +705,7 @@ def nan_cleaning(signal: np.ndarray, verbose: bool = True) -> np.ndarray:
     if len(arg_nans) > 0:
         if verbose:
             print(
-                f"... NaNs cleaning : interpolating {len(arg_nans)} NaN values found in the signal {int(100 * len(arg_nans)/len(signal))} %."
+                f"... NaNs cleaning : interpolating {len(arg_nans)} NaN values found in the signal {int(100 * len(arg_nans) / len(signal))} %."
             )
         arg_float = np.where(~np.isnan(signal))[0]
         xp = np.arange(0, len(signal))[arg_float]

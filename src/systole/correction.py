@@ -444,7 +444,7 @@ def correct_peaks(
 
     for n_it in range(n_iterations):
         if verbose:
-            print(f" - Iteration {n_it+1} - ")
+            print(f" - Iteration {n_it + 1} - ")
 
         # Correct extra peaks
         if extra_correction:
