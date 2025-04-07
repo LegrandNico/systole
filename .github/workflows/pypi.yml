@@ -24,5 +24,5 @@ jobs:
         run: poetry self add poetry-dynamic-versioning[plugin]
       - name: Build Python package
         run: poetry build -f sdist -o dist/
-      - name: Publish package distributions to PyPI
-        run: poetry publish
+      - name: Publish distribution 📦 to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
