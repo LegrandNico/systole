@@ -24,7 +24,7 @@
   :target: https://github.com/pre-commit/pre-commit
 
 **📌Note:**  
-    Starting from `v0.3.1` the development and maintenance of the package has been moved to this repository. The package is available on PyPI and can be installed using pip the same way.
+    Starting from `v0.3.1` the development and maintenance of the package has been moved to `this repository <https://github.com/LegrandNico/systole>`_. The package is available on PyPI and can be installed using pip the same way.
 
 ================
 
@@ -184,6 +184,7 @@ Online systolic peak detection, cardiac-stimulus synchrony, and cardiac circular
 =========================================================================================
 
 The package natively supports recording of physiological signals from the following setups:
+
 - `Nonin 3012LP Xpod USB pulse oximeter <https://www.nonin.com/products/xpod/>`_ together with the `Nonin 8000SM 'soft-clip' fingertip sensors <https://www.nonin.com/products/8000s/>`_ (USB).
 - Remote Data Access (RDA) via BrainVision Recorder together with `Brain product ExG amplifier <https://www.brainproducts.com/>`_ (Ethernet).
 
@@ -219,7 +220,7 @@ Annotating bad segments
 Development
 +++++++++++
 
-This repository is a fork of the `original Systole repository <https://github.com/embodied-computation-group/systole>` and is maintained by Nicolas Legrand. If you want to contribute, feel free to contact one of the developers, open an issue or submit a pull request.
+This repository is a fork of the `original Systole repository <https://github.com/embodied-computation-group/systole>`_ and is maintained by Nicolas Legrand. If you want to contribute, feel free to contact one of the developers, open an issue or submit a pull request.
 
 This program is provided with NO WARRANTY OF ANY KIND.
 
