@@ -30,6 +30,9 @@
 
 ================
 
+** 📌 Note:**  
+    Starting from `v0.3.1` the development and maintenance of the package has been moved to this repository. The package is available on PyPI and can be installed using pip the same way.
+
 **Systole** is an open-source Python package implementing simple tools for working with cardiac signals for psychophysiology research. In particular, the package provides tools to pre-process, visualize, and analyze cardiac data. 
 This includes tools for data epoching, artefact detection, artefact correction, evoked heart rate analyses, heart rate 
 variability analyses, circular statistical approaches to analysing cardiac cycles, and synchronising stimulus 
@@ -243,5 +246,5 @@ Systole was largely inspired by pre-existing toolboxes dedicated to heartrate va
 
 |AU|
 
-.. |AU| image::  https://github.com/LegrandNico/systole/blob/main/docs/source/images/au_clinisk_logo.png
+.. |AU| image::  https://commons.wikimedia.org/wiki/File:Aarhus_University_logo.svg
    :width: 100%
