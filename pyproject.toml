@@ -41,6 +41,7 @@ repository = "https://github.com/LegrandNico/systole"
 documentation = "https://legrandnico.github.io/systole/#"
 
 [tool.poetry]
+packages = [{ include = "systole", from = "src" }]
 include = ["README.rst",
     "LICENSE",
     "requirements.txt",
