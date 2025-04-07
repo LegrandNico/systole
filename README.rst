@@ -23,7 +23,7 @@
 .. image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
   :target: https://github.com/pre-commit/pre-commit
 
-** 📌 Note:**  
+**📌Note:**  
     Starting from `v0.3.1` the development and maintenance of the package has been moved to this repository. The package is available on PyPI and can be installed using pip the same way.
 
 ================
