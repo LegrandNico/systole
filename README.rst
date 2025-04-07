@@ -23,15 +23,15 @@
 .. image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
   :target: https://github.com/pre-commit/pre-commit
 
+** 📌 Note:**  
+    Starting from `v0.3.1` the development and maintenance of the package has been moved to this repository. The package is available on PyPI and can be installed using pip the same way.
+
 ================
 
 .. image:: https://github.com/LegrandNico/systole/blob/main/docs/source/images/logo.png
    :align: center
 
 ================
-
-** 📌 Note:**  
-    Starting from `v0.3.1` the development and maintenance of the package has been moved to this repository. The package is available on PyPI and can be installed using pip the same way.
 
 **Systole** is an open-source Python package implementing simple tools for working with cardiac signals for psychophysiology research. In particular, the package provides tools to pre-process, visualize, and analyze cardiac data. 
 This includes tools for data epoching, artefact detection, artefact correction, evoked heart rate analyses, heart rate 
@@ -246,5 +246,5 @@ Systole was largely inspired by pre-existing toolboxes dedicated to heartrate va
 
 |AU|
 
-.. |AU| image::  https://commons.wikimedia.org/wiki/File:Aarhus_University_logo.svg
+.. |AU| image::  https://upload.wikimedia.org/wikipedia/commons/5/52/Aarhus_University_logo.svg
    :width: 100%
