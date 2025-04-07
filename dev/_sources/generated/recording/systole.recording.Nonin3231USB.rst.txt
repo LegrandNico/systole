@@ -1,0 +1,27 @@
+﻿systole.recording.Nonin3231USB
+==============================
+
+.. currentmodule:: systole.recording
+
+.. autoclass:: Nonin3231USB
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Nonin3231USB.__init__
+      ~Nonin3231USB.close
+      ~Nonin3231USB.read
+      ~Nonin3231USB.readInWaiting
+      ~Nonin3231USB.reset
+      ~Nonin3231USB.setup
+   
+   
+
+   
+   
+   
