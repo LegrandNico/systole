@@ -16,7 +16,7 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dynamic = ["version"]
+dynamic = []
 dependencies = [
     "numpy>=2.0.0,<=2.2.0",
     "matplotlib>=3.4.0",
@@ -32,7 +32,9 @@ dependencies = [
     "tabulate>=0.8.9",
     "sleepecg>=0.5.1",
     "joblib>=1.3.2",
+    "watermark>=2.5.0",
 ]
+version = "0.3.0.post1.dev0+671902f"
 
 [project.urls]
 homepage = "https://legrandnico.github.io/systole/#"
@@ -40,6 +42,7 @@ repository = "https://github.com/LegrandNico/systole"
 documentation = "https://legrandnico.github.io/systole/#"
 
 [tool.poetry]
+packages = [{ include = "systole", from = "src" }]
 include = ["README.rst",
     "LICENSE",
     "requirements.txt",
@@ -48,16 +51,20 @@ include = ["README.rst",
     "systole/reports/images/logo.svg"
     ]
 
-version = "0.0.0"
-
 [build-system]
 requires = ["setuptools>=61", "poetry-core", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
-build-backend = "poetry.core.masonry.api"
+build-backend = "poetry_dynamic_versioning.backend"
+
+[tool.poetry.requires-plugins]
+poetry-dynamic-versioning = { version = ">=1.0.0,<2.0.0", extras = ["plugin"] }
 
 [tool.poetry-dynamic-versioning]
 # Enable dynamic versioning
 enable = true
 style = "pep440"
+
+[tool.poetry-dynamic-versioning.substitution]
+files = [".src/systole/__init__.py"]
 
 [tool.poetry.group.dev.dependencies]
 papermill = ">=2.6.0"
@@ -78,3 +85,11 @@ pytest-cov = "^6.1.0"
 
 [tool.poetry.scripts]
 systole = "systole.reports.command_line:main"
+
+[tool.ruff]
+select = ["D"]
+extend-include = ["*.ipynb"]
+ignore = ["D100", "D104"]
+
+[tool.ruff.pydocstyle]
+convention = "numpy"

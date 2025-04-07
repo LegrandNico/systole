@@ -13,8 +13,9 @@ def rolling_average_resp(
     win: float = 0.025,
     kind: str = "peaks-onsets",
 ) -> Union[np.ndarray, Tuple[np.ndarray, np.ndarray]]:
-    """A simple peaks and/or onsets detection algorithm for respiratory signal inspired
-    by [1]_.
+    """Detect peaks and/or onsets detection algorithm for respiratory signal.
+
+    This function is inspired by the method described in [1]_.
 
     Parameters
     ----------

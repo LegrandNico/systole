@@ -110,7 +110,8 @@ class Oximeter:
         add_channels: Optional[int] = None,
         data_format: str = "2",
     ):
-        """
+        """Initialize the recording instance.
+
         Parameters
         ----------
         serial :
@@ -199,7 +200,6 @@ class Oximeter:
         Will automatically calculate the differential, threshold and increment
         additional channles with 0 if provided.
         """
-
         # Store new data
         self.recording.append(value)
         self.peaks.append(0)
@@ -247,7 +247,7 @@ class Oximeter:
         return self
 
     def check(self, paquet: list):
-        """Check if the provided paquet is correct
+        """Check if the provided paquet is correct.
 
         Parameters
         ----------
@@ -344,7 +344,6 @@ class Oximeter:
         plot :
             The matplotlib axes, or the boken figure containing the plot.
         """
-
         return plot_raw(signal=self.recording, sfreq=75, **kwargs)
 
     def read(self, duration: float):
@@ -578,7 +577,7 @@ class BrainVisionExG:
         }
 
     def RecvData(self, requestedSize):
-        """Helper function for receiving whole message"""
+        """Receive whole message."""
         returnStream = b""
         while len(returnStream) < requestedSize:
             databytes = self.con.recv(requestedSize - len(returnStream))
@@ -589,9 +588,7 @@ class BrainVisionExG:
         return returnStream
 
     def SplitString(self, raw):
-        """Helper function for splitting a raw array of zero terminated strings (C) into
-        an array of python strings"""
-
+        """Split a raw array of zero terminated strings (C) into an array of strings."""
         raw = raw.decode()
         stringlist = []
         s = ""
@@ -604,9 +601,7 @@ class BrainVisionExG:
         return stringlist
 
     def GetProperties(self, rawdata):
-        """Helper function for extracting ExG properties from a raw data array read from
-        tcpip socket"""
-
+        """Extract ExG properties from a raw data array."""
         # Extract numerical data
         (channelCount, samplingInterval) = unpack("<Ld", rawdata[:12])
 
@@ -623,9 +618,7 @@ class BrainVisionExG:
         return (channelCount, samplingInterval, resolutions, channelNames)
 
     def GetData(self, rawdata, channelCount):
-        """Helper function for extracting eeg and marker data from a raw data array read
-        from tcpip socket"""
-
+        """Extract signal and marker data from a raw data."""
         # Extract numerical data
         (block, points, markerCount) = unpack("<LLL", rawdata[:12])
 
@@ -746,5 +739,5 @@ class BrainVisionExG:
         return recording
 
     def close(self):
-        """Close TCPIP connections"""
+        """Close TCPIP connections."""
         self.con.close()

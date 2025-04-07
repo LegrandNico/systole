@@ -20,7 +20,6 @@ def time_domain_group_level(summary_df: pd.DataFrame):
     row :
 
     """
-
     bpm_metrics = ["MinBPM", "MeanBPM", "MedianBPM", "MaxBPM"]
 
     source = ColumnDataSource(summary_df[summary_df.Metric.isin(bpm_metrics)])
@@ -124,7 +123,6 @@ def frequency_domain_group_level(summary_df: pd.DataFrame):
     row :
 
     """
-
     TOOLTIPS = [
         ("Participant", "@participant_id"),
         ("Modality", "@modality"),
@@ -241,7 +239,6 @@ def nonlinear_domain_group_level(summary_df: pd.DataFrame):
         Sub-plot showing the group-level nonlinear metrics.
 
     """
-
     TOOLTIPS = [
         ("Participant", "@participant_id"),
         ("Modality", "@modality"),
@@ -283,8 +280,7 @@ def nonlinear_domain_group_level(summary_df: pd.DataFrame):
 
 
 def artefacts_group_level(summary_df: pd.DataFrame):
-    """Create striplot and table visualization for artefacts detected in the RR time
-    series.
+    """Create striplot and table visualization for artefacts.
 
     Parameters
     ----------
@@ -297,7 +293,6 @@ def artefacts_group_level(summary_df: pd.DataFrame):
         Sub-plot showing the group-level artefacts metrics.
 
     """
-
     # Create a dataframe summarizing the artefacts metrics
     summary_df = summary_df[summary_df.hrv_domain == "artefacts"]
     summary_df = summary_df[["Values", "Metric", "participant_id"]]

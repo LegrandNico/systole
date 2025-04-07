@@ -50,7 +50,6 @@ def plot_evoked(
         The bokeh figure containing the plot.
 
     """
-
     ylabel = "R-R interval (ms)" if unit == "rr" else "Beats per minute (bpm)"
 
     evoked_plot = figure(

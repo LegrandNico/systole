@@ -61,7 +61,6 @@ def plot_circular(
         The matplotlib axes containing the plot.
 
     """
-
     # Loop across conditions
     for angles, color, label in zip(data, palette, labels):
         angles = np.asarray(angles)

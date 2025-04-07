@@ -42,7 +42,6 @@ def time_table(
         The formatted time domain table, either as a string or as a Bokeh Columns.
 
     """
-
     if time_df is None:
         if (rr is None) | (input_type is None):
             raise ValueError(
@@ -162,7 +161,6 @@ def frequency_table(
         The formatted frequency domain table, either as a string or as a Bokeh Columns.
 
     """
-
     if frequency_df is None:
         if (rr is None) | (input_type is None):
             raise ValueError(
@@ -277,7 +275,6 @@ def nonlinear_table(
         The formatted nonlinear domain table, either as a string or as a Bokeh Columns.
 
     """
-
     if nonlinear_df is None:
         if (rr is None) | (input_type is None):
             raise ValueError(

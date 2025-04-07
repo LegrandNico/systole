@@ -18,7 +18,7 @@ import systole
 # -- Project information -----------------------------------------------------
 
 project = "systole"
-copyright = u"2020-{}, Nicolas Legrand".format(time.strftime("%Y"))
+copyright = "2020-{}, Nicolas Legrand".format(time.strftime("%Y"))
 author = "Nicolas Legrand"
 release = systole.__version__
 
@@ -28,7 +28,7 @@ image_scrapers = ("matplotlib",)
 sphinx_gallery_conf = {
     "examples_dirs": "examples",
     "backreferences_dir": "api",
-    'gallery_dirs': 'auto_examples',
+    "gallery_dirs": "auto_examples",
     "image_scrapers": image_scrapers,
 }
 
@@ -39,7 +39,7 @@ exclude_patterns = [
     "auto_examples/**/*.py",
 ]
 
-bibtex_bibfiles = ['refs.bib']
+bibtex_bibfiles = ["refs.bib"]
 bibtex_reference_style = "author_year"
 bibtex_default_style = "unsrt"
 
@@ -62,7 +62,7 @@ extensions = [
     "jupyter_sphinx",
     "sphinx_design",
     "myst_nb",
-    "sphinxcontrib.bibtex"
+    "sphinxcontrib.bibtex",
 ]
 
 panels_add_bootstrap_css = False
@@ -111,6 +111,11 @@ html_theme_options = {
             icon="fa-brands fa-mastodon",
         ),
         dict(
+            name="Mastodon",
+            url="https://bsky.app/profile/nicolaslegrand.bsky.social",
+            icon="fa-brands fa-bluesky",
+        ),
+        dict(
             name="Pypi",
             url="https://pypi.org/project/systole/",
             icon="fa-solid fa-box",
@@ -118,7 +123,8 @@ html_theme_options = {
     ],
     "logo": {
         "text": "Systole",
-    },}
+    },
+}
 
 html_sidebars = {"**": []}
 
@@ -135,6 +141,5 @@ intersphinx_mapping = {
     "matplotlib": ("http://matplotlib.org/", None),
     "pandas": ("https://pandas.pydata.org/pandas-docs/stable/", None),
     "seaborn": ("https://seaborn.pydata.org/", None),
-    "sklearn": ("http://scikit-learn.org/stable", None),
     "bokeh": ("http://docs.bokeh.org/en/latest/", None),
 }

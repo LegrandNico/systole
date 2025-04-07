@@ -17,8 +17,7 @@ from systole.utils import simulate_rr
 
 
 def test_correct_extra_rr():
-    """Test correct_extra_rr function"""
-
+    """Test correct_extra_rr function."""
     # When the artefact is the first RR interval
     rr = import_rr().rr.values  # Import RR time series
     rr[0] = 100
@@ -74,8 +73,7 @@ def test_correct_extra_rr():
 
 
 def test_correct_missed_rr():
-    """Test correct_missed_rr function"""
-
+    """Test correct_missed_rr function."""
     # When the artefact is the first RR interval
     rr = import_rr().rr.values  # Import RR time series
     rr[0] = 1600
@@ -125,8 +123,7 @@ def test_correct_missed_rr():
 
 
 def test_interpolate_rr():
-    """Test interpolate_rr function"""
-
+    """Test interpolate_rr function."""
     # When the artefact is the first RR interval
     rr = import_rr().rr.values  # Import RR time series
     rr[0] = 1600
@@ -150,8 +147,7 @@ def test_interpolate_rr():
 
 
 def test_correct_rr():
-    """Test correct_rr function"""
-
+    """Test correct_rr function."""
     rr = simulate_rr()  # Import RR time series
     corrected_rr, (nMissed, nExtra, nEctopic, nShort, nLong) = correct_rr(rr)
 
@@ -164,7 +160,7 @@ def test_correct_rr():
 
 
 def test_correct_peaks():
-    """Test correct_peaks function"""
+    """Test correct_peaks function."""
     peaks = simulate_rr(as_peaks=True)
     peaks_correction = correct_peaks(peaks)
     peaks_correction = correct_peaks(list(peaks))
@@ -174,7 +170,7 @@ def test_correct_peaks():
 
 
 def test_correct_missed_peaks():
-    """Test correct_missed_peaks function"""
+    """Test correct_missed_peaks function."""
     np.random.seed(123)
     rr = np.random.normal(1000, 200, 10).astype("int")
     peaks = np.zeros(10000)

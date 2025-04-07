@@ -24,7 +24,7 @@ from systole.utils import heart_rate, to_epochs
 
 
 def test_plot_circular():
-    """Test plot_circular function"""
+    """Test plot_circular function."""
     for backend in ["matplotlib"]:
         # Single array as input
         data = np.random.normal(np.pi, 0.5, 100)
@@ -47,7 +47,7 @@ def test_plot_circular():
 
 
 def test_plot_ectopic():
-    """Test plot_ectopic function"""
+    """Test plot_ectopic function."""
     rr = import_rr().rr
     for backend in ["matplotlib", "bokeh"]:
         plot_ectopic(rr, backend=backend)
@@ -56,8 +56,7 @@ def test_plot_ectopic():
 
 
 def test_plot_evoked():
-    """Test plot_evoked function"""
-
+    """Test plot_evoked function."""
     # Import ECG recording and Stim channel
     ecg_df = import_dataset1(modalities=["ECG", "Stim"])
 
@@ -127,7 +126,7 @@ def test_plot_evoked():
 
 
 def test_plot_events():
-    """Test plot_events function"""
+    """Test plot_events function."""
     # Import ECG recording and Stim channel
     ecg_df = import_dataset1(modalities=["ECG", "Stim"])
 
@@ -149,7 +148,7 @@ def test_plot_events():
 
 
 def test_plot_frequency():
-    """Test plot_frequency function"""
+    """Test plot_frequency function."""
     rr = import_rr().rr
     for backend in ["matplotlib", "bokeh"]:
         plot_frequency(rr, backend=backend, input_type="rr_ms")
@@ -158,7 +157,7 @@ def test_plot_frequency():
 
 
 def test_plot_poincare():
-    """Test plot_poincare function"""
+    """Test plot_poincare function."""
     rr = import_rr().rr
     for backend in ["matplotlib", "bokeh"]:
         plot_poincare(rr, backend=backend, input_type="rr_ms")
@@ -167,8 +166,7 @@ def test_plot_poincare():
 
 
 def test_plot_raw():
-    """Test plot_raw function"""
-
+    """Test plot_raw function."""
     # Using ppg signal
     ppg = import_ppg().ppg.to_numpy()
 
@@ -228,8 +226,7 @@ def test_plot_raw():
 
 
 def test_plot_rr():
-    """Test plot_rr function"""
-
+    """Test plot_rr function."""
     # Using ecg signal
     ecg_df = import_dataset1(modalities=["ECG", "Stim"])
 
@@ -286,7 +283,7 @@ def test_plot_rr():
 
 
 def test_plot_shortlong():
-    """Test plot_shortlong function"""
+    """Test plot_shortlong function."""
     rr = import_rr().rr
     for backend in ["matplotlib", "bokeh"]:
         plot_shortlong(rr, backend=backend, input_type="rr_ms")
@@ -295,7 +292,7 @@ def test_plot_shortlong():
 
 
 def test_plot_subspaces():
-    """Test plot_subspaces function"""
+    """Test plot_subspaces function."""
     rr = import_rr().rr
     artefacts = rr_artefacts(rr)
     for backend in ["matplotlib", "bokeh"]:

@@ -16,8 +16,9 @@ def correct_extra_rr(
     extra_idx: np.ndarray,
     artefacts: np.ndarray = np.array([[], []], dtype=np.bool_),
 ) -> Tuple[np.ndarray, np.ndarray]:
-    """Correct extra heartbeat(s) by removing the RR interval(s). Will also update the
-    artefacts array accordingly if this one is provided.
+    """Correct extra heartbeat(s) by removing the RR interval(s).
+
+    Will also update the artefacts array accordingly if this one is provided.
 
     Parameters
     ----------
@@ -39,7 +40,6 @@ def correct_extra_rr(
         py:`func:systole.detection.rr_artefacts()`.
 
     """
-
     # Set defaults values for the outputs
     clean_rr, new_artefacts = rr.copy(), artefacts.copy()
 
@@ -76,8 +76,9 @@ def correct_missed_rr(
     missed_idx: np.ndarray,
     artefacts: np.ndarray = np.array([[], []], dtype=np.bool_),
 ) -> Tuple[np.ndarray, np.ndarray]:
-    """Correct missed heartbeat(s) by adding new RR intervals. Will also update the
-    artefacts array accordingly if this one is provided.
+    """Correct missed heartbeat(s) by adding new RR intervals.
+
+    Will also update the artefacts array accordingly if this one is provided.
 
     Parameters
     ----------
@@ -99,7 +100,6 @@ def correct_missed_rr(
         this dictionary with the new artifacts idexes.
 
     """
-
     # Set defaults values for the outputs
     clean_rr, new_artefacts = rr.copy(), artefacts.copy()
 
@@ -152,7 +152,6 @@ def interpolate_rr(rr: np.ndarray, idx: np.ndarray) -> np.ndarray:
         The corrected RR intervals.
 
     """
-
     # Create time vector
     time = np.arange(0, len(rr))
 
@@ -175,8 +174,7 @@ def _correct_rr(
 ) -> Tuple[
     np.ndarray, Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]
 ]:
-    """Internal jited function to correct RR artefacts from artefacts dictionary."""
-
+    """Correct RR artefacts (jitted function)."""
     if verbose:
         print("Cleaning the RR interval time series.")
 
@@ -337,7 +335,7 @@ def correct_rr(
     When adding or removing an RR interval (missed and extra artefacts), the `artefacts`
     arrays are updated accordingly.
 
-    See also
+    See Also
     --------
     correct_peaks
 
@@ -420,7 +418,7 @@ def correct_peaks(
         - extra: The number of extra beats corrected.
         - missed: The number of missed beats corrected.
 
-    See also
+    See Also
     --------
     correct_rr
 
@@ -430,7 +428,6 @@ def correct_peaks(
     signal constant after peaks correction.
 
     """
-
     peaks = np.asarray(peaks)
 
     if input_type != "peaks":
@@ -444,7 +441,7 @@ def correct_peaks(
 
     for n_it in range(n_iterations):
         if verbose:
-            print(f" - Iteration {n_it+1} - ")
+            print(f" - Iteration {n_it + 1} - ")
 
         # Correct extra peaks
         if extra_correction:
@@ -572,7 +569,6 @@ def correct_ectopic_peaks(
         If the artefact index is outside the range of the peaks vector.
 
     """
-
     peaks = np.asarray(peaks, dtype=bool)
     clean_peaks = peaks.copy()
 

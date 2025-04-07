@@ -19,8 +19,9 @@ from systole.utils import ecg_strings, norm_bad_segments, ppg_strings, resp_stri
 
 
 class Viewer:
-    """This class handles the interaction with BIDS structured folders. It calls
-    the` Editor` class internally to generate the interactive plots.
+    """Handles the interaction with BIDS structured folders.
+
+    It calls the` Editor` class internally to generate interactive plots.
 
     Parameters
     ----------
@@ -63,7 +64,7 @@ class Viewer:
         The size of the interactive Matplotlib figure for peaks edition. Defaults to
         `(15, 7)`.
 
-    See also
+    See Also
     --------
     Editor
 
@@ -229,9 +230,7 @@ class Viewer:
         self.plot_signal(change=None)
 
     def update_list(self, change):
-        """Updating the list of participants available in the folder when the text
-        boxes are used."""
-
+        """Update the list of participants when the text boxes are used."""
         self.participants_list = [
             f.stem for f in list(Path(self.bids_path.value).glob("sub-*/"))
         ]
@@ -251,6 +250,7 @@ class Viewer:
         self.participants_.option = self.participants_list
 
     def plot_signal(self, change):
+        """Plot physiological signal and peaks."""
         # Load the physio files and store parameters in the Viewer class
         # then load the signal from the physio file and perform peaks detection
         self = self.load_file().load_signal()
@@ -272,7 +272,6 @@ class Viewer:
 
     def load_signal(self):
         """Load the signal from the input folder (BIDS or local)."""
-
         # In case no file was match the requirements
         if self.physio_file is None:
             return self
@@ -370,9 +369,7 @@ class Viewer:
         return self
 
     def load_file(self):
-        """Load the files containing the physiological recordings and the metadat JSON
-        files for one participant."""
-
+        """Load physiological recordings and JSON metadata."""
         self.recording_start_time = None
         self.recording_end_time = None
         self.sfreq = None
@@ -448,8 +445,7 @@ class Viewer:
 
 
 class Editor:
-    """This class handle the visualization and manual edition of peaks vectors
-    associated with physiological signals.
+    """Visualization and manual edition of peaks vectors.
 
     Parameters
     ----------
@@ -498,7 +494,7 @@ class Editor:
     edition_, rejection_, command_box_, save_button_ :
         Widgets controlling the type of modification to perform.
 
-    See also
+    See Also
     --------
     Viewer
 
@@ -611,9 +607,7 @@ class Editor:
             )
 
     def on_remove(self, xmin, xmax):
-        """Removes specified peaks by either rejection / deletion, or mark bad
-        segments."""
-
+        """Remove peaks by either rejection / deletion, or mark bad segments."""
         # Get the interval in sample idexes
         if self.edition_.value == "Correction":
             tmin, tmax = np.searchsorted(self.x_vec, (xmin, xmax))
@@ -645,7 +639,7 @@ class Editor:
         self.plot_signals()
 
     def on_key(self, event):
-        """Undoes last span select or quits peak editor"""
+        """Undo last span select or quits peak editor."""
         # accept both control or Mac command key as selector
         if event.key in ["ctrl+q", "super+d"]:
             self.quit()
@@ -661,8 +655,7 @@ class Editor:
             self.fig.canvas.draw()
 
     def plot_signals(self):
-        """Clears axes and plots data / peaks / troughs."""
-
+        """Clear axes and plots data / peaks / troughs."""
         if self.signal is not None:
             # Clear axes and redraw, retaining x-/y-axis zooms
             xlim, ylim = self.ax[0].get_xlim(), self.ax[0].get_ylim()
@@ -736,13 +729,15 @@ class Editor:
             return self
 
     def quit(self):
-        """Quits editor"""
+        """Quits editor."""
         plt.close(self.fig)
 
     def save(self):
-        """Save the JSON file containing the corrected peaks, bad segments and signal
-        quality. The path is specified by `corrected_json`."""
+        """Save the JSON file.
 
+        This file contains the corrected peaks, bad segments and signal quality. The
+        path is specified by `corrected_json`.
+        """
         if not Path(self.corrected_json).parent.exists():
             Path(self.corrected_json).parent.mkdir(parents=True)
 
@@ -773,7 +768,6 @@ class Editor:
 
     def find_peaks(self):
         """Find peaks depending on the signal type."""
-
         if self.peaks is None:
             if self.signal_type == "ECG":
                 self.signal, self.peaks = ecg_peaks(

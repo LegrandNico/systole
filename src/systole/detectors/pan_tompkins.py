@@ -10,7 +10,8 @@ from scipy.signal import butter, lfilter
 def pan_tompkins(
     signal: np.ndarray, sfreq: int, moving_average: str = "cumulative"
 ) -> np.ndarray:
-    """
+    """Detect systolic preaks using the Pan-Tompkins QRS detection algorithm.
+
     Parameters
     ----------
     signal :
@@ -59,8 +60,7 @@ def pan_tompkins(
 
 @jit(nopython=True)
 def MWA_cumulative(input_array: np.ndarray, window_size: int) -> np.ndarray:
-    """Cumulative moving average method"""
-
+    """Cumulative moving average method."""
     ret = np.cumsum(input_array)
     ret[window_size:] = ret[window_size:] - ret[:-window_size]
     ret[: window_size - 1] /= np.arange(1, window_size)
@@ -86,7 +86,6 @@ def panPeakDetect(detection: np.ndarray, sfreq: int) -> List:
         The indexs of the ECG peaks.
 
     """
-
     min_distance = int(0.25 * sfreq)
 
     signal_peaks = [0]

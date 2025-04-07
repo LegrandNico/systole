@@ -22,7 +22,7 @@ rr = import_rr().rr.values
 
 
 def test_nnX():
-    """Test nnX function"""
+    """Test nnX function."""
     nn = nnX(list(rr), input_type="rr_ms")
     assert nn == 64
     nn = nnX(rr / 1000, input_type="rr_s")
@@ -32,7 +32,7 @@ def test_nnX():
 
 
 def test_pnnX():
-    """Test pnnX function"""
+    """Test pnnX function."""
     pnn = pnnX(list(rr), input_type="rr_ms")
     assert round(pnn, 2) == 26.23
     pnn = pnnX(rr / 1000, input_type="rr_s")
@@ -42,7 +42,7 @@ def test_pnnX():
 
 
 def test_rmssd():
-    """Test rmssd function"""
+    """Test rmssd function."""
     rms = rmssd(list(rr))
     assert round(rms, 2) == 45.55
     rms = rmssd(rr / 1000, input_type="rr_s")
@@ -52,7 +52,7 @@ def test_rmssd():
 
 
 def test_time_domain():
-    """Test time_domain function"""
+    """Test time_domain function."""
     stats = time_domain(list(rr))
 
     # Kubios 2.2: 883.24
@@ -81,7 +81,7 @@ def test_time_domain():
 
 
 def test_psd():
-    """Test frequency_domain function"""
+    """Test frequency_domain function."""
     freq, pwr = psd(rr=list(rr))
     freq2, pwr2 = psd(rr=rr / 1000, input_type="rr_s")
     assert (freq - freq2).sum() == 0.0
@@ -89,7 +89,7 @@ def test_psd():
 
 
 def test_frequency_domain():
-    """Test frequency_domain function"""
+    """Test frequency_domain function."""
     stats = frequency_domain(rr=list(rr))
 
     # Kubios 2.2: 0.031250
@@ -137,7 +137,7 @@ def test_frequency_domain():
 
 
 def test_nonlinear_domain():
-    """Test nonlinear_domain function"""
+    """Test nonlinear_domain function."""
     stats = nonlinear_domain(list(rr))
     assert isinstance(stats, pd.DataFrame)
     assert stats.size == 14
@@ -145,7 +145,7 @@ def test_nonlinear_domain():
 
 
 def test_poincare():
-    """Test poincare function"""
+    """Test poincare function."""
     sd1, sd2 = poincare(list(rr))
 
     # Kubios 2.2: 32.273
@@ -156,7 +156,7 @@ def test_poincare():
 
 
 def test_recurrence():
-    """Test recurrence function"""
+    """Test recurrence function."""
     recurrence_rate, l_max, l_mean, determinism, shan_entr = recurrence(list(rr))
 
     # Kubios 2.2: 37.231
@@ -176,7 +176,7 @@ def test_recurrence():
 
 
 def test_all_domain():
-    """Test all_domain function"""
+    """Test all_domain function."""
     all_df = all_domain(list(rr))
 
     metrics = [

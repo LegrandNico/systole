@@ -41,13 +41,12 @@ def plot_poincare(
     plot :
         The matplotlib axes, or the boken figure containing the plot.
 
-    See also
+    See Also
     --------
     plot_frequency
 
     Examples
     --------
-
     Visualizing poincare plot from RR time series using Matplotlib as plotting backend.
 
     .. jupyter-execute::
@@ -76,7 +75,6 @@ def plot_poincare(
        )
 
     """
-
     # Define figure size
     if figsize is None:
         if backend == "matplotlib":

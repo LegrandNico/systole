@@ -74,7 +74,6 @@ def plot_rr(
         The matplotlib axes containing the plot.
 
     """
-
     ylabel = "R-R interval (ms)" if unit == "rr" else "Beats per minute (bpm)"
 
     if ax is None:

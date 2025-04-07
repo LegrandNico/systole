@@ -79,7 +79,6 @@ def plot_raw(
         The matplotlib axes containing the plot.
 
     """
-
     if modality in ppg_strings:
         title = "PPG recording"
         ylabel = "PPG level (a.u.)"

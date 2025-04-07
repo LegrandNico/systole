@@ -102,13 +102,12 @@ def plot_raw(
     plot :
         The matplotlib axes, or the bokeh figure containing the plot.
 
-    See also
+    See Also
     --------
     plot_events, plot_rr
 
     Examples
     --------
-
     Plotting raw ECG recording with automatic R peaks labelling.
 
     .. jupyter-execute::

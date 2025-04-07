@@ -33,7 +33,6 @@ def plot_events(
         The bokeh figure containing the plot.
 
     """
-
     if ax is None:
         TOOLTIPS = [
             ("(x,y)", "($tmin, $tmax)"),

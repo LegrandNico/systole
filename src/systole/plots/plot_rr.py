@@ -88,13 +88,12 @@ def plot_rr(
     plot :
         The matplotlib axes, or the boken figure containing the plot.
 
-    See also
+    See Also
     --------
     plot_raw, plot_events, plot_evoked
 
     Examples
     --------
-
     Plot instantaneous heart rate from a RR interval time series (in milliseconds).
 
     .. jupyter-execute::
@@ -131,7 +130,6 @@ def plot_rr(
        )
 
     """
-
     if (points is False) & (line is False):
         raise ValueError("Either points or line should be True")
 

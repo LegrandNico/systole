@@ -46,7 +46,6 @@ def plot_evoked(
         The matplotlib axes containing the plot.
 
     """
-
     if ax is None:
         _, ax = plt.subplots(figsize=figsize)
     if isinstance(labels, str):

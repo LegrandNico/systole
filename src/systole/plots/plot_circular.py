@@ -89,7 +89,6 @@ def plot_circular(
 
     Examples
     --------
-
     Using a numpy array of angular values as input.
 
     .. plot::
@@ -121,7 +120,6 @@ def plot_circular(
     .. [#] https://pingouin-stats.org/_modules/pingouin/circular.html#circ_mean
 
     """
-
     # Define color palette
     if palette is None:
         this_palette = itertools.cycle(sns.color_palette("deep"))

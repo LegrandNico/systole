@@ -15,7 +15,7 @@ def plot_poincare(
     figsize: Optional[Union[List[int], Tuple[int, int], int]] = None,
     ax: Optional[Axes] = None,
 ) -> Union[Tuple[np.ndarray, np.ndarray], Axes]:
-    """poincare plot.
+    """Poincare plot.
 
     Parameters
     ----------
@@ -26,8 +26,8 @@ def plot_poincare(
     ax :
         Where to draw the plot. Default is `None` (create a new figure).
 
-     Returns
-     -------
+    Returns
+    -------
      ax  :
         The poincare plot.
 

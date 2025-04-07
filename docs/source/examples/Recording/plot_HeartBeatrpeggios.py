@@ -29,7 +29,7 @@ from systole.plots import plot_circular, plot_events
 from systole.recording import Oximeter
 from systole.utils import norm_triggers, to_angles
 
-#%%
+# %%
 # Recording
 # ---------
 # For the purpose of demonstration, here we simulate data acquisition through
@@ -37,7 +37,7 @@ from systole.utils import norm_triggers, to_angles
 
 ser = serialSim()
 
-#%%
+# %%
 # If you want to allow online data acquisition, you should uncomment the
 # following lines and provide the reference of the COM port where the pulse
 # oximeter is plugged in.
@@ -48,12 +48,12 @@ ser = serialSim()
 #   import serial
 #   ser = serial.Serial('COM4')  # Change this value according to your setup
 
-#%%
+# %%
 # Create an Oximeter instance, initialize recording and record for 10 seconds
 
 oxi = Oximeter(serial=ser, sfreq=75, add_channels=4).setup()
 
-#%%
+# %%
 # Play the different tones at different intervals following the detection of the
 # systolic peaks, using the length of the previous RR interval as reference. To kee the
 # execution of the example simple we do no pla atual sounds (e.g. using Psychopy) but
@@ -62,10 +62,8 @@ oxi = Oximeter(serial=ser, sfreq=75, add_channels=4).setup()
 systoleTime1, systoleTime2, systoleTime3 = None, None, None
 tstart = time.time()
 while time.time() - tstart < 20:
-
     # Check if there are new data to read
     if oxi.serial.inWaiting() >= 5:
-
         # Read one incoming data point - Convert bytes into list of int
         paquet = list(oxi.serial.read(5))
 
@@ -97,10 +95,10 @@ while time.time() - tstart < 20:
                 oxi.channels["Channel_3"][-1] = 1
                 systoleTime3 = None
 
-#%%
+# %%
 # Events
 # --------
-# We now have triggers for the presentation of different notes relative to the systolic 
+# We now have triggers for the presentation of different notes relative to the systolic
 # peaks detected in the PPG signal in real-time. We can visualize the distribution
 # of these events using the `plot_events` function that will take the cleaned triggers
 # channels as input. We can see in the plot below that the events are nicely aligned
@@ -112,23 +110,28 @@ _, axs = plt.subplots(2, 1, figsize=(18, 6), sharex=True)
 events_labels = ["C", "E", "G", "Bfl"]
 palette = itertools.cycle(sns.color_palette("deep"))
 for i in np.arange(3, -1, -1):
-    
     # Clan the triggers vector so we just have one trigger / event
     triggers = norm_triggers(
         triggers=oxi.channels[f"Channel_{i}"], n=10, direction="higher"
-        )
+    )
 
     # Plot the event according to its duration (0.1 second)
     plot_events(
-        triggers=triggers, tmin=0.0, tmax=0.1, sfreq=75, 
-        labels=events_labels[i], ax=axs[0], palette=[next(palette)])
+        triggers=triggers,
+        tmin=0.0,
+        tmax=0.1,
+        sfreq=75,
+        labels=events_labels[i],
+        ax=axs[0],
+        palette=[next(palette)],
+    )
     axs[0].set_xlabel("")
 
 oxi.plot_raw(ax=axs[1])
 
 plt.tight_layout()
 
-#%%
+# %%
 # Cardiac cycle
 # -------------
 # Another way to have a look at this event distribution is to look at when they occur

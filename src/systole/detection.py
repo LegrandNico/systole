@@ -115,7 +115,6 @@ def ppg_peaks(
        2018, vol. 126, pp. 189-195. <https://doi.org/10.1007/978-3-319-65798-1_39>
 
     """
-
     x = np.asarray(signal)
 
     # Interpolate NaNs values if any and if requested
@@ -174,9 +173,10 @@ def ecg_peaks(
     clean_nan: bool = False,
     verbose: bool = False,
 ) -> Tuple[np.ndarray, np.ndarray]:
-    """A simple wrapper for many popular R peaks detectors algorithms.
+    """Detect R peaks from ECG recording.
 
-    This function calls methods from `py-ecg-detectors` [1]_.
+    Many different methods are available. This function calls methods from
+    `py-ecg-detectors` [1]_.
 
     Parameters
     ----------
@@ -234,7 +234,6 @@ def ecg_peaks(
        python. DOI: 10.5281/zenodo.3353396
 
     """
-
     x = np.asarray(signal)
 
     # Interpolate NaNs values if any and if requested
@@ -392,8 +391,9 @@ def rr_artefacts(
     alpha: float = 5.2,
     input_type: str = "rr_ms",
 ) -> Dict[str, np.ndarray]:
-    """Artefacts detection from RR time series using the subspaces approach
-    proposed by Lipponen & Tarvainen (2019).
+    """Detect artefacts in RR time series.
+
+    This function uses the subspaces approach proposed by Lipponen & Tarvainen (2019).
 
     Parameters
     ----------
